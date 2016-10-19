@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Androids on Программист 1С Фокусов Игорь</title>
+    <link>http://localhost/android/</link>
+    <description>Recent content in Androids on Программист 1С Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 20 Oct 2016 22:55:05 -0400</lastBuildDate>
+    <atom:link href="http://localhost/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Проекты Андроид</title>
+      <link>http://localhost/android/</link>
+      <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
+      
+      <guid>http://localhost/android/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
