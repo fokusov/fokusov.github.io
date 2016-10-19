@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on Программист 1С Фокусов Игорь</title>
-    <link>http://localhost/categories/android/</link>
+    <link>https://fokusov.github.io/categories/android/</link>
     <description>Recent content in Android on Программист 1С Фокусов Игорь</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Thu, 20 Oct 2016 22:55:05 -0400</lastBuildDate>
-    <atom:link href="http://localhost/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://fokusov.github.io/categories/android/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Проекты Андроид</title>
-      <link>http://localhost/android/</link>
+      <link>https://fokusov.github.io/android/</link>
       <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
       
-      <guid>http://localhost/android/</guid>
+      <guid>https://fokusov.github.io/android/</guid>
       <description></description>
     </item>
     
