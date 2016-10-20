@@ -10,6 +10,28 @@
     <atom:link href="https://fokusov.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Контакты</title>
+      <link>https://fokusov.github.io/contacts/</link>
+      <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
+      
+      <guid>https://fokusov.github.io/contacts/</guid>
+      <description>&lt;p&gt;Пишите, звоните:&lt;/p&gt;
+
+&lt;p&gt;Почта: &lt;a href=&#34;mailto:igor@fokusov.com&#34;&gt;igor@fokusov.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Телефон: &lt;a href=&#34;tel:+79215486950&#34;&gt;+7 (921) 548-69-50&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Skype: &lt;a href=&#34;skype:fokusov&#34;&gt;fokusov&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;FL.ru: &lt;a href=&#34;https://www.fl.ru/users/fokusov&#34;&gt;fokusov&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;1clancer.ru: &lt;a href=&#34;http://1clancer.ru/5999&#34;&gt;fokusov&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Резюме: &lt;a href=&#34;https://spb.hh.ru/resume/2eab4710ff017203db0039ed1f46366a733939&#34;&gt;на hh.ru&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Проекты 1С</title>
       <link>https://fokusov.github.io/prj1c/</link>
       <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
@@ -127,6 +149,8 @@
 &lt;hr /&gt;
 
 &lt;h3 id=&#34;если-вы-пользуетесь-зарплатными-продуктами-фирмы-камин-обращайтесь-за-любыми-доработками-и-поддержкой&#34;&gt;Если Вы пользуетесь зарплатными продуктами фирмы Камин, обращайтесь за любыми доработками и поддержкой!&lt;/h3&gt;
+
+&lt;p&gt;Оказываю услуги по поддержке работы систем 1С на абонентской основе. Звоните +7 921 548-6950&lt;/p&gt;
 </description>
     </item>
     
@@ -136,7 +160,40 @@
       <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
       
       <guid>https://fokusov.github.io/android/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;Некоторые мои приложения для Android, опубликованные в &lt;a href=&#34;https://play.google.com/store/apps/developer?id=Igor+Fokusov&#34;&gt;Google Play&lt;/a&gt;:&lt;/p&gt;
+
+&lt;h2 id=&#34;календарь-бухгалтера-https-play-google-com-store-apps-details-id-com-fokusov-buhcal&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.buhcal&#34;&gt;Календарь бухгалтера&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://fokusov.github.io/pic01.jpg&#34; alt=&#34;Календарь бухгалтера&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;minimal-weather-погода-https-play-google-com-store-apps-details-id-com-fokusov-minimalweather&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.MinimalWeather&#34;&gt;Minimal Weather (погода)&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://fokusov.github.io/pic02.jpg&#34; alt=&#34;Minimal Weather&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;обновления-1с-https-play-google-com-store-apps-details-id-com-fokusov-c1helperfree&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.c1helperfree&#34;&gt;Обновления 1С&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://fokusov.github.io/pic03.jpg&#34; alt=&#34;Обновления 1С&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;money-timer-https-play-google-com-store-apps-details-id-com-fokusov-moneytimer&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.MoneyTimer&#34;&gt;Money Timer&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://fokusov.github.io/pic04.jpg&#34; alt=&#34;Money timer&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;курсы-валют-https-play-google-com-store-apps-details-id-com-fokusov-currates&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.currates&#34;&gt;Курсы валют&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://fokusov.github.io/pic05.jpg&#34; alt=&#34;Курсы валют&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
     </item>
     
   </channel>

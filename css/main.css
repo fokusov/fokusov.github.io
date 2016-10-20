@@ -183,13 +183,13 @@ h3.intro
 }
 .menu-item
 {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 300;
 
     text-decoration: none;
 
-    color: #337ab7 !important;
+    color: #966 !important;
 }
 .meta
 {
