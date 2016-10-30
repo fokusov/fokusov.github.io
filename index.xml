@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Программист 1С Фокусов Игорь</title>
-    <link>https://fokusov.github.io/</link>
+    <link>http://fokusov.com/</link>
     <description>Recent content on Программист 1С Фокусов Игорь</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Thu, 20 Oct 2016 22:55:05 -0400</lastBuildDate>
-    <atom:link href="https://fokusov.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://fokusov.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Контакты</title>
-      <link>https://fokusov.github.io/contacts/</link>
+      <link>http://fokusov.com/contacts/</link>
       <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
       
-      <guid>https://fokusov.github.io/contacts/</guid>
+      <guid>http://fokusov.com/contacts/</guid>
       <description>&lt;p&gt;Пишите, звоните:&lt;/p&gt;
 
 &lt;p&gt;Почта: &lt;a href=&#34;mailto:igor@fokusov.com&#34;&gt;igor@fokusov.com&lt;/a&gt;&lt;/p&gt;
@@ -33,10 +33,10 @@
     
     <item>
       <title>Проекты 1С</title>
-      <link>https://fokusov.github.io/prj1c/</link>
+      <link>http://fokusov.com/prj1c/</link>
       <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
       
-      <guid>https://fokusov.github.io/prj1c/</guid>
+      <guid>http://fokusov.com/prj1c/</guid>
       <description>
 
 &lt;p&gt;Здесь кратко перечислены крупные проекты на базе 1С, завершённые мной за предыдущие годы:&lt;/p&gt;
@@ -156,41 +156,41 @@
     
     <item>
       <title>Проекты Андроид</title>
-      <link>https://fokusov.github.io/android/</link>
+      <link>http://fokusov.com/android/</link>
       <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
       
-      <guid>https://fokusov.github.io/android/</guid>
+      <guid>http://fokusov.com/android/</guid>
       <description>
 
 &lt;p&gt;Некоторые мои приложения для Android, опубликованные в &lt;a href=&#34;https://play.google.com/store/apps/developer?id=Igor+Fokusov&#34;&gt;Google Play&lt;/a&gt;:&lt;/p&gt;
 
 &lt;h2 id=&#34;календарь-бухгалтера-https-play-google-com-store-apps-details-id-com-fokusov-buhcal&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.buhcal&#34;&gt;Календарь бухгалтера&lt;/a&gt;&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://fokusov.github.io/pic01.png&#34; alt=&#34;Календарь бухгалтера&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://fokusov.com/pic01.png&#34; alt=&#34;Календарь бухгалтера&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h2 id=&#34;minimal-weather-погода-https-play-google-com-store-apps-details-id-com-fokusov-minimalweather&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.MinimalWeather&#34;&gt;Minimal Weather (погода)&lt;/a&gt;&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://fokusov.github.io/pic02.jpg&#34; alt=&#34;Minimal Weather&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://fokusov.com/pic02.jpg&#34; alt=&#34;Minimal Weather&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h2 id=&#34;обновления-1с-https-play-google-com-store-apps-details-id-com-fokusov-c1helperfree&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.c1helperfree&#34;&gt;Обновления 1С&lt;/a&gt;&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://fokusov.github.io/pic03.png&#34; alt=&#34;Обновления 1С&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://fokusov.com/pic03.png&#34; alt=&#34;Обновления 1С&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h2 id=&#34;money-timer-https-play-google-com-store-apps-details-id-com-fokusov-moneytimer&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.MoneyTimer&#34;&gt;Money Timer&lt;/a&gt;&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://fokusov.github.io/pic04.jpg&#34; alt=&#34;Money timer&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://fokusov.com/pic04.jpg&#34; alt=&#34;Money timer&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h2 id=&#34;курсы-валют-https-play-google-com-store-apps-details-id-com-fokusov-currates&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.currates&#34;&gt;Курсы валют&lt;/a&gt;&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://fokusov.github.io/pic05.png&#34; alt=&#34;Курсы валют&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://fokusov.com/pic05.png&#34; alt=&#34;Курсы валют&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
