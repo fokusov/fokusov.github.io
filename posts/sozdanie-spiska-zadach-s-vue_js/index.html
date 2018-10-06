@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Игорь Фокусов">
+    <meta name="description" content="Услуги профессионального программиста 1с в Череповце. тел. &#43;7 921 548-69-50">
+    <meta name="keywords" content="1с предприятие, услуги 1с, программист 1с, 1с8, 1с83, сопровождение 1с, поддержка 1с, программист череповец, 1с программист, 1с программист череповец, стоимость услуг 1с, специалист 1с, программист 1с удаленно">
+
+    <base href="http://fokusov.com/">
+    <title>
+  Создание списка задач с Vue.js · Фокусов Игорь
+</title>
+
+    <link rel="canonical" href="http://fokusov.com/posts/sozdanie-spiska-zadach-s-vue_js/">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:300,700|Source+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="http://fokusov.com/css/coder.min.578f8fce262e4c448c239b69661084c57507b89d51b8d04de15cd1d8f8135600.css" integrity="sha256-V4&#43;PziYuTESMI5tpZhCExXUHuJ1RuNBN4VzR2PgTVgA=" media="screen">
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-16x16.png" sizes="16x16">
+
+    
+
+    <meta name="generator" content="Hugo 0.49" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="http://fokusov.com/">
+      Фокусов Игорь
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/about/">Обо мне</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/projects/">1С</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/android/">Android</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/contacts/">Контакты</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/posts/">Блог</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <h1 class="title">Создание списка задач с Vue.js</h1>
+        <h2 class="date">March 9, 2017</h2>
+      </header>
+
+      <div>
+        
+
+<p><img src="img/x8a1b4c19e6.jpg.pagespeed.ic.kCUg9wvLBj.jpg" alt="Разработка: Создание списка задач с Vue.js" /></p>
+
+<p>Се­год­ня мы со­зда­дим при­ло­же­ние &mdash; спи­сок за­дач с Vue.​js, а та­к­же рас­смот­рим и дру­гие удоб­ные ин­стру­мен­ты для со­зда­ния со­вре­мен­ных веб-при­ло­же­ний.</p>
+
+<p>Убе­ди­тесь, что у вас уста­нов­ле­на Vue CLI! Ес­ли нет, то уста­но­ви­те её ко­ман­дой</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ npm install --global vue-cli</pre></div>
+<p>С Vue CLI идут несколь­ко шаб­ло­нов го­то­вых при­ло­же­ний:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">webpack - Полнофункциональная установка Webpack + Vue-loader с hot reload, linting, testing &amp; CSS extraction.
+
+webpack-simple - Упрощённая установка Webpack + Vue-loader.
+
+browserify - Полнофункциональная установка Browserify + vueify с hot-reload, linting &amp; unit testing.
+
+browserify-simple - Упрощённая установка Browserify + vueify.
+
+simple - Простенькая установка Vue всего в одном файле HTML</pre></div>
+<p>Со­зда­дим при­ло­же­ние:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ vue init webpack todo-app</pre></div>
+<p>Вас спро­сят на­зва­ние для про­ек­та, опи­са­ние, ав­то­ра и сбор­ку Vue. Мы бу­дем ра­бо­тать не уста­нав­ли­вая Vue-router.</p>
+
+<p>Уста­но­вим за­ви­си­мо­сти:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ cd my-project
+$ npm install</pre></div>
+<p>Для за­пус­ка при­ло­же­ния вы­пол­ни­те ко­ман­ду:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ npm run dev</pre></div>
+<p>От­кро­ет­ся бра­у­зер на стра­ни­це <a href="http://localhost:8080">localhost:8080</a></p>
+
+<p><img src="img/xd1e0cd5152.png.pagespeed.ic.B8IPjCwvtL.png" alt="Разработка: Создание списка задач с Vue.js" /></p>
+
+<p>Для сти­ли­за­ции при­ло­же­ния бу­дем ис­поль­зо­вать Semantic.</p>
+
+<h5 id="струк-ту-ра-ком-по-нен-та">Струк­ту­ра ком­по­нен­та</h5>
+
+<p>Каж­дое при­ло­же­ние Vue име­ет ком­по­нент верх­не­го уров­ня, у нас та­ким ком­по­нен­том бу­дет TodoList.</p>
+
+<p>У нас уже есть го­то­вый ком­по­нент Hello (сге­не­ри­ро­ван­ный Vue CLI) в пап­ке src/App.​vue, оста­лось со­здать недо­ста­ю­щие ком­по­нен­ты ниж­не­го уров­ня.<br />
+Со­зда­дим про­стень­кий ком­по­нент TodoList.vue:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;template&gt;
+  &lt;div&gt;
+    &lt;ul&gt;
+        &lt;li&gt; Todo A &lt;/li&gt;
+        &lt;li&gt; Todo B &lt;/li&gt;
+        &lt;li&gt; Todo C &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script type = &#34;text/javascript&#34; &gt;
+
+export default {
+};
+&lt;/script&gt;
+&lt;style&gt;
+&lt;/style&gt;</pre></div>
+<p>Это обыч­ная за­го­тов­ка, ко­то­рую мы за­пол­ним позд­нее.</p>
+
+<p>Им­пор­ти­ру­ем наш ком­по­нент в глав­ный эк­зем­пляр Vue, что­бы мож­но бы­ло с ним ра­бо­тать. От­крой­те файл src/App.​vue и от­ре­дак­ти­руй­те его:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;script&gt;
+import TodoList from &#39;./components/TodoList&#39;;
+
+export default {
+  components: {
+    // добавим ссылку на компонент TodoList
+    TodoList,
+  },
+};
+&lt;/script&gt;</pre></div>
+<p>Для об­ра­бот­ки ком­по­нен­та необ­хо­ди­мо его вклю­чить в HTML:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;template&gt;
+  &lt;div&gt;
+    // Обработка компонента TodoList
+    // он будет здесь:
+    &lt;todo-list&gt;&lt;/todo-list&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</pre></div>
+<p>Те­перь на­ше при­ло­же­ние вы­гля­дит так:</p>
+
+<p><img src="img/xb727db6750.png.pagespeed.ic.RRxQHJU9_R.png" alt="Разработка: Создание списка задач с Vue.js" /></p>
+
+<p>Мы долж­ны пе­ре­да­вать дан­ные глав­но­му ком­по­нен­ту для вы­во­да спис­ка за­дач. За­да­чи бу­дут иметь три свой­ства: На­зва­ние, Про­ект и Вы­пол­не­но.</p>
+
+<p>До­ба­вим дан­ных в наш ком­по­нент:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">export default {
+  name: &#39;app&#39;,
+  components: {
+    TodoList,
+  },
+  // data function avails data to the template
+  data() {
+    return {
+      todos: [{
+        title: &#39;Todo A&#39;,
+        project: &#39;Project A&#39;,
+        done: false,
+      }, {
+        title: &#39;Todo B&#39;,
+        project: &#39;Project B&#39;,
+        done: true,
+      }, {
+        title: &#39;Todo C&#39;,
+        project: &#39;Project C&#39;,
+        done: false,
+      }, {
+        title: &#39;Todo D&#39;,
+        project: &#39;Project D&#39;,
+        done: false,
+      }],
+    };
+  },
+};</pre></div>
+<p>Нам нуж­но пе­ре­дать дан­ные из глав­но­го ком­по­нен­та в TodoList и для это­го мы бу­дем ис­поль­зо­вать ди­рек­ти­ву v-bind. Она при­ни­ма­ет ар­гу­мент (он от­де­ля­ет­ся двое­то­чи­ем от име­ни ди­рек­ти­вы), в на­шем слу­чае это бу­дет todos; это по­ка­зы­ва­ет ди­рек­ти­ве v-bind свя­зать эле­мент todos с тем, что идёт в нём.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;todo-list v-bind:todos=&#34;todos&#34;&gt;&lt;/todo-list&gt;</pre></div>
+<p>Те­перь нуж­но до­ра­бо­тать ком­по­нент TodoList для до­сту­па к этим дан­ным. До­ба­вим свой­ство к клас­су ком­по­нен­та:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">export default {
+    props: [&#39;todos&#39;],
+}</pre></div>
+<h5 id="об-ра-бот-ка-дан-ных">Об­ра­бот­ка дан­ных</h5>
+
+<p>Прой­дём­ся в цик­ле по спис­ку за­дач в шаб­лоне TodoList и вы­ве­дем ко­ли­че­ство за­вер­шён­ных и неза­вер­шён­ных за­дач:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;template&gt;
+  &lt;div&gt;
+    // JavaScript expressions in Vue are enclosed in double curly brackets.
+    &lt;p&gt;Completed Tasks: {{todos.filter(todo =&gt; {return todo.done === true}).length}}&lt;/p&gt;
+    &lt;p&gt;Pending Tasks: {{todos.filter(todo =&gt; {return todo.done === false}).length}}&lt;/p&gt;
+    &lt;div class=&#39;ui centered card&#39; v-for=&#34;todo in todos&#34;&gt;
+      &lt;div class=&#39;content&#39;&gt;
+        &lt;div class=&#39;header&#39;&gt;
+          {{ todo.title }}
+        &lt;/div&gt;
+        &lt;div class=&#39;meta&#39;&gt;
+          {{ todo.project }}
+        &lt;/div&gt;
+        &lt;div class=&#39;extra content&#39;&gt;
+          &lt;span class=&#39;right floated edit icon&#39;&gt;
+            &lt;i class=&#39;edit icon&#39;&gt;&lt;/i&gt;
+          &lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#39;ui bottom attached green basic button&#39; v-show=&#34;todo.done&#34;&gt;
+        Completed
+      &lt;/div&gt;
+      &lt;div class=&#39;ui bottom attached red basic button&#39; v-show=&#34;!todo.done&#34;&gt;
+        Complete
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script type = &#34;text/javascript&#34; &gt;
+
+export default {
+  props: [&#39;todos&#39;],
+};
+&lt;/script&gt;</pre></div>
+<h5 id="ре-дак-ти-ро-ва-ние-за-дач">Ре­дак­ти­ро­ва­ние за­дач</h5>
+
+<p>Раз­де­лим шаб­лон за­да­чи для улуч­ше­ния чи­та­бель­но­сти ко­да. Со­здай­те но­вый ком­по­нент Todo.vue в пап­ке src/components и пе­ре­не­си­те в него шаб­лон за­да­чи:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;template&gt;
+  &lt;div class=&#39;ui centered card&#39;&gt;
+    &lt;div class=&#39;content&#39;&gt;
+        &lt;div class=&#39;header&#39;&gt;
+            {{ todo.title }}
+        &lt;/div&gt;
+        &lt;div class=&#39;meta&#39;&gt;
+            {{ todo.project }}
+        &lt;/div&gt;
+        &lt;div class=&#39;extra content&#39;&gt;
+            &lt;span class=&#39;right floated edit icon&#39;&gt;
+            &lt;i class=&#39;edit icon&#39;&gt;&lt;/i&gt;
+          &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#39;ui bottom attached green basic button&#39; v-show=&#34;todo.done&#34;&gt;
+        Completed
+    &lt;/div&gt;
+    &lt;div class=&#39;ui bottom attached red basic button&#39; v-show=&#34;!todo.done&#34;&gt;
+        Complete
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+  export default {
+    props: [&#39;todo&#39;],
+  };
+&lt;/script&gt;</pre></div>
+<p>Пе­ре­ра­бо­та­ем ком­по­нент TodoList для ра­бо­ты с ком­по­нен­том Todo:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Completed Tasks: {{todos.filter(todo =&gt; {return todo.done === true}).length}}&lt;/p&gt;
+    &lt;p&gt;Pending Tasks: {{todos.filter(todo =&gt; {return todo.done === false}).length}}&lt;/p&gt;
+   // we are now passing the data to the todo component to render the todo list
+    &lt;todo  v-for=&#34;todo in todos&#34; :todo.sync=&#34;todo&#34;&gt;&lt;/todo&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script type = &#34;text/javascript&#34; &gt;
+
+import Todo from &#39;./Todo&#39;;
+
+export default {
+  props: [&#39;todos&#39;],
+  components: {
+    Todo,
+  },
+};
+&lt;/script&gt;</pre></div>
+<p>До­ба­вим свой­ство isEditing в класс ком­по­нен­та Todo, это свой­ство по­ка­жет ре­дак­ти­ру­ет­ся ли в дан­ный мо­мент за­да­ча или нет. По­ве­сим об­ра­бот­чик со­бы­тия на эле­мент Edit и бу­дем по­ка­зы­вать фор­му ре­дак­ти­ро­ва­ния, при этом из­ме­ним зна­че­ние свой­ства isEditing в true. Оста­лось до­ба­вить фор­му и уста­но­вить на­чаль­ное зна­че­ние свой­ства. Наш шаб­лон те­перь вы­гля­дит так:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;template&gt;
+  &lt;div class=&#39;ui centered card&#39;&gt;
+    // Todo shown when we are not in editing mode.
+    &lt;div class=&#34;content&#34; v-show=&#34;!isEditing&#34;&gt;
+      &lt;div class=&#39;header&#39;&gt;
+          {{ todo.title }}
+      &lt;/div&gt;
+      &lt;div class=&#39;meta&#39;&gt;
+          {{ todo.project }}
+      &lt;/div&gt;
+      &lt;div class=&#39;extra content&#39;&gt;
+          &lt;span class=&#39;right floated edit icon&#39; v-on:click=&#34;showForm&#34;&gt;
+          &lt;i class=&#39;edit icon&#39;&gt;&lt;/i&gt;
+        &lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    // form is visible when we are in editing mode
+    &lt;div class=&#34;content&#34; v-show=&#34;isEditing&#34;&gt;
+      &lt;div class=&#39;ui form&#39;&gt;
+        &lt;div class=&#39;field&#39;&gt;
+          &lt;label&gt;Title&lt;/label&gt;
+          &lt;input type=&#39;text&#39; v-model=&#34;todo.title&#34; &gt;
+        &lt;/div&gt;
+        &lt;div class=&#39;field&#39;&gt;
+          &lt;label&gt;Project&lt;/label&gt;
+          &lt;input type=&#39;text&#39; v-model=&#34;todo.project&#34; &gt;
+        &lt;/div&gt;
+        &lt;div class=&#39;ui two button attached buttons&#39;&gt;
+          &lt;button class=&#39;ui basic blue button&#39; v-on:click=&#34;hideForm&#34;&gt;
+            Close X
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#39;ui bottom attached green basic button&#39; v-show=&#34;!isEditing &amp;&amp;todo.done&#34; disabled&gt;
+        Completed
+    &lt;/div&gt;
+    &lt;div class=&#39;ui bottom attached red basic button&#39; v-show=&#34;!isEditing &amp;&amp; !todo.done&#34;&gt;
+        Pending
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;/template&gt;</pre></div>
+<p>У нас есть ме­тод showForm, от­кры­ва­ю­щий фор­му прав­ки, те­перь до­ба­вим ме­тод hideForm для её за­кры­тия при на­жа­тии на кноп­ку от­ме­ны:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;script&gt;
+export default {
+  props: [&#39;todo&#39;],
+  data() {
+    return {
+      isEditing: false,
+    };
+  },
+  methods: {
+    showForm() {
+      this.isEditing = true;
+    },
+    hideForm() {
+      this.isEditing = false;
+    },
+  },
+};
+&lt;/script&gt;</pre></div>
+<p>Дан­ные в фор­ме уже при­вя­за­ны к спис­ку за­дач и их ре­дак­ти­ро­ва­ние ав­то­ма­ти­че­ски со­хра­ня­ет об­нов­лён­ные дан­ные. По на­жа­тию кноп­ки Close уви­дим об­нов­лён­ную за­да­чу:</p>
+
+<p><img src="img/x9ce8021f52.png.pagespeed.ic.BctLI9cQW2.png" alt="Разработка: Создание списка задач с Vue.js" /></p>
+
+<h5 id="уда-ле-ние-за-да-чи">Уда­ле­ние за­да­чи</h5>
+
+<p>До­ба­вим икон­ку уда­ле­ния за­да­чи:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;template&gt;
+    &lt;span class=&#39;right floated edit icon&#39; v-on:click=&#34;showForm&#34;&gt;
+      &lt;i class=&#39;edit icon&#39;&gt;&lt;/i&gt;
+    &lt;/span&gt;
+    /* add the trash icon in below the edit icon in the template */
+    &lt;span class=&#39;right floated trash icon&#39; v-on:click=&#34;deleteTodo(todo)&#34;&gt;
+      &lt;i class=&#39;trash icon&#39;&gt;&lt;/i&gt;
+    &lt;/span&gt;
+&lt;/template&gt;</pre></div>
+<p>До­ба­вим ме­тод в класс ком­по­нен­та, вы­зы­ва­е­мый по со­бы­тию delete-todo, и пе­ре­да­ю­щий ком­по­нен­ту те­ку­щую за­да­чу к уда­ле­нию.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;span class=&#39;right floated trash icon&#39; v-on:click=&#34;deleteTodo(todo)&#34;&gt;</pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// Todo component
+methods: {
+    deleteTodo(todo) {
+      this.$emit(&#39;delete-todo&#39;, todo);
+    },
+  },</pre></div>
+<p>Те­перь нуж­но до­ба­вить об­ра­бот­чик со­бы­тия уда­ле­ния в ро­ди­тель­ский ком­по­нент (TodoList):</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// TodoList component
+methods: {
+    deleteTodo(todo) {
+      const todoIndex = this.todos.indexOf(todo);
+      this.todos.splice(todoIndex, 1);
+    },
+  },</pre></div>
+<p>Пе­ре­да­ём ме­тод deleteTodo в ком­по­нент Todo:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// шаблон TodoList
+&lt;todo  v-on:remove-todo=&#34;deleteTodo&#34; v-for=&#34;todo in todos&#34; :todo.sync=&#34;todo&#34;&gt;&lt;/todo&gt;</pre></div>
+<h5 id="до-бав-ле-ние-но-вой-за-да-чи">До­бав­ле­ние но­вой за­да­чи</h5>
+
+<p>Для со­зда­ния но­вой за­да­чи сде­ла­ем но­вый ком­по­нент CreateTodo в пап­ке src/components. Он вы­ве­дет кноп­ку со зна­ком плюс, она при на­жа­тии от­кро­ет фор­му до­бав­ле­ния за­да­чи:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;template&gt;
+  &lt;div class=&#39;ui basic content center aligned segment&#39;&gt;
+    &lt;button class=&#39;ui basic button icon&#39; v-on:click=&#34;openForm&#34; v-show=&#34;!isCreating&#34;&gt;
+      &lt;i class=&#39;plus icon&#39;&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;div class=&#39;ui centered card&#39; v-show=&#34;isCreating&#34;&gt;
+      &lt;div class=&#39;content&#39;&gt;
+        &lt;div class=&#39;ui form&#39;&gt;
+          &lt;div class=&#39;field&#39;&gt;
+            &lt;label&gt;Title&lt;/label&gt;
+            &lt;input v-model=&#34;titleText&#34; type=&#39;text&#39; ref=&#39;title&#39; defaultValue=&#34;&#34;&gt;
+          &lt;/div&gt;
+          &lt;div class=&#39;field&#39;&gt;
+            &lt;label&gt;Project&lt;/label&gt;
+            &lt;input type=&#39;text&#39; ref=&#39;project&#39; defaultValue=&#34;&#34;&gt;
+          &lt;/div&gt;
+          &lt;div class=&#39;ui two button attached buttons&#39;&gt;
+            &lt;button class=&#39;ui basic blue button&#39; v-on:click=&#34;sendForm()&#34;&gt;
+              Create
+            &lt;/button&gt;
+            &lt;button class=&#39;ui basic red button&#39; v-on:click=&#34;closeForm&#34;&gt;
+              Cancel
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      titleText: &#39;&#39;,
+      projectText: &#39;&#39;,
+      isCreating: false,
+    };
+  },
+  methods: {
+    openForm() {
+      this.isCreating = true;
+    },
+    closeForm() {
+      this.isCreating = false;
+    },
+    sendForm() {
+      if (this.titleText.length &gt; 0 &amp;&amp; this.projectText.length &gt; 0) {
+        const title = this.titleText;
+        const project = this.projectText;
+        this.$emit(&#39;create-todo&#39;, {
+          title,
+          project,
+          done: false,
+        });
+        this.newTodoText = &#39;&#39;;
+      }
+      this.isCreating = false;
+    },
+  },
+};
+&lt;/script&gt;</pre></div>
+<p>До­ба­вим но­вый ком­по­нент в глав­ный ком­по­нент:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// главный компонент в App.vue
+components: {
+    TodoList,
+    CreateTodo,
+  },</pre></div>
+<p>А та­к­же до­ба­вим ме­тод для со­зда­ния но­вой за­да­чи:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// в App.vue
+methods: {
+    addTodo(title) {
+      this.todos.push({
+        title,
+        done: false,
+      });
+    },
+  },</pre></div>
+<p>Вы­зов ком­по­нен­та CreateTodo из шаб­ло­на App.​vue:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;create-form v-on:add-todo=&#34;addTodo&#34;&gt;</pre></div>
+<p><img src="img/x76f6fe76dc.png.pagespeed.ic.OjCTKwk-dt.png" alt="Разработка: Создание списка задач с Vue.js" /></p>
+
+<h5 id="вы-пол-не-ние-за-да-чи">Вы­пол­не­ние за­да­чи</h5>
+
+<p>Оста­лось до­ба­вить ме­тод для уста­нов­ки от­мет­ки о вы­пол­не­нии за­да­чи.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// компонент Todo
+methods: {
+      completeTodo(todo) {
+        this.$emit(&#39;complete-todo&#39;, todo);
+      },
+}</pre></div>
+<p>Об­ра­бот­чик со­бы­тия бу­дет до­бав­лен в TodoList:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">methods: {
+    completeTodo(todo) {
+      const todoIndex = this.todos.indexOf(todo);
+      this.todos[todoIndex].done = true;
+    },
+  },</pre></div>
+<p>И до­ба­вим вы­зов ме­то­да в шаб­лоне:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;todo v-on:delete-todo=&#34;deleteTodo&#34; v-on:complete-todo=&#34;completeTodo&#34; v-for=&#34;todo in todos&#34; :todo.sync=&#34;todo&#34;&gt;&lt;/todo&gt;</pre></div>
+<p>Го­то­во! Ни­же по ссыл­кам мож­но уви­деть пол­ный код при­ло­же­ния или по­щу­пать де­мон­стра­ци­он­ную вер­сию.</p>
+
+<p><a href="https://github.com/scotch-io/vue-todo">Пол­ный код при­ме­ра.</a> <a href="https://todo-vue.herokuapp.com/">Де­мо-вер­сия.</a></p>
+
+<p>По ма­те­ри­а­лам <a href="https://scotch.io/tutorials/build-a-to-do-app-with-vue-js-2">«Build a To-Do App with Vue.​js 2»</a> by Jeremy Kithome</p>
+
+      </div>
+
+      <footer>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fokusovcom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </footer>
+    </article>
+
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']],
+        processEscapes: true,
+        processEnvironments: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    MathJax.Hub.Queue(function() {
+      
+      
+      
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2018    ·  Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>. 
+  </section>
+</footer>
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-54274841-9', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  </body>
+
+</html>

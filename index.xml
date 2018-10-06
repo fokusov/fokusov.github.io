@@ -1,13 +1,215 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Программист 1С Фокусов Игорь</title>
-    <link>http://fokusov.com/index.xml</link>
-    <description>Recent content on Программист 1С Фокусов Игорь</description>
+    <title>Фокусов Игорь</title>
+    <link>http://fokusov.com/</link>
+    <description>Recent content on Фокусов Игорь</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
-    <lastBuildDate>Thu, 20 Oct 2016 22:55:05 -0400</lastBuildDate>
-    <atom:link href="http://fokusov.com/index.xml" rel="self" type="application/rss+xml" />
+    <language>ru</language>
+    <lastBuildDate>Sun, 04 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://fokusov.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Разработка приложения-галереи под Android на Kotlin</title>
+      <link>http://fokusov.com/posts/razrabotka-prilozhenija-galerei-pod-android-na-kotlin/</link>
+      <pubDate>Sun, 04 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/razrabotka-prilozhenija-galerei-pod-android-na-kotlin/</guid>
+      <description>В этом уроке мы разработаем полноценное приложение — галерею изображений на Kotlin. Также мы рассмотрим следующие темы:
+ Реализация паттерна Singleton на Kotlin. Передача экземпляра класса из одной activity в другую с помощью Parcelable на Kotlin Пример реализации Shared preferences. Пример Recyclerview на Kotlin. Настройка RecyclerView Adapter на Kotlin. NavigationView и настройка DrawerLayout на Kotlin. Загрузка и вывод изображений с внутреннего накопителя Android на Kotlin. Использование библиотеки для загрузки изображений Glide.</description>
+    </item>
+    
+    <item>
+      <title>Hugo &#43; Firebase: как быстро и бесплатно создать статический сайт </title>
+      <link>http://fokusov.com/posts/hugo--firebase-kak-bystro-i-besplatno-sozdat-staticheskij-sajt/</link>
+      <pubDate>Mon, 26 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/hugo--firebase-kak-bystro-i-besplatno-sozdat-staticheskij-sajt/</guid>
+      <description>На­вер­ня­ка каж­дый из вас за­ду­мы­вал­ся о том, что­бы со­здать сайт, на ко­то­ром мож­но бы­ло бы раз­ме­стить своё порт­фо­лио, ре­зю­ме или да­же свой блог. Про­чи­тав эту ста­тью, вы смо­же­те сде­лать се­бе та­кой сайт.
+Во­об­ще для раз­ра­бот­ки сай­та необ­хо­ди­мо знать HTML, CSS и немно­го JavaScript. В на­шем слу­чае вы мо­же­те не знать ни­че­го из это­го. До­ста­точ­но про­сто уве­рен­но поль­зо­вать­ся ком­пью­те­ром.
+Для раз­ме­ще­ния веб-сай­та, необ­хо­ди­мо «про­стран­ство» (веб-хо­стинг), ку­да бу­дут за­гру­же­ны фай­лы ва­ше­го сай­та.</description>
+    </item>
+    
+    <item>
+      <title>Как отправлять СМС и звонить с Angular NativeScript</title>
+      <link>http://fokusov.com/posts/kak-otpravljat-sms-i-zvonit-s-angular-nativescript/</link>
+      <pubDate>Sat, 25 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/kak-otpravljat-sms-i-zvonit-s-angular-nativescript/</guid>
+      <description>От­прав­лять СМС из при­ло­же­ния NativeScript очень про­сто! И се­год­ня я по­ка­жу вам как это сде­лать.
+Ис­ход­ный код мож­но ска­чать здесь.
+Убе­ди­тесь, что у вас уста­нов­лен NodeJS и NativeScript CLI.
+Вна­ча­ле со­зда­дим пу­стой про­ект Angular NativeScript:
+tns create HelloWorld --template nativescript-template-ng-tutorial Эта ко­ман­да со­здаст про­ект smsApp. Пе­рей­ди­те в со­здан­ную ди­рек­то­рию про­ек­та и уста­но­ви­те пла­гин nativescript-phone:
+tns plugin add nativescript-phone Им­пор­ти­ру­ем этот мо­дуль в фай­ле app.​com​pone​nt.​ts:
+import * as phone from &amp;#39;nativescript-phone&amp;#39;; Для ис­поль­зо­ва­ния ngModel в на­шем про­ек­те, нуж­но до­ба­вить NativeScriptFormsModule в файл app.</description>
+    </item>
+    
+    <item>
+      <title>Создаём укорачивалку URL на Golang с Couchbase NoSQL</title>
+      <link>http://fokusov.com/posts/sozdaem-ukorachivalku-url-na-golang-s-couchbase-nosql/</link>
+      <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/sozdaem-ukorachivalku-url-na-golang-s-couchbase-nosql/</guid>
+      <description>Раз­ра­бот­ка сер­ви­са по уко­ра­чи­ва­нию ссы­лок (та­ко­го как TinyURL или Bitly) на Go, ду­маю, бу­дет очень кру­тым при­ме­ром для на­чи­на­ю­щих. Итак, при­сту­пим!
+Под­го­тов­ка Для на­ча­ла про­верь­те, что у вас уста­нов­лен Go вер­сии не ни­же 1.7 и уста­но­ви­те Couchbase Server 4.1+
+На­ше при­ло­же­ние бу­дет ис­поль­зо­вать за­про­сы N1QL &amp;mdash; SQL за­про­сы к ба­зе дан­ных Couchbase NoSQL.
+Под­го­тов­ка ба­зы дан­ных, со­зда­ние мо­де­ли дан­ных Для хра­не­ния ин­фор­ма­ции о длин­ных и ко­рот­ких URL нам нуж­на ба­за дан­ных.</description>
+    </item>
+    
+    <item>
+      <title>Создание hacker news с angular 2 cli, rxjs и webpack</title>
+      <link>http://fokusov.com/posts/sozdanie-hacker-news-s-angular-2-cli-rxjs-i-webpack/</link>
+      <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/sozdanie-hacker-news-s-angular-2-cli-rxjs-i-webpack/</guid>
+      <description>Ес­ли вы ко­гда-ли­бо со­зда­ва­ли при­ло­же­ния с Angular 2, то зна­е­те, что пер­во­на­чаль­ная на­строй­ка про­ек­та от­ни­ма­ет нема­ло вре­ме­ни. К сча­стью, ко­ман­да Angular со­зда­ла Angular CLI &amp;mdash; ути­ли­ту ко­манд­ной стро­ки, об­лег­ча­ю­щую эту за­да­чу.
+В этой ста­тье мы по­стро­им кли­ен­та Hacker News, ис­поль­зуя Angular CLI, RxJS Observables и Webpack как за­груз­чик мо­ду­лей.
+Го­то­вое при­ло­же­ние.
+Ис­ход­ный код.
+Мы по­сте­пен­но, шаг за ша­гом, прой­дём весь про­цесс по­стро­е­ния при­ло­же­ния и я по­ста­ра­юсь по­дроб­но объ­яс­нять важ­ные мо­мен­ты по хо­ду де­ла, а та­к­же сде­лан­ные мной ошиб­ки и спо­со­бы их ре­ше­ния.</description>
+    </item>
+    
+    <item>
+      <title>Генерируем Identicon в Go</title>
+      <link>http://fokusov.com/posts/generiruem-identicon-v-go/</link>
+      <pubDate>Fri, 10 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/generiruem-identicon-v-go/</guid>
+      <description>В этой статье мы разработаем простой генератор идентиконов на языке Go. Исходный код вы можете взять здесь.
+Но что такое идентикон? Думаю, все видели стандартную аватарку при регистрации на Github. Вот пример: Вы видите визуальное представление значения хэш-функции. То есть с помощью специального алгоритма (md5 или sha256 и т.п.) захэшировано какое-то слово, при этом вывод этого алгоритма используется для генерации картинки. Поэтому идентикон будет всегда один и тот же при одинаковых входных данных.</description>
+    </item>
+    
+    <item>
+      <title>Создание списка задач с Vue.js</title>
+      <link>http://fokusov.com/posts/sozdanie-spiska-zadach-s-vue_js/</link>
+      <pubDate>Thu, 09 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/sozdanie-spiska-zadach-s-vue_js/</guid>
+      <description>Се­год­ня мы со­зда­дим при­ло­же­ние &amp;mdash; спи­сок за­дач с Vue.​js, а та­к­же рас­смот­рим и дру­гие удоб­ные ин­стру­мен­ты для со­зда­ния со­вре­мен­ных веб-при­ло­же­ний.
+Убе­ди­тесь, что у вас уста­нов­ле­на Vue CLI! Ес­ли нет, то уста­но­ви­те её ко­ман­дой
+$ npm install --global vue-cli С Vue CLI идут несколь­ко шаб­ло­нов го­то­вых при­ло­же­ний:
+webpack - Полнофункциональная установка Webpack + Vue-loader с hot reload, linting, testing &amp;amp; CSS extraction. webpack-simple - Упрощённая установка Webpack + Vue-loader. browserify - Полнофункциональная установка Browserify + vueify с hot-reload, linting &amp;amp; unit testing.</description>
+    </item>
+    
+    <item>
+      <title>Как сделать &#34;Избранное&#34; средствами Laravel и Vue.js</title>
+      <link>http://fokusov.com/posts/kak-sdelat-izbrannoe-sredstvami-laravel-i-vue_js/</link>
+      <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/kak-sdelat-izbrannoe-sredstvami-laravel-i-vue_js/</guid>
+      <description>В наше время большинство сайтов используют функционал избранного/лайков/рекомендаций. В том числе такие крупные ресурсы, как Medium, Facebook, Вконтакте и т.д.
+Мы рассмотрим как реализовать такой функционал с Vue.js в приложении Laravel. Это приложение будет типа персонального блога, в нём будут пользователи и статьи. Пользователи смогут создавать статьи и добавлять их в избранное. А также пользователи смогут видеть полный список избранных статей.
+В приложении будут модель User (Пользователь) и модель Post (Статья), в нём будет система авторизации, которая позволит добавлять статьи в Избранное (и удалять из него) только авторизованным пользователям.</description>
+    </item>
+    
+    <item>
+      <title>Создание одностраничного веб-приложения на Go, Echo и Vue</title>
+      <link>http://fokusov.com/posts/sozdanie-odnostranichnogo-veb-prilozhenija-na-go-echo-i-vue/</link>
+      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/sozdanie-odnostranichnogo-veb-prilozhenija-na-go-echo-i-vue/</guid>
+      <description>Се­год­ня мы со­зда­дим неслож­ное при­ло­же­ние для ве­де­ния спис­ка за­дач. В нём мож­но бу­дет ука­зы­вать на­име­но­ва­ние за­да­чи, вы­во­дить со­здан­ные за­да­чи на экран и уда­лять за­да­чи.
+Бэ­кенд при­ло­же­ния бу­дет на­пи­сан на язы­ке Go. Для луч­ше­го по­ни­ма­ния ма­те­ри­а­ла необ­хо­ди­мы хо­тя бы ми­ни­маль­ные зна­ния син­так­си­са и уста­нов­лен­ный Go.
+Что­бы уско­рить со­зда­ние при­ло­же­ния, мы возь­мём мик­ро-фрейм­ворк Echo. А за­да­чи мы бу­дем хра­нить в ба­зе SQLite.
+Фрон­тенд мы со­зда­дим на HTML5 с по­пу­ляр­ным Javascript фрейм­вор­ком VueJS.</description>
+    </item>
+    
+    <item>
+      <title>Todolist - быстрый консольный менеджер задач в концепции GTD на Golang</title>
+      <link>http://fokusov.com/posts/todolist-bystryj-konsolnyj-menedzher-zadach-v-koncepcii-gtd-na-golang/</link>
+      <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/todolist-bystryj-konsolnyj-menedzher-zadach-v-koncepcii-gtd-na-golang/</guid>
+      <description>Todolist помогает работать с вашими задачами в терминале. Todolist основан на методе Getting Things Done и умеет работать с проектами, контекстами и сроками задач.
+Списки задач зависят от директории, в которой вы работаете с ними &amp;mdash; просто держите разные списки дел в разных папках.
+
+Установка Выберите любой удобный способ:
+ brew install todolist &amp;mdash; если у вас есть OSX с установленным homebrew. Скачайте последний релиз для вашей платформы и скопируйте исполняемый файл todolist в любое место в $PATH.</description>
+    </item>
+    
+    <item>
+      <title>Разработка Web-приложений и микросервисов на Go с Gin</title>
+      <link>http://fokusov.com/posts/razrabotka-web-prilozhenij-i-mikroservisov-na-golang-s-gin/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/razrabotka-web-prilozhenij-i-mikroservisov-na-golang-s-gin/</guid>
+      <description>Вве­де­ние Се­год­ня мы по­ка­жем, как со­зда­вать веб-при­ло­же­ния и мик­ро­сер­ви­сы в Go с по­мо­щью фрейм­вор­ка Gin. Gin это фрейм­ворк, поз­во­ля­ю­щий умень­шить объ­ём ко­да, необ­хо­ди­мо­го для по­стро­е­ния та­ких при­ло­же­ний. Он по­ощ­ря­ет со­зда­ние мно­го­крат­но-ис­поль­зу­е­мо­го и рас­ши­ря­е­мо­го ко­да.
+Мы рас­смот­рим со­зда­ние про­ек­та и сбор­ку неслож­но­го при­ло­же­ния с Gin, ко­то­рое бу­дет вы­во­дить спи­сок то­пи­ков и от­дель­ный то­пик.
+Под­го­тов­ка Пе­ред на­ча­лом ра­бо­ты убе­ди­тесь, что у вас уста­нов­ле­ны Go и ути­ли­та curl. Ес­ли curl не уста­нов­ле­на и вы не хо­ти­те ра­бо­тать с ней, ис­поль­зуй­те лю­бую дру­гую ути­ли­ту те­сти­ро­ва­ния API.</description>
+    </item>
+    
+    <item>
+      <title>10 лучших редакторов с поддержкой Markdown для Linux</title>
+      <link>http://fokusov.com/posts/10-luchshih-redaktorov-s-podderzhkoj-markdown-dlja-linux/</link>
+      <pubDate>Sat, 04 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/10-luchshih-redaktorov-s-podderzhkoj-markdown-dlja-linux/</guid>
+      <description>В этой ста­тье мы рас­смот­рим несколь­ко луч­ших ре­дак­то­ров с под­держ­кой Markdown, ко­то­рые мож­но уста­но­вить и ис­поль­зо­вать в Linux. На са­мом де­ле их на­мно­го боль­ше, но мы рас­смот­рим толь­ко са­мые удоб­ные из них.
+Markdown (марк­даун) &amp;mdash; это об­лег­чён­ный язык раз­мет­ки, со­здан­ный с це­лью на­пи­са­ния мак­си­маль­но чи­та­е­мо­го и удоб­но­го для прав­ки тек­ста, но при­год­но­го для пре­об­ра­зо­ва­ния в язы­ки для про­дви­ну­тых пуб­ли­ка­ций (HTML, Rich Text и др.).
+Atom Atom это со­вре­мен­ный, крос­сплат­фор­мен­ный, мощ­ный тек­сто­вый ре­дак­тор с от­кры­тым ис­ход­ным ко­дом, ра­бо­та­ю­щий в Linux, Windows и Mac OS X.</description>
+    </item>
+    
+    <item>
+      <title>Минификация JavaScript кода в приложении NativeScript Angular 2</title>
+      <link>http://fokusov.com/posts/minifikacija-javascript-koda-v-prilozhenii-nativescript-angular-2/</link>
+      <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/minifikacija-javascript-koda-v-prilozhenii-nativescript-angular-2/</guid>
+      <description>Сегодня я покажу вам как использовать WebPack, Babel и UglifyJS для минификации, искажения и склеивания JavaScript в приложениях NativeScript Angular 2.
+Устанавливаем NativeScript:
+npm install nativescript -g Создаём приложение Angular 2:
+tns create MyApp --ng Устанавливаем nativescript-dev-webpack, babel-core, babel-preset-es2015 и babel-loader в наше приложение:
+cd MyApp npm install nativescript-dev-webpack --save-dev npm install babel-core --save-dev npm install babel-preset-es2015 --save-dev npm install babel-loader --save-dev Открываем приложение в любимом редакторе и добавляем babel-loader в конец секции загрузчиков и плагин UglifyJS в конец секции плагинов в webpack.</description>
+    </item>
+    
+    <item>
+      <title>Создание кроссплатформенного плеера для SoundCloud® с Fuse</title>
+      <link>http://fokusov.com/posts/krossplatformennyj-pleer-dlja-soundcloud-s-fuse/</link>
+      <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/krossplatformennyj-pleer-dlja-soundcloud-s-fuse/</guid>
+      <description>Мы по­сто­ян­но по­лу­ча­ем за­про­сы от на­ших поль­зо­ва­те­лей, ко­то­рые хо­тят уви­деть, как вы­гля­дят &amp;ldquo;ре­аль­ные про­грам­мы&amp;rdquo;, сде­лан­ные с Fuse. Наш учеб­ник спе­ци­аль­но пред­на­зна­чен для быст­ро­го на­ча­ла ра­бо­ты с Fuse, но при этом он по­ка не со­дер­жит опи­са­ний слож­ных за­дач.
+По­это­му я ре­шил сде­лать пол­ную про­грам­му, с пуб­ли­ка­ци­ей в ма­га­зи­ны при­ло­же­ний. Она бу­дет слу­жить при­ме­ром по-на­сто­я­ще­му слож­ных за­дач и бу­дет ве­ли­ко­леп­ным ма­стер-клас­сом.
+При­ло­же­ние бу­дет ра­бо­тать с ре­аль­ным бе­кен­дом, оно бу­дет крос­сплат­фор­мен­ным (ра­бо­тать в Android и iOS) и бу­дет ис­поль­зо­вать несколь­ко ин­те­рес­ных на­тив­ных ин­те­гра­ций на обе­их плат­фор­мах.</description>
+    </item>
+    
+    <item>
+      <title>Выбор технологии мобильной разработки в 2017 году</title>
+      <link>http://fokusov.com/posts/tehnologii-mobilnoj-razrabotki-v-2017-godu/</link>
+      <pubDate>Sat, 28 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/tehnologii-mobilnoj-razrabotki-v-2017-godu/</guid>
+      <description>Од­на­ж­ды в по­не­дель­ник утром к нам при­шёл кли­ент, ко­то­ро­му необ­хо­ди­мо бы­ло раз­ра­бо­тать муль­ти­плат­фор­мен­ное мо­биль­ное при­ло­же­ние для бан­кин­га. У него был про­то­тип со все­ми экра­на­ми, это и ста­ло на­шим тех­за­да­ни­ем. «Окей, кру­то». Те­перь мы долж­ны во­пло­тить в жизнь эту идею, ко­то­рая бы­ла раз­ме­ром при­мер­но в 50 экра­нов. И у нас есть все­го три ме­ся­ца. Вау.
+С че­го на­чать? Ка­кую тех­но­ло­гию ис­поль­зо­вать? Ту, ко­то­рая уже усто­я­лась на рын­ке или луч­ше сде­лать став­ку на со­вре­мен­ный стек?</description>
+    </item>
+    
+    <item>
+      <title>Создание анимированной кнопки &#34;Поделиться&#34; в NativeScript &#43; Angular</title>
+      <link>http://fokusov.com/posts/sozdanie-animirovannoj-knopki-podelitsja-v-nativescript/</link>
+      <pubDate>Thu, 26 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/sozdanie-animirovannoj-knopki-podelitsja-v-nativescript/</guid>
+      <description>Се­год­ня я по­ка­жу вам как со­зда­вать ани­ми­ро­ван­ную кноп­ку «По­де­лить­ся» в NativeScript и Angular. При на­жа­тии этой кноп­ки бу­дут по­ка­за­ны ма­лень­кие кноп­ки соц­се­тей по кру­гу от глав­ной.
+Ис­ход­ный код при­ме­ра вы мо­же­те уви­деть на Github.
+Итак, при­сту­пим!
+Уста­нов­ка Со­зда­дим про­ект, ис­поль­зуя па­ра­метр &amp;ndash;ng для со­зда­ния при­ло­же­ния angular:
+tns create --ng tns-animated-social-button В на­шем при­ло­же­нии бу­дет ис­поль­зо­вать­ся пла­гин ng2-fonticon от Nathan Walker для вы­во­да ико­нок на кноп­ках. Уста­но­ви­те его по ин­струк­ции на этой стра­ни­це.</description>
+    </item>
+    
+    <item>
+      <title>Создание мультиязычного приложения NativeScript</title>
+      <link>http://fokusov.com/posts/sozdanie-multijazychnogo-prilozhenija-nativescript/</link>
+      <pubDate>Thu, 19 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/posts/sozdanie-multijazychnogo-prilozhenija-nativescript/</guid>
+      <description>Для недавнего проекта мне понадобилось решение для мгновенного переключения языка с Нидерландского на Английский.
+В одном концепте на NativeScript я разработал собственное решение на чистом JavaScript с Jed. Оно работало, но было далеко не идеальным.
+После этого я решил создать приложение на NativeScript с Angular (2+) и начал поиск существующих библиотек локализации для Angular. Лучшим решением оказалась библиотека ng-translate от Olivier Combe.
+В Angular она завелась с полпинка, а вот заставить её работать в NativeScript стоило мне много крови и пота.</description>
+    </item>
     
     <item>
       <title>Контакты</title>
@@ -15,143 +217,14 @@
       <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
       
       <guid>http://fokusov.com/contacts/</guid>
-      <description>&lt;p&gt;Пишите, звоните:&lt;/p&gt;
-
-&lt;p&gt;Почта: &lt;a href=&#34;mailto:igor@fokusov.com&#34;&gt;igor@fokusov.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Телефон: &lt;a href=&#34;tel:+79215486950&#34;&gt;+7 (921) 548-69-50&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Skype: &lt;a href=&#34;skype:fokusov&#34;&gt;fokusov&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;FL.ru: &lt;a href=&#34;https://www.fl.ru/users/fokusov&#34;&gt;fokusov&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;1clancer.ru: &lt;a href=&#34;http://1clancer.ru/5999&#34;&gt;fokusov&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Резюме: &lt;a href=&#34;https://spb.hh.ru/resume/2eab4710ff017203db0039ed1f46366a733939&#34;&gt;на hh.ru&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Проекты 1С</title>
-      <link>http://fokusov.com/prj1c/</link>
-      <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
-      
-      <guid>http://fokusov.com/prj1c/</guid>
-      <description>
-
-&lt;p&gt;Здесь кратко перечислены крупные проекты на базе 1С, завершённые мной за предыдущие годы:&lt;/p&gt;
-
-&lt;h2 id=&#34;автоматизация-расчета-зарплаты-в-1с-7-7&#34;&gt;Автоматизация расчета зарплаты в 1С 7.7&lt;/h2&gt;
-
-&lt;p&gt;Отрасль: Исправительное учреждение&lt;/p&gt;
-
-&lt;p&gt;Проблема: Стандартные зарплатные конфигурации 1С не были приспособлены для расчета зарплат некоторых категорий работников учреждения, из-за этого большая часть расчета проводилась вручную.&lt;/p&gt;
-
-&lt;p&gt;Решение: Доработка стандартных алгоритмов расчета в 1С ЗИК и помощников расчета в 1С Зарплата Камин 2 полностью решили проблему.&lt;/p&gt;
-
-&lt;p&gt;Результат: Снижена трудоемкость ведения учета в несколько раз, отсутствие ошибок в расчете, в т.ч. сложных начислений/удержаний и расчете налогов.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;доработка-производственного-учета-в-1с&#34;&gt;Доработка производственного учета в 1С&lt;/h2&gt;
-
-&lt;p&gt;Отрасль: Полиграфия&lt;/p&gt;
-
-&lt;p&gt;Проблема: У клиента самописная конфигурация для полиграфии на базе 1С Бухгалтерия 7.7, в которой требовались доработки согласно техзадания.&lt;/p&gt;
-
-&lt;p&gt;Решение: Добавлена подсистема учёта полиграфических заказов, расчёт себестоимости, стоимости, учёт загрузки печатных машин и пр. ресурсов. Создана дополнительная отчётность по менеджерам. Дописан блок управленческого учёта. Настроены обмены данными между десятком различных информационных баз предприятия. Совместная разработка системы Полиграфический заказ с ОАО Северсталь- разработка ПО для интеграции 1С и систем на базе Oracle.
-Для 1с 8.х реализован учёт розничной торговли в сети киосков, учёт производства и продаж рекламы, доработана подсистема управленческого учёта. Дописан функционал по приёму и расчёту заказов рекламного агентства. Добавлена дополнительная отчётность: начисление процентов менеджерам, учёт взаиморасчётов по определенным критериям, различные реестры. Настроен специфический обмен данными между базами оперативного учёта и единой бухгалтерской базой.&lt;/p&gt;
-
-&lt;p&gt;Результат: Снижена трудоемкость ведения учета менеджеров, реализованы сложнейшие производственные механизмы работы предприятия.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;проектирование-системы-на-базе-1с-ортикон-управление-нпф-8&#34;&gt;Проектирование системы на базе 1С Ортикон: Управление НПФ 8&lt;/h2&gt;
-
-&lt;p&gt;Отрасль: НПФ&lt;/p&gt;
-
-&lt;p&gt;Проблема: Типовое решение не подходило под конкретную организацию, требовалась доработка нескольких подсистем.&lt;/p&gt;
-
-&lt;p&gt;Решение: Разработано детальное техзадание. Доработана система расчёта негосударственных пенсий согласно ТЗ.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;доработка-обмена-данными-между-storehouse-и-1с-бп&#34;&gt;Доработка обмена данными между Storehouse и 1С БП&lt;/h2&gt;
-
-&lt;p&gt;Отрасль: Ресторанный бизнес&lt;/p&gt;
-
-&lt;p&gt;Проблема: Стандартный обмен данными не учитывал специфику работы предприятия, из-за этого большая часть работы по выгрузке в бухгалтерию проводилась вручную.&lt;/p&gt;
-
-&lt;p&gt;Решение: Переписан по заданию Заказчика типовой обмен данными между системой складского учета Storehouse и 1С БП.&lt;/p&gt;
-
-&lt;p&gt;Результат: Снижена трудоемкость ведения учета.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;доработка-1с-бгу&#34;&gt;Доработка 1С БГУ&lt;/h2&gt;
-
-&lt;p&gt;Отрасль: Бюджетное учреждение&lt;/p&gt;
-
-&lt;p&gt;Проблема: Заказчику требовалась доработка типового решения на базе 1С: Бухгалтерия государственного учреждения для нужд казначейства.&lt;/p&gt;
-
-&lt;p&gt;Решение: Реализована подсистема распределения денежных средств по головным подразделениям учреждения, при этом стандартные механизмы практически не были затронуты.&lt;/p&gt;
-
-&lt;p&gt;Результат: Снижена трудоемкость ведения учета в несколько раз.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;доработка-1с-унф&#34;&gt;Доработка 1С УНФ&lt;/h2&gt;
-
-&lt;p&gt;Отрасль: Производство&lt;/p&gt;
-
-&lt;p&gt;Проблема: В стандартной конфигурации не была реализована система контроля за заказами, не хватало статусов у заказов, большинство этих работ велось вручную в комментариях к заказу или в тетрадке.&lt;/p&gt;
-
-&lt;p&gt;Решение: создание автоматической системы прохождения заказов по производственной цепочке, системы контроля за заказами. Добавлены интерфейсы для менеджеров. Созданы более гибкие статусы производственных заказов.&lt;/p&gt;
-
-&lt;p&gt;Результат: Снижена трудоемкость ведения учета менеджеров. Заказы перестали &amp;ldquo;пропадать&amp;rdquo; из цепочки, появился полный контроль за работой производства.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;разработка-обменов-данными-в-1с-ка&#34;&gt;Разработка обменов данными в 1С КА&lt;/h2&gt;
-
-&lt;p&gt;Отрасль: Алкогольный дистрибьютор&lt;/p&gt;
-
-&lt;p&gt;Проблема: При внедрении конфигурации 1С &amp;ldquo;Комплексная автоматизация&amp;rdquo; потребовалось создание обменов данными с крупнейшими поставщиками: Росспиртпромом, Эфесом, Балтикой, Кока-Колой и др.&lt;/p&gt;
-
-&lt;p&gt;Решение: Реализованы двусторонний обмен данными с Росспиртпром через веб-сервис поставщика; обмен данными с Эфес; автоматическая загрузка заказов от Кока-Кола; обмен данными с Алкон; доработан обмен данными с Балтикой; созданы отчеты в КИН согласно стандартам поставщика.&lt;/p&gt;
-
-&lt;p&gt;Результат: автоматизация работы предприятия с крупнейшими поставщиками. Обмены данными в реальном времени согласно требований поставщиков.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;внедрение-1с-ут-11-и-доработка-обмена-данными-с-1с-битрикс&#34;&gt;Внедрение 1С УТ 11 и доработка обмена данными с 1С Битрикс&lt;/h2&gt;
-
-&lt;p&gt;Отрасль: крупный интернет-магазин&lt;/p&gt;
-
-&lt;p&gt;Проблема: заказчику требовалось внедрение продукта 1С УТ 11 и перевод всех рабочих механизмов со старого битрикса. Также необходимо было доработать обмен данными с новым сайтом на актуальной версии 1С Битрикс.&lt;/p&gt;
-
-&lt;p&gt;Решение: Были загружены все данные со старой учетной системы (интернет-магазин с каталогом на несколько десятков тысяч наименований товаров, в т.ч. сборных товаров) в 1С УТ, доработан справочник Номенклатура (десятки дополнительных свойств и реквизитов), доработан обмен данными с сайтом (в стандартном обмене большинство доп. свойств выгружались некорректно + доработана автоматическая выгрузка больших каталогов товаров в pdf на сайт, привязанных в группе товаров).&lt;/p&gt;
-
-&lt;p&gt;Результат: снижение трудоемкости работы менеджеров интернет-магазина, успешно запущен новый интернет-магазин с автоматическим обменом товарами из 1С УТ.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;доработка-самописной-системы-1с-упр-и-бюдж-учета-в-ут-11&#34;&gt;Доработка самописной системы 1С, упр. и бюдж. учета в УТ 11&lt;/h2&gt;
-
-&lt;p&gt;Отрасль: Металлообработка&lt;/p&gt;
-
-&lt;p&gt;Проблема: Требовалась глубокая доработка самописной системы на базе 1С 8.1 для нужд металлообрабатывающей компании. Плюс к этому необходимо было закончить автоматизацию предприятия (бюджетного и управленческого учета) и перейти с MS Excel на 1С.&lt;/p&gt;
-
-&lt;p&gt;Решение: Самописная система по учету принимаемого лома, его обработке и продаже, доработана согласно ТЗ и внедрена в удаленных подразделениях компании. Разработаны обмены данными с центральной базой (дописанная УТ 11). В УТ 11 доработаны документы по учету принимаемого лома, отгрузке, продаже клиентам компании. Доработаны отчеты под требования заказчика. Работа компании переведена с повсеместного учета на базе сложнейших файлов MS Excel на продукты 1С. Настроены автоматически выгружаемые отчеты для поставщиков по сверкам расчетов на сайте компании.&lt;/p&gt;
-
-&lt;p&gt;Результат: снижена трудоемкость ведения учета практически всех участков компании. Настроены автоматические обмены с поставщиками. Повышена прозрачность учета в компании.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;если-вы-пользуетесь-зарплатными-продуктами-фирмы-камин-обращайтесь-за-любыми-доработками-и-поддержкой&#34;&gt;Если Вы пользуетесь зарплатными продуктами фирмы Камин, обращайтесь за любыми доработками и поддержкой!&lt;/h3&gt;
-
-&lt;p&gt;Оказываю услуги по поддержке работы систем 1С на абонентской основе. Звоните +7 921 548-6950&lt;/p&gt;
-</description>
+      <description>Почта: igor@fokusov.com
+Телефон: +7 (921) 548-69-50
+Skype: fokusov
+FL.ru: fokusov
+1clancer.ru: fokusov
+ВК: ig.fokusov
+Telegram: ighar
+Резюме: на hh.ru</description>
     </item>
     
     <item>
@@ -160,42 +233,32 @@
       <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
       
       <guid>http://fokusov.com/android/</guid>
-      <description>
-
-&lt;p&gt;Некоторые мои приложения для Android, опубликованные в &lt;a href=&#34;https://play.google.com/store/apps/developer?id=Igor+Fokusov&#34;&gt;Google Play&lt;/a&gt;:&lt;/p&gt;
-
-&lt;h2 id=&#34;календарь-бухгалтера-https-play-google-com-store-apps-details-id-com-fokusov-buhcal&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.buhcal&#34;&gt;Календарь бухгалтера&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://fokusov.com/pic01.png&#34; alt=&#34;Календарь бухгалтера&#34; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;minimal-weather-погода-https-play-google-com-store-apps-details-id-com-fokusov-minimalweather&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.MinimalWeather&#34;&gt;Minimal Weather (погода)&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://fokusov.com/pic02.jpg&#34; alt=&#34;Minimal Weather&#34; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;обновления-1с-https-play-google-com-store-apps-details-id-com-fokusov-c1helperfree&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.c1helperfree&#34;&gt;Обновления 1С&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://fokusov.com/pic03.png&#34; alt=&#34;Обновления 1С&#34; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;money-timer-https-play-google-com-store-apps-details-id-com-fokusov-moneytimer&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.MoneyTimer&#34;&gt;Money Timer&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://fokusov.com/pic04.jpg&#34; alt=&#34;Money timer&#34; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;курсы-валют-https-play-google-com-store-apps-details-id-com-fokusov-currates&#34;&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.fokusov.currates&#34;&gt;Курсы валют&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://fokusov.com/pic05.png&#34; alt=&#34;Курсы валют&#34; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Я создаю приложения под андроид с помощью кроссплатформенного фреймворка &lt;a href=&#34;https://www.nativescript.org&#34;&gt;NativeScript&lt;/a&gt; и иногда пишу о разработке в своем &lt;a href=&#34;http://medium.com/@fokusov&#34;&gt;блоге&lt;/a&gt;. Обращайтесь, если вам понадобится недорогое качественное мобильное приложение :)&lt;/p&gt;
-</description>
+      <description>Некоторые мои приложения для Android, опубликованные в Google Play:
+Календарь бухгалтера Minimal Weather (погода) Обновления 1С Money Timer Курсы валют Я создаю приложения под андроид с помощью кроссплатформенного фреймворка NativeScript и иногда пишу о разработке в своем блоге. Обращайтесь, если вам понадобится недорогое качественное мобильное приложение :)</description>
+    </item>
+    
+    <item>
+      <title>Выполненные проекты</title>
+      <link>http://fokusov.com/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/projects/</guid>
+      <description>Здесь перечислены некоторые проекты на базе 1С, завершённые мной за предыдущие годы:
+Автоматизация расчета зарплаты в 1С 7.7 Отрасль: Исправительное учреждение
+Проблема: Стандартные зарплатные конфигурации 1С не были приспособлены для расчета зарплат некоторых категорий работников учреждения, из-за этого большая часть расчета проводилась вручную.
+Решение: Доработка стандартных алгоритмов расчета в 1С ЗИК и помощников расчета в 1С Зарплата Камин 2 полностью решили проблему.
+Результат: Снижена трудоемкость ведения учета в несколько раз, отсутствие ошибок в расчете, в т.</description>
+    </item>
+    
+    <item>
+      <title>Обо мне</title>
+      <link>http://fokusov.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fokusov.com/about/</guid>
+      <description>Я занимаюсь разработкой ПО, в том числе на платформе 1С, более 15 лет.
+Оказываю следующие услуги:
+ Разработка на платформе 1C от 7.7 до 8.3 Проектирование и разработка конфигураций с нуля Обновление типовых и доработанных конфигураций 1C Настройка зарплатных конфигураций Консультирование по работе в программе 1C Разработка мобильных приложений на 1C Разработка приложений под Android на Java/Kotlin  </description>
     </item>
     
   </channel>

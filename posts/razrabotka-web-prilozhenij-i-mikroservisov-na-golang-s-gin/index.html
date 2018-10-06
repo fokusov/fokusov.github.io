@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Игорь Фокусов">
+    <meta name="description" content="Услуги профессионального программиста 1с в Череповце. тел. &#43;7 921 548-69-50">
+    <meta name="keywords" content="1с предприятие, услуги 1с, программист 1с, 1с8, 1с83, сопровождение 1с, поддержка 1с, программист череповец, 1с программист, 1с программист череповец, стоимость услуг 1с, специалист 1с, программист 1с удаленно">
+
+    <base href="http://fokusov.com/">
+    <title>
+  Разработка Web-приложений и микросервисов на Go с Gin · Фокусов Игорь
+</title>
+
+    <link rel="canonical" href="http://fokusov.com/posts/razrabotka-web-prilozhenij-i-mikroservisov-na-golang-s-gin/">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:300,700|Source+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="http://fokusov.com/css/coder.min.578f8fce262e4c448c239b69661084c57507b89d51b8d04de15cd1d8f8135600.css" integrity="sha256-V4&#43;PziYuTESMI5tpZhCExXUHuJ1RuNBN4VzR2PgTVgA=" media="screen">
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-16x16.png" sizes="16x16">
+
+    
+
+    <meta name="generator" content="Hugo 0.49" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="http://fokusov.com/">
+      Фокусов Игорь
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/about/">Обо мне</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/projects/">1С</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/android/">Android</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/contacts/">Контакты</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/posts/">Блог</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <h1 class="title">Разработка Web-приложений и микросервисов на Go с Gin</h1>
+        <h2 class="date">February 10, 2017</h2>
+      </header>
+
+      <div>
+        
+
+<p><img src="img/x54652315c7.png.pagespeed.ic.UObs55EKAq.png" alt="Разработка: Разработка Web-приложений и микросервисов на Golang с Gin" /></p>
+
+<h5 id="вве-де-ние">Вве­де­ние</h5>
+
+<p>Се­год­ня мы по­ка­жем, как со­зда­вать веб-при­ло­же­ния и мик­ро­сер­ви­сы в Go с по­мо­щью фрейм­вор­ка <a href="https://github.com/gin-gonic/gin">Gin</a>. Gin это фрейм­ворк, поз­во­ля­ю­щий умень­шить объ­ём ко­да, необ­хо­ди­мо­го для по­стро­е­ния та­ких при­ло­же­ний. Он по­ощ­ря­ет со­зда­ние мно­го­крат­но-ис­поль­зу­е­мо­го и рас­ши­ря­е­мо­го ко­да.</p>
+
+<p>Мы рас­смот­рим со­зда­ние про­ек­та и сбор­ку неслож­но­го при­ло­же­ния с Gin, ко­то­рое бу­дет вы­во­дить спи­сок то­пи­ков и от­дель­ный то­пик.</p>
+
+<h5 id="под-го-тов-ка">Под­го­тов­ка</h5>
+
+<p>Пе­ред на­ча­лом ра­бо­ты убе­ди­тесь, что у вас уста­нов­ле­ны Go и ути­ли­та curl. Ес­ли curl не уста­нов­ле­на и вы не хо­ти­те ра­бо­тать с ней, ис­поль­зуй­те лю­бую дру­гую ути­ли­ту те­сти­ро­ва­ния API.</p>
+
+<h5 id="что-та-кое-gin">Что та­кое Gin?</h5>
+
+<p>Gin это вы­со­ко­про­из­во­ди­тель­ный мик­рофрейм­ворк, ко­то­рый ис­поль­зу­ет­ся для со­зда­ния веб-при­ло­же­ний и мик­ро­сер­ви­сов. С ним очень удоб­но де­лать ком­плекс­ную кон­вей­ер­ную об­ра­бот­ку за­про­сов из мо­ду­лей &mdash; мно­го­крат­но ис­поль­зу­е­мых ку­соч­ков ко­да. Вы пи­ше­те про­ме­жу­точ­ный слой при­ло­же­ния, ко­то­рый за­тем под­клю­ча­ет­ся в один или бо­лее об­ра­бот­чик за­про­сов или в груп­пу об­ра­бот­чи­ков.</p>
+
+<h5 id="по-че-му-имен-но-gin">По­че­му имен­но Gin?</h5>
+
+<p>Од­но из луч­ших ка­честв Go &mdash; его встро­ен­ная биб­лио­те­ка <strong>net/http</strong>, поз­во­ля­ю­щая с лёг­ко­стью со­зда­вать HTTP сер­вер. Од­на­ко, она не на­столь­ко гиб­кая, как бы хо­те­лось, и ко­ли­че­ство ко­да, тре­бу­е­мое при ра­бо­те с ней, до­воль­но боль­шое.</p>
+
+<p>В Go нет встро­ен­ной под­держ­ки об­ра­бот­чи­ка ро­у­тов на ба­зе ре­гу­ляр­ных вы­ра­же­ний. Вам нуж­но пи­сать код для по­лу­че­ния это­го функ­ци­о­на­ла. Од­на­ко, с ро­стом ко­ли­че­ства ва­ших при­ло­же­ний, вы бу­де­те вы­нуж­де­ны ко­пи­ро­вать один и тот же код вез­де или всё-та­ки со­зда­ди­те биб­лио­те­ку.</p>
+
+<p>В этом и есть за­да­ча Gin. Он со­дер­жит на­бор ча­сто упо­треб­ля­е­мых функ­ций, та­ких как ро­утинг, под­держ­ка middleware, об­ра­бот­ка шаб­ло­нов. Вдо­ба­вок к это­му, он поз­во­ля­ет умень­шить ко­ли­че­ство ко­да в при­ло­же­ни­ях и со­зда­ние веб-при­ло­же­ний с ним на­мно­го про­ще.</p>
+
+<h5 id="про-ек-ти-ро-ва-ние-при-ло-же-ния">Про­ек­ти­ро­ва­ние при­ло­же­ния</h5>
+
+<p>По­смот­рим, как Gin об­ра­ба­ты­ва­ет за­про­сы:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Request -&gt; Route Parser -&gt; [Optional Middleware] -&gt; Route Handler -&gt; [Optional Middleware] -&gt; Response</pre></div>
+<p>Ко­гда при­хо­дит за­прос, Gin сна­ча­ла про­ве­ря­ет, есть ли под­хо­дя­щий ро­ут (марш­рут). Ес­ли со­от­вет­ству­ю­щий ро­ут най­ден, Gin за­пус­ка­ет об­ра­бот­чик это­го ро­у­та и про­ме­жу­точ­ные зве­нья в за­дан­ном по­ряд­ке. Мы уви­дим как это про­ис­хо­дит, ко­гда пе­рей­дём к ко­ду в сле­ду­ю­щем раз­де­ле.</p>
+
+<h5 id="функ-ци-о-нал-при-ло-же-ния">Функ­ци­о­нал при­ло­же­ния</h5>
+
+<p>На­ше при­ло­же­ние &mdash; это про­стой ме­не­джер то­пи­ков. Оно долж­но:</p>
+
+<ul>
+<li>поз­во­лять поль­зо­ва­те­лям ре­ги­стри­ро­вать­ся с ло­ги­ном и па­ро­лем (для неав­то­ри­зо­ван­ных поль­зо­ва­те­лей),</li>
+<li>поз­во­лять поль­зо­ва­те­лям ав­то­ри­зо­вать­ся (для неав­то­ри­зо­ван­ных поль­зо­ва­те­лей),</li>
+<li>поз­во­лять поль­зо­ва­те­лям за­вер­шать се­анс (для ав­то­ри­зо­ван­ных поль­зо­ва­те­лей),</li>
+<li>поз­во­лять поль­зо­ва­те­лям со­зда­вать то­пи­ки (для ав­то­ри­зо­ван­ных поль­зо­ва­те­лей),</li>
+<li>Вы­во­дить спи­сок всех то­пи­ков на глав­ной стра­ни­це (для всех поль­зо­ва­те­лей), и</li>
+<li>Вы­во­дить то­пик на его соб­ствен­ной стра­ни­це (для всех поль­зо­ва­те­лей).<br />
+Вдо­ба­вок к это­му мы сде­ла­ем, что­бы спи­сок то­пи­ков и от­дель­ные то­пи­ки бы­ли до­ступ­ны в фор­ма­тах HTML, JSON и XML.</li>
+</ul>
+
+<p>Это поз­во­лит нам про­ил­лю­стри­ро­вать, как мож­но ис­поль­зо­вать Gin для про­ек­ти­ро­ва­ния веб-при­ло­же­ний, API сер­ве­ров и мик­ро­сер­ви­сов.</p>
+
+<p>Для это­го мы ис­поль­зу­ем сле­ду­ю­щий функ­ци­о­нал Gin:</p>
+
+<ul>
+<li>Routing &mdash; для об­ра­бот­ки раз­лич­ных URL ад­ре­сов,</li>
+<li>Custom rendering &mdash; для об­ра­бот­ки фор­ма­та от­ве­та, и</li>
+<li>Middleware &mdash; для ре­а­ли­за­ции ав­то­ри­за­ции.<br />
+Та­к­же мы на­пи­шем те­сты для про­вер­ки ра­бо­то­спо­соб­но­сти на­ше­го функ­ци­о­на­ла.</li>
+</ul>
+
+<h5 id="routing">Routing</h5>
+
+<p>Ро­утинг (марш­ру­ти­за­ция) это од­на из важ­ней­ших функ­ций, име­ю­щих­ся во всех со­вре­мен­ных веб-фрейм­вор­ках. Лю­бая веб-стра­ни­ца или вы­зов API до­сту­пен по URL. Фрейм­вор­ки ис­поль­зу­ют ро­уты для об­ра­бот­ки за­про­сов к этим URL-ад­ре­сам. Ес­ли URL та­кой: <strong>httр://​www.​example.​com/​some/​random/​route</strong>, то ро­ут бу­дет: <strong>/some/random/route</strong>.</p>
+
+<p>У Gin очень быст­рый ро­у­тер, удоб­ный в кон­фи­гу­ри­ро­ва­нии и ра­бо­те. Вме­сте с об­ра­бот­кой опре­де­лен­ных URL-ад­ре­сов, ро­у­тер в Gin мо­жет об­ра­ба­ты­вать шаб­ло­ны ад­ре­сов и груп­пы URL.</p>
+
+<p>В на­шем при­ло­же­нии мы бу­дем:</p>
+
+<ul>
+<li>Хра­нить глав­ную стра­ни­цу в ро­уте <strong>/</strong> (за­прос HTTP GET),</li>
+
+<li><p>Груп­пи­ро­вать ро­уты, от­но­ся­щи­е­ся к поль­зо­ва­те­лям, в ро­уте <strong>/u</strong> ,</p></li>
+
+<li><p>Хра­нить стра­ни­цу ав­то­ри­за­ции в <strong>/u/login</strong> (за­прос HTTP GET),</p></li>
+
+<li><p>Пе­ре­да­вать дан­ные ав­то­ри­за­ции в <strong>/u/login</strong> (за­прос HTTP POST),</p></li>
+
+<li><p>За­вер­ше­ние се­ан­са в <strong>/u/logout</strong> (за­прос HTTP GET),</p></li>
+
+<li><p>Хра­нить стра­ни­цу ре­ги­стра­ции в <strong>/u/register</strong> (за­прос HTTP GET),</p></li>
+
+<li><p>Пе­ре­да­вать ре­ги­стра­ци­он­ную ин­фор­ма­цию в <strong>/u/register</strong> (за­прос HTTP POST) ,</p></li>
+
+<li><p>Груп­пи­ро­вать ро­уты, от­но­ся­щи­е­ся к то­пи­кам, в ро­уте <strong>/article</strong>,</p></li>
+
+<li><p>Хра­нить стра­ни­цу со­зда­ния то­пи­ка в <strong>/article/create</strong> (за­прос HTTP GET),</p></li>
+
+<li><p>Пе­ре­да­вать утвер­ждён­ный то­пик в <strong>/article/create</strong> (за­прос HTTP POST), и</p></li>
+
+<li><p>Хра­нить стра­ни­цу то­пи­ка в <strong>/article/view/:article_id</strong> (за­прос HTTP GET). Об­ра­ти­те вни­ма­ние на часть <strong>:article_id</strong> в этом ро­уте. Двое­то­чие <strong>:</strong> в на­ча­ле ука­зы­ва­ет на то, что это ди­на­ми­че­ский ро­ут. Это зна­чит, что <strong>:article_id</strong> мо­жет со­дер­жать лю­бое зна­че­ние и Gin сде­ла­ет это зна­че­ние до­ступ­ным в об­ра­бот­чи­ке за­про­са.</p></li>
+</ul>
+
+<h5 id="rendering">Rendering</h5>
+
+<p>Веб-при­ло­же­ние мо­жет вы­ве­сти от­вет в раз­лич­ных фор­ма­тах, та­ких как HTML, текст, JSON, XML или дру­гие фор­ма­ты. API и мик­ро­сер­ви­сы обыч­но от­да­ют дан­ные в фор­ма­те JSON, но здесь та­к­же нет огра­ни­че­ний.</p>
+
+<p>В сле­ду­ю­щем раз­де­ле мы уви­дим, как мож­но об­ра­бо­тать раз­ные ти­пы от­ве­тов без дуб­ли­ро­ва­ния функ­ци­о­на­ла. По-умол­ча­нию мы бу­дем от­ве­чать на за­прос шаб­ло­ном HTML. Од­на­ко, мы со­зда­дим ещё два ви­да за­про­са, ко­то­рые бу­дут от­ве­чать в фор­ма­те JSON или XML.</p>
+
+<h5 id="middleware">Middleware</h5>
+
+<p>В кон­тек­сте веб-при­ло­же­ний на Go, middleware это часть ко­да, ко­то­рую мож­но вы­пол­нить на лю­бом эта­пе об­ра­бот­ки HTTP-за­про­са. Обыч­но их ис­поль­зу­ют для ин­кап­су­ля­ции ти­по­во­го функ­ци­о­на­ла, ко­то­рый вам нуж­но вы­зы­вать из раз­лич­ных ро­у­тов. Мы мо­жем ис­поль­зо­вать middleware пе­ред и/или по­сле об­ра­бо­тан­но­го HTTP-за­про­са. К ти­по­вым при­ме­рам при­ме­не­ния middleware от­но­сят­ся ав­то­ри­за­ция, ва­ли­да­ция и т.п.</p>
+
+<p>Ес­ли middleware ис­поль­зу­ет­ся пе­ред об­ра­бот­кой ро­у­та, лю­бые из­ме­не­ния, сде­лан­ные им, бу­дут до­ступ­ны в глав­ном об­ра­бот­чи­ке за­про­сов. Это удоб­но, ес­ли мы хо­тим ре­а­ли­зо­вать про­вер­ку опре­де­лён­ных за­про­сов. С дру­гой сто­ро­ны, ес­ли middleware ис­поль­зу­ет­ся по­сле об­ра­бот­чи­ка, он по­лу­чит от­вет из об­ра­бот­чи­ка ро­у­тов. Это мож­но ис­поль­зо­вать для мо­ди­фи­ка­ции от­ве­та из об­ра­бот­чи­ка ро­у­та.</p>
+
+<p>Мы долж­ны быть уве­ре­ны, что неко­то­рые стра­ни­цы и дей­ствия, к при­ме­ру, со­зда­ние то­пи­ка, за­вер­ше­ние се­ан­са, до­ступ­ны толь­ко ав­то­ри­зо­ван­ным поль­зо­ва­те­лям. И та­к­же необ­хо­ди­мо, что­бы неко­то­рые стра­ни­цы и дей­ствия, к при­ме­ру, ре­ги­стра­ция, ав­то­ри­за­ция, бы­ли до­ступ­ны толь­ко неав­то­ри­зо­ван­ным поль­зо­ва­те­лям.</p>
+
+<p>Ес­ли мы вклю­чим со­от­вет­ству­ю­щую ло­ги­ку в каж­дый ро­ут, это бу­дет слож­но, из­лишне по­вто­ря­е­мо и склон­но к ошиб­кам. К сча­стью, мы мо­жем со­здать middleware для каж­дой из этих за­дач и мно­го­крат­но ис­поль­зо­вать их в со­от­вет­ству­ю­щих ро­у­тах.</p>
+
+<p>Мы со­зда­дим middleware, ко­то­рое бу­дет при­ме­ни­мо ко всем ро­у­там. На­ше middleware (<strong>setUserStatus</strong>) бу­дет про­ве­рять &mdash; от ав­то­ри­зо­ван­но­го поль­зо­ва­те­ля при­шёл за­прос или от неав­то­ри­зо­ван­но­го. За­тем оно уста­но­вит флаг, ко­то­рый мож­но бу­дет ис­поль­зо­вать в шаб­ло­нах для на­строй­ки ви­ди­мо­сти опре­де­лён­ных ссы­лок в ме­ню при­ло­же­ния.</p>
+
+<h5 id="уста-нов-ка-за-ви-си-мо-стей">Уста­нов­ка за­ви­си­мо­стей</h5>
+
+<p>На­ше при­ло­же­ние бу­дет ис­поль­зо­вать толь­ко од­ну внеш­нюю за­ви­си­мость &mdash; сам фрейм­ворк Gin. Уста­но­вим ак­ту­аль­ную вер­сию та­кой ко­ман­дой:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">go get -u github.com/gin-gonic/gin</pre></div>
+<h5 id="со-зда-ние-мно-го-крат-но-ис-поль-зу-е-мых-шаб-ло-нов">Со­зда­ние мно­го­крат­но-ис­поль­зу­е­мых шаб­ло­нов</h5>
+
+<p>На­ше при­ло­же­ние бу­дет отоб­ра­жать веб-стра­ни­цу, ис­поль­зуя её шаб­лон. Од­на­ко, в ней бу­дет несколь­ко ча­стей, та­ких как шап­ка (header), ме­ню, бо­ко­вая па­нель и под­вал (footer), ко­то­рые бу­дут пред­став­ле­ны на всех стра­ни­цах. В Go мож­но со­зда­вать шаб­лон­ные сни­пе­ты, ко­то­рые мож­но бу­дет за­гру­жать в лю­бые шаб­ло­ны.</p>
+
+<p>Мы со­зда­дим сни­пе­ты для шап­ки и под­ва­ла, та­к­же со­зда­дим ме­ню в со­от­вет­ству­ю­щем фай­ле-шаб­лоне, ко­то­рое за­тем вы­зо­вем из шап­ки. Ну и на­ко­нец, мы со­зда­дим шаб­лон глав­ной стра­ни­цы, с ко­то­рой вы­зо­вем шап­ку и под­вал. Все фай­лы шаб­ло­нов бу­дут раз­ме­щать­ся в пап­ке <strong>templates</strong> на­ше­го про­ек­та.</p>
+
+<p>Сна­ча­ла со­здай­те шаб­лон ме­ню в фай­ле <strong>templates/menu.html</strong> как опи­са­но ни­же:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!--menu.html--&gt;
+
+&lt;nav class=&#34;navbar navbar-default&#34;&gt;
+  &lt;div class=&#34;container&#34;&gt;
+    &lt;div class=&#34;navbar-header&#34;&gt;
+      &lt;a class=&#34;navbar-brand&#34; href=&#34;/&#34;&gt;
+        Home
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</pre></div>
+<p>По­ка в на­шем ме­ню есть толь­ко од­на ссыл­ка на глав­ную стра­ни­цу. Поз­же мы до­ба­вим осталь­ные ссыл­ки по ме­ре ро­ста функ­ци­о­на­ла при­ло­же­ния. Шаб­лон шап­ки бу­дет в фай­ле <strong>templates/header.html</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!--header.html--&gt;
+
+&lt;!doctype html&gt;
+&lt;html&gt;
+
+  &lt;head&gt;
+    &lt;!--Use the `title` variable to set the title of the page--&gt;
+    &lt;title&gt;{{ .title }}&lt;/title&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1&#34;&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+
+    &lt;!--Use bootstrap to make the application look nice--&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css&#34; integrity=&#34;sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7&#34; crossorigin=&#34;anonymous&#34;&gt;
+    &lt;script async src=&#34;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js&#34; integrity=&#34;sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body class=&#34;container&#34;&gt;
+    &lt;!--Embed the menu.html template at this location--&gt;
+    {{ template &#34;menu.html&#34; . }}</pre></div>
+<p>Как вы ви­ди­те, мы ис­поль­зу­ем здесь фрейм­ворк с от­кры­тым ис­ход­ным ко­дом Bootstrap. Боль­шая часть фай­ла это стан­дарт­ный HTML. Од­на­ко, по­смот­рим вни­ма­тель­но на па­ру строк. В стро­ке с {{ .title }} ди­на­ми­че­ски за­да­ёт­ся за­го­ло­вок стра­ни­цы с по­мо­щью пе­ре­мен­ной <strong>.title</strong>, ко­то­рая долж­на быть опре­де­ле­на в при­ло­же­нии. А в стро­ке {{ template «menu.html». }} мы за­гру­жа­ем шаб­лон ме­ню из фай­ла <strong>menu.html</strong>. Вот так в Go мож­но вы­зы­вать один шаб­лон из дру­го­го.</p>
+
+<p>Шаб­лон под­ва­ла со­дер­жит толь­ко ста­ти­че­ский HTML. Шаб­лон глав­ной стра­ни­цы вы­зы­ва­ет шап­ку и под­вал и вы­во­дит со­об­ще­ние <em>Hello Gin</em>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!--index.html--&gt;
+
+&lt;!--Embed the header.html template at this location--&gt;
+{{ template &#34;header.html&#34; .}}
+
+  &lt;h1&gt;Hello Gin!&lt;/h1&gt;
+
+&lt;!--Embed the footer.html template at this location--&gt;
+{{ template &#34;footer.html&#34; .}}</pre></div>
+<p>По ана­ло­гии с шаб­ло­ном глав­ной, в шаб­ло­нах дру­гих стра­ниц мы та­к­же ис­поль­зу­ем эти шап­ку и под­вал.</p>
+
+<h5 id="за-вер-ше-ние-и-про-вер-ка-уста-нов-ки">За­вер­ше­ние и про­вер­ка уста­нов­ки</h5>
+
+<p>Со­здав шаб­ло­ны, те­перь са­мое вре­мя со­здать глав­ный файл при­ло­же­ния. Мы со­зда­дим файл <strong>main.go</strong>, в нём бу­дет про­стое веб-при­ло­же­ние, за­гру­жа­ю­щее глав­ную стра­ни­цу. С Gin это де­ла­ет­ся в че­ты­ре ша­га:</p>
+
+<p><strong>1. Со­зда­ём ро­у­тер</strong></p>
+
+<p>Ро­у­тер в Gin со­зда­ёт­ся так:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">router := gin.Default()</pre></div>
+<p><strong>2. За­гру­жа­ем шаб­ло­ны</strong></p>
+
+<p>По­сле со­зда­ния ро­у­те­ра, за­гру­зим все шаб­ло­ны:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">router.LoadHTMLGlob(&#34;templates/*&#34;)</pre></div>
+<p>Это за­гру­зит все шаб­ло­ны из пап­ки <strong>templates</strong>. За­гру­зив один раз шаб­ло­ны, боль­ше не бу­дет необ­хо­ди­мо­сти пе­ре­чи­ты­вать их, что де­ла­ет веб-при­ло­же­ния с Gin очень быст­ры­ми.</p>
+
+<p><strong>3. За­да­ём об­ра­бот­чик ро­у­тов</strong></p>
+
+<p>Очень важ­но пра­виль­но спро­ек­ти­ро­вать при­ло­же­ние, раз­де­лив на со­от­вет­ству­ю­щие ро­уты и за­дав об­ра­бот­чи­ки для каж­до­го из них. Мы со­зда­дим ро­ут для глав­ной стра­ни­цы и его об­ра­бот­чик.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">router.GET(&#34;/&#34;, func(c *gin.Context) {
+
+  // Call the HTML method of the Context to render a template
+  c.HTML(
+      // Set the HTTP status to 200 (OK)
+      http.StatusOK,
+      // Use the index.html template
+      &#34;index.html&#34;,
+      // Pass the data that the page uses (in this case, &#39;title&#39;)
+      gin.H{
+          &#34;title&#34;: &#34;Home Page&#34;,
+      },
+  )
+
+})</pre></div>
+<p>С по­мо­щью ме­то­да <strong>router.GET</strong> мы за­да­ём об­ра­бот­чик ро­у­та для GET-за­про­сов. Он при­ни­ма­ет в ка­че­стве па­ра­мет­ров сам ро­ут (<strong>/</strong>) и один или несколь­ко об­ра­бот­чи­ков, ко­то­рые все­го лишь функ­ции.</p>
+
+<p>Об­ра­бот­чик ро­у­та име­ет ука­за­тель на Кон­текст (gin.​Context) в па­ра­мет­рах. В этом кон­тек­сте со­дер­жит­ся вся ин­фор­ма­ция о за­про­се, ко­то­рая мо­жет по­на­до­бит­ся об­ра­бот­чи­ку в даль­ней­шем. К при­ме­ру, в нём есть ин­фор­ма­ция о за­го­лов­ках, cookies и т.д.</p>
+
+<p>В Кон­тек­сте та­к­же есть ме­то­ды для вы­во­да от­ве­та в фор­ма­тах HTML, тек­сте, JSON и XML. В на­шем слу­чае мы взя­ли ме­тод <strong>context.HTML</strong> для об­ра­бот­ки HTML шаб­ло­на (index.html). Вы­зов это­го ме­то­да вклю­ча­ет до­пол­ни­тель­ные дан­ные, в ко­то­рых зна­че­ние <strong>title</strong> уста­нов­ле­но <strong>Home Page</strong>. Это зна­че­ние, ко­то­рое мо­жет быть об­ра­бо­та­но в HTML шаб­лоне. Мы ис­поль­зу­ем это зна­че­ние в те­ге в шаб­лоне шап­ки.</p>
+
+<p><strong>4. За­пуск при­ло­же­ния</strong></p>
+
+<p>Для за­пус­ка при­ло­же­ния вос­поль­зу­ем­ся ме­то­дом <strong>Run</strong> на­ше­го ро­у­те­ра:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">router.Run()</pre></div>
+<p>При­ло­же­ние за­пу­стит­ся на <strong>localhost</strong> и <strong>8080</strong> пор­те, по-умол­ча­нию.</p>
+
+<p>Фи­наль­ный файл <strong>main.go</strong> бу­дет та­ким:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// main.go
+</span><span style="color:#007f7f"></span>
+<span style="color:#fff;font-weight:bold">package</span> main
+
+<span style="color:#fff;font-weight:bold">import</span> (
+  <span style="color:#0ff;font-weight:bold">&#34;net/http&#34;</span>
+
+  <span style="color:#0ff;font-weight:bold">&#34;github.com/gin-gonic/gin&#34;</span>
+)
+
+<span style="color:#fff;font-weight:bold">var</span> router *gin.Engine
+
+<span style="color:#fff;font-weight:bold">func</span> main() {
+
+  <span style="color:#007f7f">// Set the router as the default one provided by Gin
+</span><span style="color:#007f7f"></span>  router = gin.Default()
+
+  <span style="color:#007f7f">// Process the templates at the start so that they don&#39;t have to be loaded
+</span><span style="color:#007f7f"></span>  <span style="color:#007f7f">// from the disk again. This makes serving HTML pages very fast.
+</span><span style="color:#007f7f"></span>  router.LoadHTMLGlob(<span style="color:#0ff;font-weight:bold">&#34;templates/*&#34;</span>)
+
+  <span style="color:#007f7f">// Define the route for the index page and display the index.html template
+</span><span style="color:#007f7f"></span>  <span style="color:#007f7f">// To start with, we&#39;ll use an inline route handler. Later on, we&#39;ll create
+</span><span style="color:#007f7f"></span>  <span style="color:#007f7f">// standalone functions that will be used as route handlers.
+</span><span style="color:#007f7f"></span>  router.GET(<span style="color:#0ff;font-weight:bold">&#34;/&#34;</span>, <span style="color:#fff;font-weight:bold">func</span>(c *gin.Context) {
+
+    <span style="color:#007f7f">// Call the HTML method of the Context to render a template
+</span><span style="color:#007f7f"></span>    c.HTML(
+      <span style="color:#007f7f">// Set the HTTP status to 200 (OK)
+</span><span style="color:#007f7f"></span>      http.StatusOK,
+      <span style="color:#007f7f">// Use the index.html template
+</span><span style="color:#007f7f"></span>      <span style="color:#0ff;font-weight:bold">&#34;index.html&#34;</span>,
+      <span style="color:#007f7f">// Pass the data that the page uses (in this case, &#39;title&#39;)
+</span><span style="color:#007f7f"></span>      gin.H{
+        <span style="color:#0ff;font-weight:bold">&#34;title&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;Home Page&#34;</span>,
+      },
+    )
+
+  })
+
+  <span style="color:#007f7f">// Start serving the application
+</span><span style="color:#007f7f"></span>  router.Run()
+
+}</pre></div>
+<p>Для за­пус­ка при­ло­же­ния из ко­манд­ной стро­ки, пе­рей­ди­те в пап­ку при­ло­же­ния и вы­пол­ни­те ко­ман­ду:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">go build -o app</pre></div>
+<p>Бу­дет со­бра­но при­ло­же­ние и со­здан ис­пол­ня­е­мый файл с име­нем <strong>app</strong>, ко­то­рый мож­но за­пу­стить так:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">./app</pre></div>
+<p>Ес­ли всё про­шло успеш­но, вы долж­ны уви­деть при­ло­же­ние по ад­ре­су <a href="http://localhost:8080">http://localhost:8080</a> и оно бу­дет вы­гля­деть при­мер­но так:<br />
+<img src="img/x748dbda990.png.pagespeed.ic.6oWeHvCrub.png" alt="Разработка: Разработка Web-приложений и микросервисов на Golang с Gin" /></p>
+
+<p>На этом эта­пе иерар­хия па­пок при­ло­же­ния бу­дет та­кой:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">├── main.go
+└── templates
+    ├── footer.html
+    ├── header.html
+    ├── index.html
+    └── menu.html</pre></div>
+<h5 id="выводим-список-топиков">Выводим список топиков</h5>
+
+<p>Сейчас мы добавим функционал для показа списка всех топиков на главной странице.</p>
+
+<h5 id="настройка-роута">Настройка роута</h5>
+
+<p>В предыдущем разделе мы создали роут и его описание в файле main.go. С ростом размера приложения будет лучше перенести описания роутов в отдельный файл. Мы создадим функцию initializeRoutes() в файле routes.go и будем вызывать её из функции main() для настройки всех роутов. Вместо создания линейного обработчика роутов, мы сделаем роуты отдельными функциями.</p>
+
+<p>После всего этого файл routes.go будет таким:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// routes.go
+</span><span style="color:#007f7f"></span>
+<span style="color:#fff;font-weight:bold">package</span> main
+
+<span style="color:#fff;font-weight:bold">func</span> initializeRoutes() {
+
+  <span style="color:#007f7f">// определение роута главной страницы
+</span><span style="color:#007f7f"></span>  router.GET(<span style="color:#0ff;font-weight:bold">&#34;/&#34;</span>, showIndexPage)
+}</pre></div>
+<p>Так как мы выводим список топиков на главной странице, нам не нужно будет создавать больше никаких других роутов.</p>
+
+<p>Файл main.go должен быть сейчас таким:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// main.go
+</span><span style="color:#007f7f"></span>
+<span style="color:#fff;font-weight:bold">package</span> main
+
+<span style="color:#fff;font-weight:bold">import</span> <span style="color:#0ff;font-weight:bold">&#34;github.com/gin-gonic/gin&#34;</span>
+
+<span style="color:#fff;font-weight:bold">var</span> router *gin.Engine
+
+<span style="color:#fff;font-weight:bold">func</span> main() {
+
+  <span style="color:#007f7f">// роутер по-умолчанию в Gin
+</span><span style="color:#007f7f"></span>  router = gin.Default()
+
+  <span style="color:#007f7f">// Обработаем шаблоны вначале, так что их не нужно будет перечитывать
+</span><span style="color:#007f7f"></span>  <span style="color:#007f7f">// ещё раз. Из-за этого вывод HTML-страниц такой быстрый.
+</span><span style="color:#007f7f"></span>  router.LoadHTMLGlob(<span style="color:#0ff;font-weight:bold">&#34;templates/*&#34;</span>)
+
+  <span style="color:#007f7f">// Инициализируем роуты
+</span><span style="color:#007f7f"></span>  initializeRoutes()
+
+  <span style="color:#007f7f">// Запускаем приложение
+</span><span style="color:#007f7f"></span>  router.Run()
+
+}</pre></div>
+<h5 id="проектирование-модели-топика">Проектирование модели топика</h5>
+
+<p>Сделаем структуру топика простой, всего с тремя полями &mdash; Id, Title (название) и Content (содержание). Её можно описать так:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">type article struct {
+  ID      int    `json:&#34;id&#34;`
+  Title   string `json:&#34;title&#34;`
+  Content string `json:&#34;content&#34;`
+}</pre></div>
+<p>Большинство приложений используют базу данных для хранения данных. Чтобы не усложнять, мы будем хранить список топиков в памяти и заполнять его при создании двумя следующими топиками:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">var articleList = []article{
+  article{ID: 1, Title: &#34;Article 1&#34;, Content: &#34;Article 1 body&#34;},
+  article{ID: 2, Title: &#34;Article 2&#34;, Content: &#34;Article 2 body&#34;},
+}</pre></div>
+<p>Мы вставим этот кусок кода в новый файл models.article.go. Сейчас нам понадобится функция, возвращающая список всех топиков. Мы её назовём getAllArticles() и положим её в этот же файл. И создадим тест для неё. Мы назовём этот тест TestGetAllArticles и вставим его в файл models.article_test.go.</p>
+
+<p>Создадим тест (TestGetAllArticles) для функции getAllArticles(). В результате файл models.article_test.go будет таким:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// models.article_test.go
+</span><span style="color:#007f7f"></span>
+<span style="color:#fff;font-weight:bold">package</span> main
+
+<span style="color:#fff;font-weight:bold">import</span> <span style="color:#0ff;font-weight:bold">&#34;testing&#34;</span>
+
+<span style="color:#007f7f">// Test the function that fetches all articles
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">func</span> TestGetAllArticles(t *testing.T) {
+  alist := getAllArticles()
+
+  <span style="color:#007f7f">// Check that the length of the list of articles returned is the
+</span><span style="color:#007f7f"></span>  <span style="color:#007f7f">// same as the length of the global variable holding the list
+</span><span style="color:#007f7f"></span>  <span style="color:#fff;font-weight:bold">if</span> <span style="color:#fff;font-weight:bold">len</span>(alist) != <span style="color:#fff;font-weight:bold">len</span>(articleList) {
+    t.Fail()
+  }
+
+  <span style="color:#007f7f">// Check that each member is identical
+</span><span style="color:#007f7f"></span>  <span style="color:#fff;font-weight:bold">for</span> i, v := <span style="color:#fff;font-weight:bold">range</span> alist {
+    <span style="color:#fff;font-weight:bold">if</span> v.Content != articleList[i].Content ||
+      v.ID != articleList[i].ID ||
+      v.Title != articleList[i].Title {
+
+      t.Fail()
+      <span style="color:#fff;font-weight:bold">break</span>
+    }
+  }
+}</pre></div>
+<p>В этом тесте используется функция getAllArticles() для получения списка всех топиков. Сперва этот тест проверяет, что эта функция получает список топиков и этот список идентичен списку, загруженному в глобальную переменную articleList. Затем он проходит в цикле по списку топиков для проверки уникальности каждого. Если хотя бы одна из этих проверок не удалась, тест возвращает неудачу.</p>
+
+<p>После написания теста приступим к написанию кода модуля. Файл models.article.go будет содержать такой код:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// models.article.go
+</span><span style="color:#007f7f"></span>
+<span style="color:#fff;font-weight:bold">package</span> main
+
+<span style="color:#fff;font-weight:bold">type</span> article <span style="color:#fff;font-weight:bold">struct</span> {
+  ID      <span style="color:#fff;font-weight:bold">int</span>    <span style="color:#0ff;font-weight:bold">`json:&#34;id&#34;`</span>
+  Title   <span style="color:#fff;font-weight:bold">string</span> <span style="color:#0ff;font-weight:bold">`json:&#34;title&#34;`</span>
+  Content <span style="color:#fff;font-weight:bold">string</span> <span style="color:#0ff;font-weight:bold">`json:&#34;content&#34;`</span>
+}
+
+<span style="color:#007f7f">// For this demo, we&#39;re storing the article list in memory
+</span><span style="color:#007f7f">// In a real application, this list will most likely be fetched
+</span><span style="color:#007f7f">// from a database or from static files
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">var</span> articleList = []article{
+  article{ID: <span style="color:#ff0;font-weight:bold">1</span>, Title: <span style="color:#0ff;font-weight:bold">&#34;Article 1&#34;</span>, Content: <span style="color:#0ff;font-weight:bold">&#34;Article 1 body&#34;</span>},
+  article{ID: <span style="color:#ff0;font-weight:bold">2</span>, Title: <span style="color:#0ff;font-weight:bold">&#34;Article 2&#34;</span>, Content: <span style="color:#0ff;font-weight:bold">&#34;Article 2 body&#34;</span>},
+}
+
+<span style="color:#007f7f">// Return a list of all the articles
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">func</span> getAllArticles() []article {
+  <span style="color:#fff;font-weight:bold">return</span> articleList
+}</pre></div>
+<h5 id="создание-шаблона-представления">Создание шаблона представления</h5>
+
+<p>Так как список топиков будет выводится на главной странице, нам не нужно создавать новый шаблон. Однако, нам нужно изменить шаблон index.html для вывода в него списка топиков.</p>
+
+<p>Предположим, что список топиков будет передан в шаблон в переменной payload. Тогда следующий снипет выведет список всех топиков:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">{{range .payload }}
+    &lt;!--Create the link for the article based on its ID--&gt;
+    &lt;a href=&#34;/article/view/{{.ID}}&#34;&gt;
+      &lt;!--Display the title of the article --&gt;
+      &lt;h2&gt;{{.Title}}&lt;/h2&gt;
+    &lt;/a&gt;
+    &lt;!--Display the content of the article--&gt;
+    &lt;p&gt;{{.Content}}&lt;/p&gt;
+  {{end}}</pre></div>
+<p>Этот снипет пройдётся по всем элементам переменной payload и выведет название и текст каждого топика. Также этот снипет добавит ссылку в каждый топик. Однако, пока мы ещё не создали обработчик соответствующего роута, и эти ссылки на топики не будут работать.</p>
+
+<p>Обновлённый index.html будет таким:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!--index.html--&gt;
+
+&lt;!--Embed the header.html template at this location--&gt;
+{{ template &#34;header.html&#34; .}}
+
+  &lt;!--Loop over the `payload` variable, which is the list of articles--&gt;
+  {{range .payload }}
+    &lt;!--Create the link for the article based on its ID--&gt;
+    &lt;a href=&#34;/article/view/{{.ID}}&#34;&gt;
+      &lt;!--Display the title of the article --&gt;
+      &lt;h2&gt;{{.Title}}&lt;/h2&gt;
+    &lt;/a&gt;
+    &lt;!--Display the content of the article--&gt;
+    &lt;p&gt;{{.Content}}&lt;/p&gt;
+  {{end}}
+
+&lt;!--Embed the footer.html template at this location--&gt;
+{{ template &#34;footer.html&#34; .}}</pre></div>
+<h5 id="определяем-требования-к-обработчику-роута-с-помощью-юнит-теста">Определяем требования к обработчику роута с помощью юнит-теста</h5>
+
+<p>Перед созданием обработчика роута главной страницы, мы создадим тест, чтобы определить поведение этого обработчика. Этот тест проверит следующие условия:</p>
+
+<ol>
+<li>Обработчик отвечает статус-кодом HTTP 200,</li>
+<li>Возвращаемый HTML содержит тег title с текстом «Home Page».<br />
+Код теста поместим в функцию TestShowIndexPageUnauthenticated в файл handlers.article_test.go. Вспомогательные функции, используемые в этом тесте, мы разместим в файле common_test.go.</li>
+</ol>
+
+<p>Вот содержимое файла handlers.article_test.go:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// handlers.article_test.go
+</span><span style="color:#007f7f"></span>
+<span style="color:#fff;font-weight:bold">package</span> main
+
+<span style="color:#fff;font-weight:bold">import</span> (
+  <span style="color:#0ff;font-weight:bold">&#34;io/ioutil&#34;</span>
+  <span style="color:#0ff;font-weight:bold">&#34;net/http&#34;</span>
+  <span style="color:#0ff;font-weight:bold">&#34;net/http/httptest&#34;</span>
+  <span style="color:#0ff;font-weight:bold">&#34;strings&#34;</span>
+  <span style="color:#0ff;font-weight:bold">&#34;testing&#34;</span>
+)
+
+<span style="color:#007f7f">// Test that a GET request to the home page returns the home page with
+</span><span style="color:#007f7f">// the HTTP code 200 for an unauthenticated user
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">func</span> TestShowIndexPageUnauthenticated(t *testing.T) {
+  r := getRouter(<span style="color:#fff;font-weight:bold">true</span>)
+
+  r.GET(<span style="color:#0ff;font-weight:bold">&#34;/&#34;</span>, showIndexPage)
+
+  <span style="color:#007f7f">// Create a request to send to the above route
+</span><span style="color:#007f7f"></span>  req, _ := http.NewRequest(<span style="color:#0ff;font-weight:bold">&#34;GET&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;/&#34;</span>, <span style="color:#fff;font-weight:bold">nil</span>)
+
+  testHTTPResponse(t, r, req, <span style="color:#fff;font-weight:bold">func</span>(w *httptest.ResponseRecorder) <span style="color:#fff;font-weight:bold">bool</span> {
+    <span style="color:#007f7f">// Test that the http status code is 200
+</span><span style="color:#007f7f"></span>    statusOK := w.Code == http.StatusOK
+
+    <span style="color:#007f7f">// Test that the page title is &#34;Home Page&#34;
+</span><span style="color:#007f7f"></span>    <span style="color:#007f7f">// You can carry out a lot more detailed tests using libraries that can
+</span><span style="color:#007f7f"></span>    <span style="color:#007f7f">// parse and process HTML pages
+</span><span style="color:#007f7f"></span>    p, err := ioutil.ReadAll(w.Body)
+    pageOK := err == <span style="color:#fff;font-weight:bold">nil</span> &amp;&amp; strings.Index(<span style="color:#fff;font-weight:bold">string</span>(p), <span style="color:#0ff;font-weight:bold">&#34;&lt;title&gt;Home Page&lt;/title&gt;&#34;</span>) &gt; <span style="color:#ff0;font-weight:bold">0</span>
+
+    <span style="color:#fff;font-weight:bold">return</span> statusOK &amp;&amp; pageOK
+  })
+}</pre></div>
+<p>Файл common_test.go:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#fff;font-weight:bold">package</span> main
+
+<span style="color:#fff;font-weight:bold">import</span> (
+  <span style="color:#0ff;font-weight:bold">&#34;net/http&#34;</span>
+  <span style="color:#0ff;font-weight:bold">&#34;net/http/httptest&#34;</span>
+  <span style="color:#0ff;font-weight:bold">&#34;os&#34;</span>
+  <span style="color:#0ff;font-weight:bold">&#34;testing&#34;</span>
+
+  <span style="color:#0ff;font-weight:bold">&#34;github.com/gin-gonic/gin&#34;</span>
+)
+
+<span style="color:#fff;font-weight:bold">var</span> tmpArticleList []article
+
+<span style="color:#007f7f">// This function is used for setup before executing the test functions
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">func</span> TestMain(m *testing.M) {
+  <span style="color:#007f7f">//Set Gin to Test Mode
+</span><span style="color:#007f7f"></span>  gin.SetMode(gin.TestMode)
+
+  <span style="color:#007f7f">// Run the other tests
+</span><span style="color:#007f7f"></span>  os.Exit(m.Run())
+}
+
+<span style="color:#007f7f">// Helper function to create a router during testing
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">func</span> getRouter(withTemplates <span style="color:#fff;font-weight:bold">bool</span>) *gin.Engine {
+  r := gin.Default()
+  <span style="color:#fff;font-weight:bold">if</span> withTemplates {
+    r.LoadHTMLGlob(<span style="color:#0ff;font-weight:bold">&#34;templates/*&#34;</span>)
+  }
+  <span style="color:#fff;font-weight:bold">return</span> r
+}
+
+<span style="color:#007f7f">// Helper function to process a request and test its response
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">func</span> testHTTPResponse(t *testing.T, r *gin.Engine, req *http.Request, f <span style="color:#fff;font-weight:bold">func</span>(w *httptest.ResponseRecorder) <span style="color:#fff;font-weight:bold">bool</span>) {
+
+  <span style="color:#007f7f">// Create a response recorder
+</span><span style="color:#007f7f"></span>  w := httptest.NewRecorder()
+
+  <span style="color:#007f7f">// Create the service and process the above request.
+</span><span style="color:#007f7f"></span>  r.ServeHTTP(w, req)
+
+  <span style="color:#fff;font-weight:bold">if</span> !f(w) {
+    t.Fail()
+  }
+}
+
+<span style="color:#007f7f">// This function is used to store the main lists into the temporary one
+</span><span style="color:#007f7f">// for testing
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">func</span> saveLists() {
+  tmpArticleList = articleList
+}
+
+<span style="color:#007f7f">// This function is used to restore the main lists from the temporary one
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">func</span> restoreLists() {
+  articleList = tmpArticleList
+}</pre></div>
+<p>Для написания теста мы написали несколько вспомогательных функций. Они в дальнейшем помогут нам уменьшить количество кода при написании похожих тестов.</p>
+
+<p>Функция TestMain переводит Gin в тестовый режим и вызывает функции тестирования. Функция getRouter создаёт и возвращает роутер. Функция saveLists() помещает список топиков во временную переменную. Она используется в функции restoreLists() для восстановления списка топиков до первоначального состояния после выполнения юнит-теста.</p>
+
+<p>И, наконец, функция testHTTPResponse выполняет переданную ей функцию для проверки &mdash; возвращает ли она булево значение true &mdash; показывая успешность теста, или нет. Эта функция помогает нам избежать дублирования кода, необходимого для тестирования ответа на HTTP-запрос.</p>
+
+<p>Для проверки HTTP-кода и возвращаемого HTML, сделаем следующее:</p>
+
+<ol>
+<li>Создадим новый роутер,</li>
+<li>Определим роуту тот же обработчик, что используется в главном приложении (showIndexPage),</li>
+<li>Создадим новый запрос для доступа к роуту,</li>
+<li>Создадим функцию, обрабатывающую ответ, для тестирования HTTP-кода и HTML, и</li>
+<li>Вызовем testHTTPResponse() из новой функции для завершения теста.</li>
+</ol>
+
+<h5 id="создание-обработчика-роута">Создание обработчика роута</h5>
+
+<p>Мы будет создавать все обработчики роутов, относящихся к топикам, в файле handlers.article.go. Обработчик главной страницы, showIndexPage выполняет следующие задачи:</p>
+
+<p><strong>1. Получает список топиков</strong></p>
+
+<p>Это делается с помощью функции getAllArticles, созданной ранее:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">articles := getAllArticles()</pre></div>
+<p><strong>2. Обрабатывает шаблон index.html, передавая ему список топиков</strong></p>
+
+<p>Это делается с помощью кода ниже:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">c.HTML(
+    // Set the HTTP status to 200 (OK)
+    http.StatusOK,
+    // Use the index.html template
+    &#34;index.html&#34;,
+    // Pass the data that the page uses
+    gin.H{
+        &#34;title&#34;:   &#34;Home Page&#34;,
+        &#34;payload&#34;: articles,
+    },
+)</pre></div>
+<p>Разница с кодом из предыдущего раздела только в том, что мы передаём список топиков, который можно прочитать в шаблоне в переменной payload.</p>
+
+<p>Файл handlers.article.go должен быть таким:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// handlers.article.go
+</span><span style="color:#007f7f"></span>
+<span style="color:#fff;font-weight:bold">package</span> main
+
+<span style="color:#fff;font-weight:bold">import</span> (
+  <span style="color:#0ff;font-weight:bold">&#34;net/http&#34;</span>
+
+  <span style="color:#0ff;font-weight:bold">&#34;github.com/gin-gonic/gin&#34;</span>
+)
+
+<span style="color:#fff;font-weight:bold">func</span> showIndexPage(c *gin.Context) {
+  articles := getAllArticles()
+
+  <span style="color:#007f7f">// Call the HTML method of the Context to render a template
+</span><span style="color:#007f7f"></span>  c.HTML(
+    <span style="color:#007f7f">// Set the HTTP status to 200 (OK)
+</span><span style="color:#007f7f"></span>    http.StatusOK,
+    <span style="color:#007f7f">// Use the index.html template
+</span><span style="color:#007f7f"></span>    <span style="color:#0ff;font-weight:bold">&#34;index.html&#34;</span>,
+    <span style="color:#007f7f">// Pass the data that the page uses
+</span><span style="color:#007f7f"></span>    gin.H{
+      <span style="color:#0ff;font-weight:bold">&#34;title&#34;</span>:   <span style="color:#0ff;font-weight:bold">&#34;Home Page&#34;</span>,
+      <span style="color:#0ff;font-weight:bold">&#34;payload&#34;</span>: articles,
+    },
+  )
+
+}</pre></div>
+<p>Если сейчас собрать и запустить приложение, открыть в браузере <a href="http://localhost:8080">http://localhost:8080</a>, оно будет выглядеть так:</p>
+
+<p><img src="img/x4f02c8af3e.png.pagespeed.ic.Oou9m93pqm.png" alt="Разработка: Разработка Web-приложений и микросервисов на Golang с Gin" /></p>
+
+<p>Новые файлы, добавленные в этом разделе:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">├── common_test.go
+├── handlers.article.go
+├── handlers.article_test.go
+├── models.article.go
+├── models.article_test.go
+└── routes.go</pre></div>
+<h5 id="вывод-топика">Вывод топика</h5>
+
+<p>У нас пока не работают ссылки на топики из общего списка. Сейчас мы добавим обработчики клика и шаблон для вывода топика.</p>
+
+<h5 id="настройка-роутов">Настройка роутов</h5>
+
+<p>Мы можем создать роут для обработки запросов для топика подобно роуту из предыдущей части. Однако, мы должны учитывать, что хотя обработчик для всех топиков будет один, URL каждого топика должен быть уникальным. Gin позволяет это сделать с помощью передачи параметров в роут:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">router.GET(&#34;/article/view/:article_id&#34;, getArticle)</pre></div>
+<p>Этот роут будет обрабатывать соответствующие указанному пути запросы, а также хранить значение параметра, переданного в роут &mdash; article_id, который мы обработаем в обработчике роута. Обработчиком нашего роута будет функция getArticle.</p>
+
+<p>Изменённый файл routes.go:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// routes.go
+</span><span style="color:#007f7f"></span>
+<span style="color:#fff;font-weight:bold">package</span> main
+
+<span style="color:#fff;font-weight:bold">func</span> initializeRoutes() {
+
+  <span style="color:#007f7f">// обработчик главного роута
+</span><span style="color:#007f7f"></span>  router.GET(<span style="color:#0ff;font-weight:bold">&#34;/&#34;</span>, showIndexPage)
+
+  <span style="color:#007f7f">// Обработчик GET-запросов на /article/view/некоторый_article_id
+</span><span style="color:#007f7f"></span>  router.GET(<span style="color:#0ff;font-weight:bold">&#34;/article/view/:article_id&#34;</span>, getArticle)
+
+}</pre></div>
+<h5 id="шаблоны">Шаблоны</h5>
+
+<p>Для вывода топика нам нужно создать новый шаблон templates/article.html. Он будет создан так же, как шаблон index.html, но с небольшим отличием: вместо передачи в него переменной со списком топиков, мы будем передавать в него только один топик.</p>
+
+<p>Посмотреть код шаблона <a href="https://github.com/demo-apps/go-gin-app/blob/3-display-single-article/templates/article.html">article.html</a> можно на Github.</p>
+
+<h5 id="определяем-требования-к-обработчику-роутов-юнит-тестами">Определяем требования к обработчику роутов юнит-тестами</h5>
+
+<p>Тест обработчика будет проверять выполнение следующих условий:</p>
+
+<ol>
+<li>Обработчик отвечает статус-кодом HTTP 200,</li>
+<li>Возвращаемый HTML содержит тег title, содержащий название полученного топика.<br />
+Код теста будет в функции TestArticleUnauthenticated в файле handlers.article_test.go. Вспомогательные функции мы разместим в файле common_test.go.</li>
+</ol>
+
+<h5 id="создаём-обработчик-роута">Создаём обработчик роута</h5>
+
+<p>Итак, что должен делать обработчик роута для топика &mdash; getArticle:</p>
+
+<p><strong>1. Получить ID топика для вывода</strong></p>
+
+<p>Для вывода нужного топика, мы должны получить его ID из контекста. Примерно так:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">c.Param(&#34;article_id&#34;)</pre></div>
+<p>где c &mdash; это Контекст Gin, который передаётся параметром в любой обработчик при разработке с Gin.</p>
+
+<p><strong>2. Получить сам топик</strong></p>
+
+<p>Это можно сделать с помощью функции getArticleByID() из файла models.article.go:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">article, err := getArticleByID(articleID)</pre></div>
+<p>Функция getArticleByID (в models.article.go) выглядит так:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">func getArticleByID(id int) (*article, error) {
+  for _, a := range articleList {
+    if a.ID == id {
+      return &amp;a, nil
+    }
+  }
+  return nil, errors.New(&#34;Article not found&#34;)
+}</pre></div>
+<p>Эта функция считывает список топиков в цикле и возвращает топик, ID которого соответствует переданному ID. Если такого топика нет, она возвращает ошибку.</p>
+
+<p><strong>3. Обработать шаблон article.html, передав в него топик</strong></p>
+
+<p>Код ниже как раз делает это:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">c.HTML(
+    // Зададим HTTP статус 200 (OK)
+    http.StatusOK,
+    // Используем шаблон article.html
+    &#34;article.html&#34;,
+    // Передадим данные в шаблон
+    gin.H{
+        &#34;title&#34;:   article.Title,
+        &#34;payload&#34;: article,
+    },
+)</pre></div>
+<p>Обновлённый файл handlers.article.go будет таким:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// handlers.article.go
+</span><span style="color:#007f7f"></span>
+<span style="color:#fff;font-weight:bold">package</span> main
+
+<span style="color:#fff;font-weight:bold">import</span> (
+  <span style="color:#0ff;font-weight:bold">&#34;net/http&#34;</span>
+  <span style="color:#0ff;font-weight:bold">&#34;strconv&#34;</span>
+
+  <span style="color:#0ff;font-weight:bold">&#34;github.com/gin-gonic/gin&#34;</span>
+)
+
+<span style="color:#fff;font-weight:bold">func</span> showIndexPage(c *gin.Context) {
+  articles := getAllArticles()
+
+  <span style="color:#007f7f">// Вызовем метод HTML из Контекста Gin для обработки шаблона
+</span><span style="color:#007f7f"></span>  c.HTML(
+    <span style="color:#007f7f">// Зададим HTTP статус 200 (OK)
+</span><span style="color:#007f7f"></span>    http.StatusOK,
+    <span style="color:#007f7f">// Используем шаблон index.html
+</span><span style="color:#007f7f"></span>    <span style="color:#0ff;font-weight:bold">&#34;index.html&#34;</span>,
+    <span style="color:#007f7f">// Передадим данные в шаблон
+</span><span style="color:#007f7f"></span>    gin.H{
+      <span style="color:#0ff;font-weight:bold">&#34;title&#34;</span>:   <span style="color:#0ff;font-weight:bold">&#34;Home Page&#34;</span>,
+      <span style="color:#0ff;font-weight:bold">&#34;payload&#34;</span>: articles,
+    },
+  )
+
+}
+
+<span style="color:#fff;font-weight:bold">func</span> getArticle(c *gin.Context) {
+  <span style="color:#007f7f">// Проверим валидность ID
+</span><span style="color:#007f7f"></span>  <span style="color:#fff;font-weight:bold">if</span> articleID, err := strconv.Atoi(c.Param(<span style="color:#0ff;font-weight:bold">&#34;article_id&#34;</span>)); err == <span style="color:#fff;font-weight:bold">nil</span> {
+    <span style="color:#007f7f">// Проверим существование топика
+</span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">if</span> article, err := getArticleByID(articleID); err == <span style="color:#fff;font-weight:bold">nil</span> {
+      <span style="color:#007f7f">// Вызовем метод HTML из Контекста Gin для обработки шаблона
+</span><span style="color:#007f7f"></span>      c.HTML(
+        <span style="color:#007f7f">// Зададим HTTP статус 200 (OK)
+</span><span style="color:#007f7f"></span>        http.StatusOK,
+        <span style="color:#007f7f">// Используем шаблон index.html
+</span><span style="color:#007f7f"></span>        <span style="color:#0ff;font-weight:bold">&#34;article.html&#34;</span>,
+        <span style="color:#007f7f">// Передадим данные в шаблон
+</span><span style="color:#007f7f"></span>        gin.H{
+          <span style="color:#0ff;font-weight:bold">&#34;title&#34;</span>:   article.Title,
+          <span style="color:#0ff;font-weight:bold">&#34;payload&#34;</span>: article,
+        },
+      )
+
+    } <span style="color:#fff;font-weight:bold">else</span> {
+      <span style="color:#007f7f">// Если топика нет, прервём с ошибкой
+</span><span style="color:#007f7f"></span>      c.AbortWithError(http.StatusNotFound, err)
+    }
+
+  } <span style="color:#fff;font-weight:bold">else</span> {
+    <span style="color:#007f7f">// При некорректном ID в URL, прервём с ошибкой
+</span><span style="color:#007f7f"></span>    c.AbortWithStatus(http.StatusNotFound)
+  }
+}</pre></div>
+<p>Если сейчас собрать и запустить наше приложение, при открытии <a href="http://localhost:8080/article/view/1">localhost:8080/article/view/1</a> в браузере оно будет выглядеть так:</p>
+
+<p><img src="img/xab6af14e6f.png.pagespeed.ic.bNYyH_6G5g.png" alt="Разработка: Разработка Web-приложений и микросервисов на Golang с Gin" /></p>
+
+<p>Новые файлы, добавленные в этом разделе:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">└── templates
+    └── article.html</pre></div>
+<h5 id="ответ-в-json-xml">Ответ в JSON/XML</h5>
+
+<p>В этом разделе мы немного перепишем приложение так, что оно, в зависимости от заголовков запроса, будет отвечать в формате HTML, JSON или XML.</p>
+
+<h5 id="повторно-используемые-функции">Повторно используемые функции</h5>
+
+<p>До сих пор мы использовали метод HTML Контекста Gin для обработки шаблонов прямо из обработчика. Этот способ хорошо если мы всегда будем выводить только в формате HTML. Однако, если мы хотим менять формат ответа, к примеру, на основе какого-то параметра, мы должны переписать эту часть функции, чтобы она делала только валидацию данных и их получение, а выводом в шаблон будет заниматься другая функция в зависимости от формата вывода на основе заголовка Accept. Мы создадим эту функция в файле main.go и она будет общая для всех обработчиков.</p>
+
+<p>В Gin в Контексте, переданном обработчику роута, есть поле Request. В этом поле есть Header, в котором содержатся все заголовки запроса. Для получения заголовка Accept мы можем использовать метод Get в Header, вот так:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// c - это Gin Context
+c.Request.Header.Get(&#34;Accept&#34;)</pre></div>
+<ul>
+<li>Если заголовок: application/json, функция выводит JSON,</li>
+<li>Если заголовок: application/xml, функция выводит XML, и</li>
+<li>Если заголовок любой другой или вообще пустой, функция выводит HTML.<br />
+Полный код функции:</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// Render one of HTML, JSON or CSV based on the &#39;Accept&#39; header of the request
+// If the header doesn&#39;t specify this, HTML is rendered, provided that
+// the template name is present
+func render(c *gin.Context, data gin.H, templateName string) {
+
+  switch c.Request.Header.Get(&#34;Accept&#34;) {
+  case &#34;application/json&#34;:
+    // Respond with JSON
+    c.JSON(http.StatusOK, data[&#34;payload&#34;])
+  case &#34;application/xml&#34;:
+    // Respond with XML
+    c.XML(http.StatusOK, data[&#34;payload&#34;])
+  default:
+    // Respond with HTML
+    c.HTML(http.StatusOK, templateName, data)
+  }
+
+}</pre></div>
+<h5 id="изменяем-требования-к-обработчику-роутов">Изменяем требования к обработчику роутов</h5>
+
+<p>Так как мы теперь должны проверить ответ в JSON и XML если задан специальный заголовок, нам нужно добавить тесты в файл handlers.article_test.go для проверки этих условий:</p>
+
+<ol>
+<li>Проверить, что приложение вернёт список топиков в формате JSON если заголовок Accept равен application/json</li>
+<li>Проверить, что приложение вернёт список топиков в формате XML если заголовок Accept равен application/xml<br />
+Мы добавим соответствующие функции TestArticleListJSON и TestArticleXML.</li>
+</ol>
+
+<h5 id="обновляем-обработчики">Обновляем обработчики</h5>
+
+<p>Обработчик у нас уже полностью готов, нам нужно только изменить метод обработки c.HTML на соответствующий требуемому формату метод вывода.</p>
+
+<p>К примеру, обработчик роута showIndexPage будет изменён с такого:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">func showIndexPage(c *gin.Context) {
+  articles := getAllArticles()
+
+  // Call the HTML method of the Context to render a template
+  c.HTML(
+    // Set the HTTP status to 200 (OK)
+    http.StatusOK,
+    // Use the index.html template
+    &#34;index.html&#34;,
+    // Pass the data that the page uses
+    gin.H{
+      &#34;title&#34;:   &#34;Home Page&#34;,
+      &#34;payload&#34;: articles,
+    },
+  )
+
+}</pre></div>
+<p>на такой:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">func showIndexPage(c *gin.Context) {
+  articles := getAllArticles()
+
+  // Call the render function with the name of the template to render
+  render(c, gin.H{
+    &#34;title&#34;:   &#34;Home Page&#34;,
+    &#34;payload&#34;: articles}, &#34;index.html&#34;)
+
+}</pre></div>
+<p><strong>Получаем список топиков в формате JSON</strong></p>
+
+<p>Чтобы увидеть приложение в работе, соберём его и запустим. Затем выполним следующую команду:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">curl -X GET -H &#34;Accept: application/json&#34; http://localhost:8080/</pre></div>
+<p>Она должна вернуть следующее:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[{&#34;id&#34;:1,&#34;title&#34;:&#34;Article 1&#34;,&#34;content&#34;:&#34;Article 1 body&#34;},{&#34;id&#34;:2,&#34;title&#34;:&#34;Article 2&#34;,&#34;content&#34;:&#34;Article 2 body&#34;}]</pre></div>
+<p>Как вы видите, мы получили ответ в формате JSON, передав заголовок Accept как application/json.</p>
+
+<p><strong>Список топиков в формате XML</strong></p>
+
+<p>Теперь запросим детали конкретной статьи в формате XML. Для этого запустите приложение как написано выше и затем выполните команду:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">curl -X GET -H &#34;Accept: application/xml&#34; http://localhost:8080/article/view/1</pre></div>
+<p>В ответ должно прийти следующее:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;article&gt;&lt;ID&gt;1&lt;/ID&gt;&lt;Title&gt;Article 1&lt;/Title&gt;&lt;Content&gt;Article 1 body&lt;/Content&gt;&lt;/article&gt;</pre></div>
+<h5 id="тестирование-приложения">Тестирование приложения</h5>
+
+<p>Мы использовали тесты для определения требований к обработчикам роутов и моделям, поэтому можем теперь запустить их и проверить, что всё работает как предполагалось. В директории проекта запустите следующую команду:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">go test -v</pre></div>
+<p>Результат должен быть примерно таким:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">=== RUN   TestShowIndexPageUnauthenticated
+[GIN] 2016/06/14 - 19:07:26 | 200 |     183.315µs |  |   GET     /
+--- PASS: TestShowIndexPageUnauthenticated (0.00s)
+=== RUN   TestArticleUnauthenticated
+[GIN] 2016/06/14 - 19:07:26 | 200 |     143.789µs |  |   GET     /article/view/1
+--- PASS: TestArticleUnauthenticated (0.00s)
+=== RUN   TestArticleListJSON
+[GIN] 2016/06/14 - 19:07:26 | 200 |      51.087µs |  |   GET     /
+--- PASS: TestArticleListJSON (0.00s)
+=== RUN   TestArticleXML
+[GIN] 2016/06/14 - 19:07:26 | 200 |      38.656µs |  |   GET     /article/view/1
+--- PASS: TestArticleXML (0.00s)
+=== RUN   TestGetAllArticles
+--- PASS: TestGetAllArticles (0.00s)
+=== RUN   TestGetArticleByID
+--- PASS: TestGetArticleByID (0.00s)
+PASS
+ok    github.com/demo-apps/go-gin-app 0.084s</pre></div>
+<p>Как мы видим, эта команда запускает все написанные нами тесты и, в нашем случае, сообщает, что всё работает как положено. Если вы присмотритесь к выводу, то увидите, что Go также сделал и HTTP запросы для нас, проверив обработчики роутов.</p>
+
+<h5 id="заключение">Заключение</h5>
+
+<p>В этом цикле статей мы сделали приложение с помощью фреймворка Gin и постепенно добавили в него функционал. Мы написали тесты, чтобы наше приложение было надёжным, а также использовали методологию повторно используемого кода, чтобы сделать вывод в различные форматы без больших затрат времени.</p>
+
+<p>Код приложения можно скачать в <a href="https://github.com/demo-apps/go-gin-app">этом Github репозитории</a>.</p>
+
+<p>Gin очень прост для того, чтобы начать писать веб-приложения &mdash; вкупе со встроенной функциональностью Go, он легко позволяет строить высококачественные, хорошо покрытые тестами веб-приложения и микросервисы.</p>
+
+<p>По материалам <a href="https://semaphoreci.com/community/tutorials/building-go-web-applications-and-microservices-using-gin">Building Go Web Applications and Microservices Using Gin</a></p>
+
+      </div>
+
+      <footer>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fokusovcom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </footer>
+    </article>
+
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']],
+        processEscapes: true,
+        processEnvironments: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    MathJax.Hub.Queue(function() {
+      
+      
+      
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2018    ·  Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>. 
+  </section>
+</footer>
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-54274841-9', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  </body>
+
+</html>

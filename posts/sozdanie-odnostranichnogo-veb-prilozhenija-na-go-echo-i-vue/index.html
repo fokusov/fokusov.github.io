@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Игорь Фокусов">
+    <meta name="description" content="Услуги профессионального программиста 1с в Череповце. тел. &#43;7 921 548-69-50">
+    <meta name="keywords" content="1с предприятие, услуги 1с, программист 1с, 1с8, 1с83, сопровождение 1с, поддержка 1с, программист череповец, 1с программист, 1с программист череповец, стоимость услуг 1с, специалист 1с, программист 1с удаленно">
+
+    <base href="http://fokusov.com/">
+    <title>
+  Создание одностраничного веб-приложения на Go, Echo и Vue · Фокусов Игорь
+</title>
+
+    <link rel="canonical" href="http://fokusov.com/posts/sozdanie-odnostranichnogo-veb-prilozhenija-na-go-echo-i-vue/">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:300,700|Source+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="http://fokusov.com/css/coder.min.578f8fce262e4c448c239b69661084c57507b89d51b8d04de15cd1d8f8135600.css" integrity="sha256-V4&#43;PziYuTESMI5tpZhCExXUHuJ1RuNBN4VzR2PgTVgA=" media="screen">
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-16x16.png" sizes="16x16">
+
+    
+
+    <meta name="generator" content="Hugo 0.49" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="http://fokusov.com/">
+      Фокусов Игорь
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/about/">Обо мне</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/projects/">1С</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/android/">Android</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/contacts/">Контакты</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/posts/">Блог</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <h1 class="title">Создание одностраничного веб-приложения на Go, Echo и Vue</h1>
+        <h2 class="date">February 28, 2017</h2>
+      </header>
+
+      <div>
+        
+
+<p><img src="img/x298348afc3.jpg.pagespeed.ic.1CfsQjTWva.jpg" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /></p>
+
+<p>Се­год­ня мы со­зда­дим неслож­ное при­ло­же­ние для ве­де­ния спис­ка за­дач. В нём мож­но бу­дет ука­зы­вать на­име­но­ва­ние за­да­чи, вы­во­дить со­здан­ные за­да­чи на экран и уда­лять за­да­чи.</p>
+
+<p>Бэ­кенд при­ло­же­ния бу­дет на­пи­сан на язы­ке Go. Для луч­ше­го по­ни­ма­ния ма­те­ри­а­ла необ­хо­ди­мы хо­тя бы ми­ни­маль­ные зна­ния син­так­си­са и уста­нов­лен­ный Go.</p>
+
+<p>Что­бы уско­рить со­зда­ние при­ло­же­ния, мы возь­мём мик­ро-фрейм­ворк <a href="https://echo.labstack.com/">Echo</a>. А за­да­чи мы бу­дем хра­нить в ба­зе SQLite.</p>
+
+<p>Фрон­тенд мы со­зда­дим на HTML5 с по­пу­ляр­ным Javascript фрейм­вор­ком <a href="http://vuejs.org/">VueJS</a>.</p>
+
+<h5 id="ро-уты-и-ба-за-дан-ных">Ро­уты и ба­за дан­ных</h5>
+
+<p>Вна­ча­ле уста­но­вим недо­ста­ю­щие биб­лио­те­ки:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ go get github.com/labstack/echo
+$ go get github.com/mattn/go-sqlite3</pre></div>
+<p>И со­зда­дим ди­рек­то­рию для на­ше­го про­ек­та:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ cd $GOPATH/src
+$ mkdir go-echo-vue &amp;&amp; cd go-echo-vue</pre></div>
+<p>Нач­нём с со­зда­ния ро­у­тов. Со­здай­те файл <strong>todo.go</strong> в корне со­здан­ной пап­ки с та­ким со­дер­жи­мым:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// todo.go
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">package</span> main
+
+<span style="color:#fff;font-weight:bold">import</span> (
+    <span style="color:#0ff;font-weight:bold">&#34;github.com/labstack/echo&#34;</span>
+    <span style="color:#0ff;font-weight:bold">&#34;github.com/labstack/echo/engine/standard&#34;</span>
+)
+
+<span style="color:#fff;font-weight:bold">func</span> main() {
+    <span style="color:#007f7f">// Create a new instance of Echo
+</span><span style="color:#007f7f"></span>    e := echo.New()
+
+    e.GET(<span style="color:#0ff;font-weight:bold">&#34;/tasks&#34;</span>, <span style="color:#fff;font-weight:bold">func</span>(c echo.Context) <span style="color:#fff;font-weight:bold">error</span> { <span style="color:#fff;font-weight:bold">return</span> c.JSON(<span style="color:#ff0;font-weight:bold">200</span>, <span style="color:#0ff;font-weight:bold">&#34;GET Tasks&#34;</span>) })
+    e.PUT(<span style="color:#0ff;font-weight:bold">&#34;/tasks&#34;</span>, <span style="color:#fff;font-weight:bold">func</span>(c echo.Context) <span style="color:#fff;font-weight:bold">error</span> { <span style="color:#fff;font-weight:bold">return</span> c.JSON(<span style="color:#ff0;font-weight:bold">200</span>, <span style="color:#0ff;font-weight:bold">&#34;PUT Tasks&#34;</span>) })
+    e.DELETE(<span style="color:#0ff;font-weight:bold">&#34;/tasks/:id&#34;</span>, <span style="color:#fff;font-weight:bold">func</span>(c echo.Context) <span style="color:#fff;font-weight:bold">error</span> { <span style="color:#fff;font-weight:bold">return</span> c.JSON(<span style="color:#ff0;font-weight:bold">200</span>, <span style="color:#0ff;font-weight:bold">&#34;DELETE Task &#34;</span>+c.Param(<span style="color:#0ff;font-weight:bold">&#34;id&#34;</span>)) })
+
+    <span style="color:#007f7f">// Start as a web server
+</span><span style="color:#007f7f"></span>    e.Run(standard.New(<span style="color:#0ff;font-weight:bold">&#34;:8000&#34;</span>))
+}</pre></div>
+<p>Здесь мы им­пор­ти­ро­ва­ли фрейм­ворк Echo и со­зда­ли обя­за­тель­ный ме­тод <strong>main()</strong>. За­тем в нём со­зда­ли эк­зем­пляр Echo и за­да­ли несколь­ко ро­у­тов. При со­зда­нии ро­у­та ему пе­ре­да­ёт­ся шаб­лон за­про­са пер­вым па­ра­мет­ром и функ­ция-об­ра­бот­чик вто­рым.<br />
+На­ши ро­уты по­ка мо­гут толь­ко вы­да­вать ста­ти­че­ский текст, до­ра­бо­та­ем их поз­же. А в кон­це мы за­пус­ка­ем на­ше при­ло­же­ние по ад­ре­су <a href="http://localhost:8000">localhost:8000</a> ис­поль­зуя встро­ен­ный в Go HTTP-сер­вер.</p>
+
+<p>Для те­сти­ро­ва­ния ра­бо­ты ро­у­тов сна­ча­ла ском­пи­ли­ру­ем при­ло­же­ние и за­пу­стим его, а по­том вос­поль­зу­ем­ся рас­ши­ре­ни­ем Chrome под на­зва­ни­ем <a href="https://www.getpostman.com/">Postman</a>.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ go build todo.go
+$ ./todo</pre></div>
+<p>По­сле за­пус­ка при­ло­же­ния от­кро­ем Postman и под­клю­чим его к ад­ре­су localhost:8000. Нуж­но про­те­сти­ро­вать ро­ут &ldquo;/tasks&rdquo; с по­мо­щью за­про­сов GET, PUT и DELETE, об­ра­бот­чи­ки ко­то­рых мы со­зда­ли ра­нее.<br />
+Ес­ли всё ра­бо­та­ет пра­виль­но, мы уви­дим сле­ду­ю­щую кар­ти­ну:<br />
+<img src="img/x92ce5c1ed8.png.pagespeed.ic.INFkuflyW6.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /><br />
+<img src="img/xf26e879ab0.png.pagespeed.ic.gaDUln35En.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /><br />
+<img src="img/xa7e3a92121.png.pagespeed.ic.RMNQtkXLna.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /></p>
+
+<p>Те­перь пе­рей­дём к со­зда­нию ба­зы дан­ных. На­зо­вём файл «storage.db» и ес­ли его нет, драй­вер со­здаст его для нас.<br />
+По­сле со­зда­ния ба­зы дан­ных необ­хо­ди­мо бу­дет за­пу­стить ми­гра­ции.</p>
+
+<p>До­ра­бо­та­ем наш файл todo.go:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// todo.go
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">package</span> main
+<span style="color:#fff;font-weight:bold">import</span> (
+    <span style="color:#0ff;font-weight:bold">&#34;database/sql&#34;</span>
+
+    <span style="color:#0ff;font-weight:bold">&#34;github.com/labstack/echo&#34;</span>
+    <span style="color:#0ff;font-weight:bold">&#34;github.com/labstack/echo/engine/standard&#34;</span>
+    _ <span style="color:#0ff;font-weight:bold">&#34;github.com/mattn/go-sqlite3&#34;</span>
+)</pre></div>
+<p>И до­ра­бо­та­ем ме­тод main():</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// todo.go
+func main() {
+
+    db := initDB(&#34;storage.db&#34;)
+    migrate(db)</pre></div>
+<p>До­ба­вим ме­тод ра­бо­ты с ба­зой дан­ных:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// todo.go
+func initDB(filepath string) *sql.DB {
+    //откроем файл или создадим его
+    db, err := sql.Open(&#34;sqlite3&#34;, filepath)
+
+    // проверяем ошибки и выходим при их наличии
+    if err != nil {
+        panic(err)
+    }
+
+    // если ошибок нет, но не можем подключиться к базе данных,
+    // то так же выходим
+    if db == nil {
+        panic(&#34;db nil&#34;)
+    }
+    return db
+}
+
+func migrate(db *sql.DB) {
+    sql := `
+    CREATE TABLE IF NOT EXISTS tasks(
+        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        name VARCHAR NOT NULL
+    );
+    `
+
+    _, err := db.Exec(sql)
+    // выходим, если будут ошибки с SQL запросом выше
+    if err != nil {
+        panic(err)
+    }
+}</pre></div>
+<p>Здесь мы про­сто со­зда­ём таб­ли­цу для на­ших за­дач, ес­ли её ещё нет и за­вер­ша­ем при­ло­же­ние при лю­бой ошиб­ке.</p>
+
+<p>Про­те­сти­ру­ем ещё раз:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ go build todo.go
+$ ./todo</pre></div>
+<p>Те­перь от­кро­ем тер­ми­нал, пе­рей­дём в пап­ку про­ек­та и за­пу­стим сле­ду­ю­щую ко­ман­ду для про­вер­ки со­здан­но­го фай­ла БД:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sqlite3 storage.db</pre></div>
+<p>Ес­ли у вас не по­лу­чи­лось за­пу­стить ко­ман­ду sqlite, воз­мож­но тре­бу­ет­ся уста­но­вить её с <a href="https://www.sqlite.org/download.html">офи­ци­аль­но­го сай­та</a> или че­рез ме­не­джер па­ке­тов ва­шей ОС.</p>
+
+<p>Ес­ли ко­ман­да за­пу­сти­лась, то вве­ди­те ко­ман­ду <strong>&rdquo;.tables&rdquo;</strong>. Вы долж­ны уви­деть при­мер­но сле­ду­ю­щее:<br />
+<img src="img/xe8bccf48fe.png.pagespeed.ic.fw4-hORS58.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /><br />
+Что­бы вый­ти, вве­ди­те &ldquo;.quit&rdquo;.</p>
+
+<h5 id="об-ра-бот-чи-ки">Об­ра­бот­чи­ки</h5>
+
+<p>Мы со­зда­ли об­ра­бот­чи­ки за­про­сов, те­перь нам нуж­но до­ра­бо­тать их.<br />
+От­кро­ем файл <strong>todo.go</strong> и вста­вим в блок им­пор­тов файл с об­ра­бот­чи­ка­ми, ко­то­рый со­зда­дим поз­же:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#fff;font-weight:bold">package</span> main
+<span style="color:#fff;font-weight:bold">import</span> (
+    <span style="color:#0ff;font-weight:bold">&#34;database/sql&#34;</span>
+    <span style="color:#0ff;font-weight:bold">&#34;go-echo-vue/handlers&#34;</span>
+
+    <span style="color:#0ff;font-weight:bold">&#34;github.com/labstack/echo&#34;</span>
+    <span style="color:#0ff;font-weight:bold">&#34;github.com/labstack/echo/engine/standard&#34;</span>
+    _ <span style="color:#0ff;font-weight:bold">&#34;github.com/mattn/go-sqlite3&#34;</span>
+)</pre></div>
+<p>Тут же до­ра­бо­та­ем вы­зо­вы об­ра­бот­чи­ков:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// todo.go
+    e := echo.New()
+
+    e.File(&#34;/&#34;, &#34;public/index.html&#34;)
+    e.GET(&#34;/tasks&#34;, handlers.GetTasks(db))
+    e.PUT(&#34;/tasks&#34;, handlers.PutTask(db))
+    e.DELETE(&#34;/tasks/:id&#34;, handlers.DeleteTask(db))
+
+    e.Run(standard.New(&#34;:8000&#34;))
+}</pre></div>
+<p>Здесь мы до­ба­ви­ли к су­ще­ству­ю­щим ро­у­там до­пол­ни­тель­ный. В этом html-фай­ле мы бу­дем хра­нить код VueJS.</p>
+
+<p>Те­перь со­зда­дим ди­рек­то­рию &lsquo;handlers&rsquo;, а в ней файл «tasks.go»:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// handlers/tasks.go
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">package</span> handlers
+
+<span style="color:#fff;font-weight:bold">import</span> (
+    <span style="color:#0ff;font-weight:bold">&#34;database/sql&#34;</span>
+    <span style="color:#0ff;font-weight:bold">&#34;net/http&#34;</span>
+    <span style="color:#0ff;font-weight:bold">&#34;strconv&#34;</span>
+
+    <span style="color:#0ff;font-weight:bold">&#34;github.com/labstack/echo&#34;</span>
+)</pre></div>
+<p>А в стро­ке ни­же бу­дет неболь­шой трюк, ко­то­рый поз­во­лит воз­вра­щать про­из­воль­ный JSON. Это про­сто map со клю­ча­ми ти­па string и лю­бым ти­пом зна­че­ния.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// handlers/tasks.go
+type H map[string]interface{}</pre></div>
+<p>Для то­го, что­бы про­сто про­ве­рить ра­бо­ту об­ра­бот­чи­ков, сде­ла­ем вы­вод ле­вых дан­ных, а не из ба­зы дан­ных:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// handlers/tasks.go
+
+// конечная точка GetTasks
+func GetTasks(db *sql.DB) echo.HandlerFunc {
+    return func(c echo.Context) error {
+        return c.JSON(http.StatusOK, &#34;tasks&#34;)
+    }
+}
+
+// конечная точка PutTask
+func PutTask(db *sql.DB) echo.HandlerFunc {
+    return func(c echo.Context) error {
+        return c.JSON(http.StatusCreated, H{
+            &#34;created&#34;: 123,
+    }
+}
+
+// конечная точка DeleteTask
+func DeleteTask(db *sql.DB) echo.HandlerFunc {
+    return func(c echo.Context) error {
+        id, _ := strconv.Atoi(c.Param(&#34;id&#34;))
+        return c.JSON(http.StatusOK, H{
+            &#34;deleted&#34;: id,
+        })
+    }
+}</pre></div>
+<p>Биб­лио­те­ка http в Go поз­во­ля­ет ра­бо­тать со ста­ту­са­ми HTTP и мы мо­жем от­ве­тить http.StatusCreated для за­про­са PUT.<br />
+Функ­ция «DeleteTask» при­ни­ма­ет па­ра­мет­ром id за­да­чи, а мы с по­мо­щью па­ке­та strconv и ме­то­да Atoi (alpha в чис­ло) про­ве­ря­ем, что id это чис­ло. Так мы бо­лее без­опас­но смо­жем пе­ре­дать за­прос к ба­зе дан­ных поз­же.</p>
+
+<p>Пе­ре­со­бе­рём при­ло­же­ние и за­но­во за­пу­стим Postman:</p>
+
+<p><img src="img/x4b02ced590.png.pagespeed.ic.KUqkAJBZnu.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /><br />
+<img src="img/xc259deaab4.png.pagespeed.ic.IM3fdtQUFr.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /><br />
+<img src="img/x541afda119.png.pagespeed.ic.lvqUUeV1c8.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /></p>
+
+<h5 id="мо-дель">Мо­дель</h5>
+
+<p>Нам оста­лось под­клю­чить при­ло­же­ние к ба­зе дан­ных. Вме­сто то­го, что­бы де­лать пря­мые вы­зо­вы из об­ра­бот­чи­ков, мы со­хра­ним код про­стым, пре­вра­тив ло­ги­ку ба­зы дан­ных в мо­дель.</p>
+
+<p>Но сна­ча­ла вклю­чим ссыл­ки на на­шу мо­дель в со­здан­ный файл об­ра­бот­чи­ков.<br />
+Вклю­чим файл мо­де­лей в блок им­пор­та:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// handlers/tasks.go
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">package</span> handlers
+
+<span style="color:#fff;font-weight:bold">import</span> (
+    <span style="color:#0ff;font-weight:bold">&#34;database/sql&#34;</span>
+    <span style="color:#0ff;font-weight:bold">&#34;net/http&#34;</span>
+    <span style="color:#0ff;font-weight:bold">&#34;strconv&#34;</span>
+
+    <span style="color:#0ff;font-weight:bold">&#34;go-echo-vue/models&#34;</span>
+
+    <span style="color:#0ff;font-weight:bold">&#34;github.com/labstack/echo&#34;</span>
+)</pre></div>
+<p>За­тем до­ба­вим вы­зо­вы к мо­де­ли в ме­тод об­ра­бот­чи­ка:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// handlers/tasks.go
+
+// конечная точка GetTasks
+func GetTasks(db *sql.DB) echo.HandlerFunc {
+    return func(c echo.Context) error {
+        // получаем задачи из модели
+        return c.JSON(http.StatusOK, models.GetTasks(db))
+    }
+}
+
+// конечная точка PutTask
+func PutTask(db *sql.DB) echo.HandlerFunc {
+    return func(c echo.Context) error {
+        // создаём новую задачу
+        var task models.Task
+        // привязываем пришедший JSON в новую задачу
+        c.Bind(&amp;task)
+        // добавим задачу с помощью модели
+        id, err := models.PutTask(db, task.Name)
+        // вернём ответ JSON при успехе
+        if err == nil {
+            return c.JSON(http.StatusCreated, H{
+                &#34;created&#34;: id,
+            })
+        // обработка ошибок
+        } else {
+            return err
+        }
+    }
+}
+
+// конечная точка DeleteTask
+func DeleteTask(db *sql.DB) echo.HandlerFunc {
+    return func(c echo.Context) error {
+        id, _ := strconv.Atoi(c.Param(&#34;id&#34;))
+        // используем модель для удаления задачи
+        _, err := models.DeleteTask(db, id)
+        // вернём ответ JSON при успехе
+        if err == nil {
+            return c.JSON(http.StatusOK, H{
+                &#34;deleted&#34;: id,
+            })
+        // обработка ошибок
+        } else {
+            return err
+        }
+    }
+}</pre></div>
+<p>А те­перь со­зда­дим мо­дель. Со­здай­те ка­та­лог «models», а в нём файл «tasks.go».</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#007f7f">// models/tasks.go
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">package</span> models
+
+<span style="color:#fff;font-weight:bold">import</span> (
+    <span style="color:#0ff;font-weight:bold">&#34;database/sql&#34;</span>
+
+    _ <span style="color:#0ff;font-weight:bold">&#34;github.com/mattn/go-sqlite3&#34;</span>
+)
+
+<span style="color:#007f7f">// Task это структура с данными задачи
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">type</span> Task <span style="color:#fff;font-weight:bold">struct</span> {
+    ID   <span style="color:#fff;font-weight:bold">int</span>    <span style="color:#0ff;font-weight:bold">`json:&#34;id&#34;`</span>
+    Name <span style="color:#fff;font-weight:bold">string</span> <span style="color:#0ff;font-weight:bold">`json:&#34;name&#34;`</span>
+}
+
+<span style="color:#007f7f">// TaskCollection это список задач
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">type</span> TaskCollection <span style="color:#fff;font-weight:bold">struct</span> {
+    Tasks []Task <span style="color:#0ff;font-weight:bold">`json:&#34;items&#34;`</span>
+}</pre></div>
+<p>Мы со­зда­ли тип «Task» &mdash; струк­ту­ру с дву­мя по­ля­ми, ID и Name. Go поз­во­ля­ет до­бав­лять ме­та­дан­ные с по­мо­щью об­рат­ных ка­вы­чек. Мы ука­за­ли, что хо­тим ви­деть по­ля в ви­де JSON. И это поз­во­ля­ет функ­ции «c.​Bind» (из об­ра­бот­чи­ков) знать, ка­кие при­вяз­ки дан­ных нуж­ны при со­зда­нии но­вой за­да­чи.<br />
+Тип «TaskCollection» это про­сто кол­лек­ция на­ших за­дач. Мы ис­поль­зу­ем её при воз­вра­те спис­ка всех за­дач из ба­зы дан­ных.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// models/tasks.go
+
+func GetTasks(db *sql.DB) TaskCollection {
+    sql := &#34;SELECT * FROM tasks&#34;
+    rows, err := db.Query(sql)
+    // выходим, если SQL не сработал по каким-то причинам
+    if err != nil {
+        panic(err)
+    }
+    // убедимся, что всё закроется при выходе из программы
+    defer rows.Close()
+
+    result := TaskCollection{}
+    for rows.Next() {
+        task := Task{}
+        err2 := rows.Scan(&amp;task.ID, &amp;task.Name)
+        // выход при ошибке
+        if err2 != nil {
+            panic(err2)
+        }
+        result.Tasks = append(result.Tasks, task)
+    }
+    return result
+}</pre></div>
+<p>Ме­тод GetTasks вы­би­ра­ет все за­да­чи из ба­зы дан­ных, до­бав­ля­ет их в но­вую кол­лек­цию за­дач, и воз­вра­ща­ет их.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// models/tasks.go
+
+func PutTask(db *sql.DB, name string) (int64, error) {
+    sql := &#34;INSERT INTO tasks(name) VALUES(?)&#34;
+
+    // выполним SQL запрос
+    stmt, err := db.Prepare(sql)
+    // выход при ошибке
+    if err != nil {
+        panic(err)
+    }
+    // убедимся, что всё закроется при выходе из программы
+    defer stmt.Close()
+
+    // заменим символ &#39;?&#39; в запросе на &#39;name&#39;
+    result, err2 := stmt.Exec(name)
+    // выход при ошибке
+    if err2 != nil {
+        panic(err2)
+    }
+
+    return result.LastInsertId()
+}</pre></div>
+<p>Ме­тод PutTask встав­ля­ет но­вую за­да­чу в ба­зу дан­ных и воз­вра­ща­ет её id при успе­хе или panic при неуда­че.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// models/tasks.go
+
+func DeleteTask(db *sql.DB, id int) (int64, error) {
+    sql := &#34;DELETE FROM tasks WHERE id = ?&#34;
+
+    // выполним SQL запрос
+    stmt, err := db.Prepare(sql)
+    // выход при ошибке
+    if err != nil {
+        panic(err)
+    }
+
+    // заменим символ &#39;?&#39; в запросе на &#39;id&#39;
+    result, err2 := stmt.Exec(id)
+    // выход при ошибке
+    if err2 != nil {
+        panic(err2)
+    }
+
+    return result.RowsAffected()
+}</pre></div>
+<p>Мож­но ещё раз про­те­сти­ро­вать при­ло­же­ние с Postman. Про­ве­рим ро­ут «GET /tasks» &mdash; в от­вет дол­жен прий­ти JSON с «tasks» рав­ным null:<br />
+<img src="img/xd145f4391f.png.pagespeed.ic.11e_TRrEvY.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /><br />
+До­ба­вим за­да­чу. В Postman пе­ре­клю­чи­те ме­тод на «PUT», за­тем от­крой­те вклад­ку «Body». Вы­бе­ри­те «raw», за­тем JSON (application/json) как тип. В тек­сто­вом по­ле вве­ди­те сле­ду­ю­щее:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">{
+    &#34;name&#34;: &#34;Foobar&#34;
+}</pre></div>
+<p>В от­вет долж­но прий­ти &lsquo;created&rsquo;, ти­па та­ко­го:<br />
+<img src="img/xde9015cdce.png.pagespeed.ic.aMX-iNuZiz.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /><br />
+Об­ра­ти­те вни­ма­ние, id вер­нул­ся пот­му, что нам нуж­но про­те­сти­ро­вать ро­ут «DELETE /tasks». Сме­ни­те ме­тод на «DELETE» и ука­жи­те Postman &ldquo;/tasks/:id&rdquo;, за­ме­нив &ldquo;:id&rdquo; на id, ко­то­рый вер­нул­ся в про­шлом пунк­те. В от­вет долж­но прий­ти со­об­ще­ние об успе­хе «deleted».<br />
+<img src="img/xbaa8f3cb02.png.pagespeed.ic.FP5BJnnd-X.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /><br />
+Ес­ли всё хо­ро­шо, то за­про­сив «GET /tasks», вы по­лу­чи­те в от­вет null.</p>
+
+<h5 id="фрон-тенд">Фрон­тенд</h5>
+
+<p>Для про­сто­ты из­ло­же­ния, мы вклю­чим код Javascript в файл раз­мет­ки HTML. Вклю­чим несколь­ко биб­лио­тек: Bootstrap, JQuery и, ко­неч­но, VueJS. В ин­тер­фей­се у нас бу­дет толь­ко по­ле вво­да, кноп­ки и неупо­ря­до­чен­ный спи­сок для на­ших за­дач.<br />
+Со­здай­те ди­рек­то­рию &lsquo;public&rsquo; и в ней файл «index.html»:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- public/index.html --&gt;
+
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv=&#34;content-type&#34; content=&#34;text/html; charset=utf-8&#34;&gt;
+
+        &lt;title&gt;TODO App&lt;/title&gt;
+
+        &lt;!-- Latest compiled and minified CSS --&gt;
+        &lt;link rel=&#34;stylesheet&#34; href=&#34;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css&#34;&gt;
+
+        &lt;!-- Font Awesome --&gt;
+        &lt;link rel=&#34;stylesheet&#34;  href=&#34;https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css&#34;&gt;
+
+        &lt;!-- JQuery --&gt;
+        &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js&#34;&gt;&lt;/script&gt;
+
+        &lt;!-- Latest compiled and minified JavaScript --&gt;
+        &lt;script src=&#34;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js&#34;&gt;&lt;/script&gt;
+
+        &lt;!-- Vue.js --&gt;
+        &lt;script src=&#34;http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js&#34;&gt;&lt;/script&gt;
+        &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js&#34;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&#34;container&#34;&gt;
+            &lt;div class=&#34;row&#34;&gt;
+                &lt;div class=&#34;col-md-4&#34;&gt;
+                    &lt;h2&gt;My Tasks&lt;/h2&gt;
+                    &lt;ul class=&#34;list-group&#34;&gt;
+                        &lt;li class=&#34;list-group-item&#34; v-for=&#34;task in tasks&#34;&gt;
+                            {{ task.name }}
+                            &lt;span class=&#34;pull-right&#34;&gt;
+                                &lt;button class=&#34;btn btn-xs btn-danger&#34; v-on:click=&#34;deleteTask($index)&#34;&gt;
+                                    &lt;i class=&#34;fa fa-trash-o&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;
+                                &lt;/button&gt;
+                            &lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;div class=&#34;input-group&#34;&gt;
+                        &lt;input type=&#34;text&#34;
+                            class=&#34;form-control&#34;
+                            placeholder=&#34;New Task&#34;
+                            v-on:keyup.enter=&#34;createTask&#34;
+                            v-model=&#34;newTask.name&#34;&gt;
+                        &lt;span class=&#34;input-group-btn&#34;&gt;
+                            &lt;button class=&#34;btn btn-primary&#34; type=&#34;button&#34; v-on:click=&#34;createTask&#34;&gt;Create&lt;/button&gt;
+                        &lt;/span&gt;
+                    &lt;/div&gt;&lt;!-- /input-group --&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre></div>
+<p>Пе­ре­со­бе­ри­те при­ло­же­ние, за­пу­сти­те его и от­крой­те в бра­у­зе­ре localhost:8000.<br />
+<img src="img/x27cbe8c6f9.png.pagespeed.ic.cg-x5UmDRQ.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /></p>
+
+<p>Ни­же по­след­не­го те­га «div» мы раз­ме­стим наш код VueJS в те­ге «script». Код этот не очень прост, но хо­ро­шо про­ком­мен­ти­ро­ван. Здесь у нас несколь­ко ме­то­дов для со­зда­ния и уда­ле­ния за­дач, а та­к­же ме­тод ини­ци­а­ли­за­ции, воз­вра­ща­ю­щий спи­сок всех за­дач в ба­зе.<br />
+Для об­ще­ния с бэ­кен­дом нам по­на­до­бит­ся HTTP кли­ент, мы бу­дем ис­поль­зо­вать vue-resource так: «this.$http» и да­лее что нам нуж­но, ти­па (get, put, и т.п.).</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- public/index.html --&gt;
+
+        &lt;script&gt;
+            new Vue({
+                el: &#39;body&#39;,
+
+                data: {
+                    tasks: [],
+                    newTask: {}
+                },
+
+          // запускаем при загрузке страницы, чтобы у нас был актуальный список всех задач
+                created: function() {
+        // используем $http-клиента из vue-resource для получения данных от роута /tasks
+                    this.$http.get(&#39;/tasks&#39;).then(function(response) {
+                        this.tasks = response.data.items ? response.data.items : []
+                    })
+                },
+
+                methods: {
+                    createTask: function() {
+                        if (!$.trim(this.newTask.name)) {
+                            this.newTask = {}
+                            return
+                        }
+
+             // передаём новую задачу роуту /tasks с помощью $http клиента
+                        this.$http.put(&#39;/tasks&#39;, this.newTask).success(function(response) {
+                            this.newTask.id = response.created
+                            this.tasks.push(this.newTask)
+                            console.log(&#34;Task created!&#34;)
+                            console.log(this.newTask)
+                            this.newTask = {}
+                        }).error(function(error) {
+                            console.log(error)
+                        });
+                    },
+
+                    deleteTask: function(index) {
+             // используем $http клиента для удаления задачи по её id
+                        this.$http.delete(&#39;/tasks/&#39; + this.tasks[index].id).success(function(response) {
+                            this.tasks.splice(index, 1)
+                            console.log(&#34;Task deleted!&#34;)
+                        }).error(function(error) {
+                            console.log(error)
+                        })
+                    }
+                }
+            })
+        &lt;/script&gt;</pre></div>
+<h5 id="за-пуск">За­пуск</h5>
+
+<p>У нас всё го­то­во, пе­ре­со­бе­рём при­ло­же­ние и за­пу­стим его!</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ go build todo.go
+$ ./todo</pre></div>
+<p>От­кро­ем в бра­у­зе­ре <a href="http://localhost:8000">localhost:8000</a></p>
+
+<p><img src="img/x586cd60931.png.pagespeed.ic.0VSAkXQG_W.png" alt="Разработка: Создание одностраничного веб-приложения на Go, Echo и Vue" /></p>
+
+<p>Мы рас­смот­ре­ли неслож­ную за­да­чу по со­зда­нию бэ­кен­да на Go с по­мо­щью фрейм­вор­ка Echo и фрон­тен­да на VueJS. На­де­ем­ся, она спо­двиг­нет вас на со­зда­ние по-на­сто­я­ще­му хо­ро­ших и слож­ных веб-при­ло­же­ний!</p>
+
+<p><a href="https://github.com/scotch-io/go-echo-vue-single-page-app">Ис­ход­ный код при­ме­ра.</a></p>
+
+<p><strong>UPD:</strong> в но­вой вер­сии Echo бы­ла по­ло­ма­на об­рат­ная сов­ме­сти­мость и этот при­мер уже не ра­бо­та­ет. Уста­нав­ли­вай­те преды­ду­щую вер­сию:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">go get gopkg.in/labstack/echo.v2</pre></div>
+<p>Если у вас ошибки, необходимо убрать из todo.go:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&#34;github.com/labstack/echo/engine/standard&#34;</pre></div>
+<p>а вместо:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">e.Run(standard.New(&#34;:8000&#34;))</pre></div>
+<p>запускаем сервер так:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">e.Logger.Fatal(e.Start(&#34;:8000&#34;))</pre></div>
+      </div>
+
+      <footer>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fokusovcom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </footer>
+    </article>
+
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']],
+        processEscapes: true,
+        processEnvironments: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    MathJax.Hub.Queue(function() {
+      
+      
+      
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2018    ·  Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>. 
+  </section>
+</footer>
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-54274841-9', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  </body>
+
+</html>

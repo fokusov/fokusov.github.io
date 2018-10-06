@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Игорь Фокусов">
+    <meta name="description" content="Услуги профессионального программиста 1с в Череповце. тел. &#43;7 921 548-69-50">
+    <meta name="keywords" content="1с предприятие, услуги 1с, программист 1с, 1с8, 1с83, сопровождение 1с, поддержка 1с, программист череповец, 1с программист, 1с программист череповец, стоимость услуг 1с, специалист 1с, программист 1с удаленно">
+
+    <base href="http://fokusov.com/">
+    <title>
+  Todolist - быстрый консольный менеджер задач в концепции GTD на Golang · Фокусов Игорь
+</title>
+
+    <link rel="canonical" href="http://fokusov.com/posts/todolist-bystryj-konsolnyj-menedzher-zadach-v-koncepcii-gtd-na-golang/">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:300,700|Source+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="http://fokusov.com/css/coder.min.578f8fce262e4c448c239b69661084c57507b89d51b8d04de15cd1d8f8135600.css" integrity="sha256-V4&#43;PziYuTESMI5tpZhCExXUHuJ1RuNBN4VzR2PgTVgA=" media="screen">
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-16x16.png" sizes="16x16">
+
+    
+
+    <meta name="generator" content="Hugo 0.49" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="http://fokusov.com/">
+      Фокусов Игорь
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/about/">Обо мне</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/projects/">1С</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/android/">Android</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/contacts/">Контакты</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/posts/">Блог</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <h1 class="title">Todolist - быстрый консольный менеджер задач в концепции GTD на Golang</h1>
+        <h2 class="date">February 13, 2017</h2>
+      </header>
+
+      <div>
+        
+
+<p><img src="img/xd2ec57.png.pagespeed.ic.0Gfjjdc5f8.png" alt="Софт: Todolist - быстрый консольный менеджер задач в концепции GTD на Golang" /><br />
+Todolist помогает работать с вашими задачами в терминале. Todolist основан на методе <a href="https://ru.wikipedia.org/wiki/Getting_Things_Done">Getting Things Done</a> и умеет работать с проектами, контекстами и сроками задач.</p>
+
+<p>Списки задач зависят от директории, в которой вы работаете с ними &mdash; просто держите разные списки дел в разных папках.</p>
+
+<p><a href="https://asciinema.org/a/80747"><img src="https://asciinema.org/a/80747.png" alt="Софт: Todolist - быстрый консольный менеджер задач в концепции GTD на Golang" /></a></p>
+
+<h5 id="установка">Установка</h5>
+
+<p>Выберите любой удобный способ:</p>
+
+<ul>
+<li><strong>brew install todolist</strong> &mdash; если у вас есть OSX с установленным homebrew.</li>
+<li><a href="https://github.com/gammons/todolist/releases">Скачайте последний релиз</a> для вашей платформы и скопируйте исполняемый файл <strong>todolist</strong> в любое место в $PATH.</li>
+<li>Если у вас установлен Golang, запустите команду <strong>go get github.com/gammons/todolist</strong>.</li>
+</ul>
+
+<h5 id="быстрый-старт">Быстрый старт</h5>
+
+<p><strong>1: Создадим репозиторий todos</strong><br />
+Запустите <strong>todolist init</strong> для создания списка задач в файле <strong>.todos.json</strong> в текущей директории.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~ todolist init
+Todo repo initialized.</pre></div>
+<p><strong>2: Добавим несколько задач</strong><br />
+Добавить задачу можно командой <strong>add</strong> или <strong>a</strong>:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~ todolist add Chat with @bob about +currentProject due tom
+Todo added.
+~ todolist a +devops update my master password due fri
+Todo added.</pre></div>
+<p><strong>3: Список задач</strong><br />
+Это сердце всей системы. Вы можете фильтровать и группировать ваши задачи. А если встроенная фильтрация не отвечает вашим нуждам, вы даже можете передать вывод в <strong>grep</strong>!</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~ todolist list
+all
+1   [ ] tomorrow    Talk with @bob about the +bigProject
+2   [ ] Fri May 13  +devops update my master password</pre></div>
+<p><strong>todolist list</strong> принимает разные аргументы. Можно отобрать задачи по срокам:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~ todolist list due tom
+all
+1   [ ] tomorrow    Talk with @bob about the +bigProject</pre></div>
+<p>Можно сгруппировать по проекту или контексту.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~ todolist list by project
+
+bigProject
+1   [ ] tomorrow    Talk with @bob about the +bigProject
+
+devops
+2   [ ] Fri May 13  +devops update my master password</pre></div>
+<p><strong>4: Завершить задачу</strong><br />
+Пометить задачу как выполненную можно командой <strong>todolist complete</strong> или <strong>todolist c</strong>.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~ todolist complete 1
+Todo completed.
+~ todolist c 2
+Todo completed.</pre></div>
+<p>Теперь при выводе списка задач, вы увидите, что все они выполнены:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~ todolist list
+all
+1   [x] tomorrow    Talk with @bob about the +bigProject
+2   [x] Fri May 13  +devops update my master password</pre></div>
+<p><strong>5: Архивировать выполненные задачи</strong><br />
+После выполнения задач, вы можете заархивировать их, чтобы они не отображались при выводе списка.</p>
+
+<p>Вы можете заархивировать каждую задачу индивидуально командой <strong>todolist ar [id]</strong>, но так как у нас сегодня много выполненных задач, мы можем запустить <strong>todolist ac</strong>, которая отправить в архив все выполненные задачи.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~ todolist ac
+All completed todos archived.</pre></div>
+<p>Вот и всё! Теперь вы знаете 90% функционала Todolist.</p>
+
+<h5 id="рабочий-процесс">Рабочий процесс</h5>
+
+<p>Задачи могут принимать 3 состояния:</p>
+
+<ul>
+<li>Incomplete &mdash; Незавершённые задачи</li>
+<li>Complete &mdash; Завершённые задачи</li>
+<li>Archived &mdash; Архивированные задачи, они не выводятся в списке задач и увидеть их можно командой <strong>todolist list archived</strong>.<br />
+Обычно мы создаём задачу, завершаем её, затем архивируем в конце дня.</li>
+</ul>
+
+<h5 id="добавление-задач">Добавление задач</h5>
+
+<p>Задачи добавляются командой <strong>todolist add</strong> или <strong>todolist a</strong>, затем можно заполнить детали задачи.</p>
+
+<ul>
+<li><strong>+проекты</strong> и <strong>@контексты</strong> можно вставлять в текст задачи.</li>
+
+<li><p>Нужно обязательно указать срок в конце задачи (due date).<br />
+<strong>Формат Due date</strong></p></li>
+
+<li><p>Для сегодняшних или завтрашних задач вы можете указывать <strong>due today</strong> и <strong>due tomorrow</strong>. Или сокращённые команды <strong>due tod</strong> или <strong>due tom</strong>.</p></li>
+
+<li><p>Для задач со сроком в течение текущей недели можно писать первые 3 буквы дня (на англ.яз.). Например, <strong>due mon</strong> или <strong>due thu</strong>. Todolist всегда ищет дни в будущем, поэтому если сегодня Среда, а вы задали <strong>due mon</strong>, то срок задачи будет в следующий Понедельник.</p></li>
+
+<li><p>Для указания определённой даты можно указать <strong>due may 2</strong> или <strong>due 2 may</strong>. Месяц должен быть написан в нижнем регистре тремя буквами.<br />
+Примеры:</p></li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~ todolist a update the staging db with @frank due tom
+Todo added.
+~ todolist a @pomodoro I need to think about our job tier structure due wed
+Todo added.
+~ todolist a meet with @jake and @adrian about the +importImprovement project due jun 23
+Todo added.
+~ todolist l
+
+1   [ ] tomorrow    update the staging db with @frank
+2   [ ] Wed Jun 22  @pomodoro I need to think about our job tier structure
+3   [ ] Thu Jun 23  meet with @jake and @adrian about the +importImprovement project</pre></div>
+<h5 id="завершение-задач-и-возврат-к-невыполненным">Завершение задач и возврат к невыполненным</h5>
+
+<p><strong>todolist complete [id]</strong> или <strong>todolist c [id]</strong> &mdash; завершает задачу с указанным номером.</p>
+
+<p><strong>todolist uncomplete [id]</strong> или <strong>todolist uc [id]</strong> &mdash; помечает задачу как невыполненную.</p>
+
+<h5 id="архивация-и-возврат-из-архива">Архивация и возврат из архива</h5>
+
+<p><strong>todolist archive [id]</strong> или <strong>todolist ar [id]</strong> &mdash; помещает задачу в архив.</p>
+
+<p><strong>todolist unarchive [id]</strong> &mdash; возвращает задачу из архива.</p>
+
+<h5 id="вывод-списка-фильтрация-и-группировка-задач">Вывод списка, фильтрация и группировка задач</h5>
+
+<p><strong>todolist list</strong> или <strong>todolist l</strong> &mdash; список всех незаархивированных задач</p>
+
+<p><strong>todolist l archived</strong> &mdash; список задач в архиве</p>
+
+<p><strong>Внимание:</strong> по-умолчанию, Todolist всегда скрывает архивированные задачи. Увидеть их вы можете только командой <strong>todo list archived</strong>.</p>
+
+<p><strong>Отбор по сроку</strong><br />
+<strong>todolist l agenda</strong> &mdash; Список задач на сегодня + просроченные</p>
+
+<p><strong>todolist l overdue</strong> &mdash; Список просроченных задач</p>
+
+<p><strong>todolist l due today</strong> или <strong>todo l due tod</strong> &mdash; Список задач на сегодня</p>
+
+<p><strong>todolist l due tomorrow</strong> или <strong>todo l due tom</strong> &mdash; Список задач на завтра</p>
+
+<p><strong>Отбор по дню недели</strong><br />
+<strong>todolist l due mon</strong> &mdash; Список задач на Понедельник</p>
+
+<p><strong>todolist l due this week</strong> &mdash; Список задач на всю неделю</p>
+
+<p><strong>Группировка</strong><br />
+Задачи можно сгруппировать по проекту или контексту.</p>
+
+<p><strong>todolist l by p</strong> &mdash; Список задач, сгруппированных по проекту</p>
+
+<p><strong>todolist l by c</strong> &mdash; Список задач, сгруппированных по контексту</p>
+
+<h5 id="редактирование-задач">Редактирование задач</h5>
+
+<p>Пока Todolist позволяет редактировать только срок задачи. Для полного редактирования задачи лучше удалить её и создать заново.</p>
+
+<p><strong>todolist e [id] due [due]</strong> &mdash; редактирует срок задачи.</p>
+
+<p>Примеры:</p>
+
+<ul>
+<li><strong>todolist e 133 due tod</strong> &mdash; редактируем задачу с номером 133 и задаём срок на сегодня.</li>
+<li><strong>todolist e 56 due jun 20</strong> &mdash; редактируем задачу с номером 56 и задаём срок на 20 июня.</li>
+</ul>
+
+<h5 id="expanding-existing-todos">Expanding existing todos</h5>
+
+<p>Todolist поддерживает расширение существующих списков задач с добавлением недостающих деталей. Синтаксис такой:</p>
+
+<p><strong>todolist ex [id] +[project]: todo1[,todo2&hellip;]</strong></p>
+
+<p>Если в списке есть такая задача:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">13  [ ] Sat Jan 28  Write the thesis</pre></div>
+<p>Попробуем расширить её, добавив деталей:</p>
+
+<ul>
+<li>todolist ex 13 +thesis: get latex template due Jan 22, meet prof. due Jan 23, organize data due Jan 24, Introduction and Abstract due Jan 27</li>
+</ul>
+
+<p>Список станет таким:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">14  [ ] Sun Jan 22  get latex template
+15  [ ] Mon Jan 23  meet prof.
+16  [ ] Tue Jan 24  organize data
+17  [ ] Wed Jan 25  Introduction and Abstract</pre></div>
+<h5 id="удаление-задач">Удаление задач</h5>
+
+<p><strong>todolist delete [id]</strong> или <strong>todolist d [id]</strong>.</p>
+
+<h5 id="web-представление">Web-представление</h5>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">todolist web</pre></div>
+<p><img src="img/x5e6f6e.png.pagespeed.ic.yC_2KnK4rw.png" alt="Софт: Todolist - быстрый консольный менеджер задач в концепции GTD на Golang" /></p>
+
+<p>Эта команда запустит лёгкий веб-сервер по адресу <a href="http://localhost:7890">http://localhost:7890</a>, где вы можете управлять своими задачами в красивом представлении.</p>
+
+<p>Демо-версию можно посмотреть <a href="http://demo.todolist.site/">здесь</a>.</p>
+
+<h5 id="формат-файла-todos-json">Формат файла .todos.json</h5>
+
+<p>В .todos.json в очень простом формате хранятся все задачи из текущей директории. Пример файла .todos.json:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[{
+    &#34;id&#34;: 110,
+    &#34;subject&#34;: &#34;+toVerify did @scott put zuora alerting in place?&#34;,
+    &#34;projects&#34;: [
+      &#34;toVerify&#34;
+    ],
+    &#34;contexts&#34;: [
+      &#34;scott&#34;
+    ],
+    &#34;due&#34;: &#34;2016-05-23&#34;,
+    &#34;completed&#34;: false,
+    &#34;archived&#34;: false
+  }]</pre></div>
+<h5 id="заключение">Заключение</h5>
+
+<p>Я обожаю утилиты, соответствующие <a href="https://ru.wikipedia.org/wiki/Философия_UNIX">философии Unix</a>. Будучи уверенным пользователем <a href="https://www.wunderlist.com/">Wunderlist</a>, я планировал переписать 30% возможностей Wunderlist, оставив только те, которые я использовал, в простой консольной утилите.</p>
+
+<p><strong>Чем это отличается от todo.txt?</strong><br />
+todo.txt это превосходный инструмент с великолепной экосистемой, но он мне не подошёл. Мне нужны были даты в задачах и некоторые другие параметры, а по-умолчанию в todo.txt не было такого функционала. Я верю в то, что Todolist концептуально ближе к тому, как «крупные» todo-компании делают это, например, Wunderlist, Todoist и т.д.</p>
+
+<p><a href="http://todolist.site">Источник</a></p>
+
+      </div>
+
+      <footer>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fokusovcom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </footer>
+    </article>
+
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']],
+        processEscapes: true,
+        processEnvironments: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    MathJax.Hub.Queue(function() {
+      
+      
+      
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2018    ·  Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>. 
+  </section>
+</footer>
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-54274841-9', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  </body>
+
+</html>

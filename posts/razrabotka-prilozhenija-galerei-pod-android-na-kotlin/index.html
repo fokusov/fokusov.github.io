@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Игорь Фокусов">
+    <meta name="description" content="Услуги профессионального программиста 1с в Череповце. тел. &#43;7 921 548-69-50">
+    <meta name="keywords" content="1с предприятие, услуги 1с, программист 1с, 1с8, 1с83, сопровождение 1с, поддержка 1с, программист череповец, 1с программист, 1с программист череповец, стоимость услуг 1с, специалист 1с, программист 1с удаленно">
+
+    <base href="http://fokusov.com/">
+    <title>
+  Разработка приложения-галереи под Android на Kotlin · Фокусов Игорь
+</title>
+
+    <link rel="canonical" href="http://fokusov.com/posts/razrabotka-prilozhenija-galerei-pod-android-na-kotlin/">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:300,700|Source+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="http://fokusov.com/css/coder.min.578f8fce262e4c448c239b69661084c57507b89d51b8d04de15cd1d8f8135600.css" integrity="sha256-V4&#43;PziYuTESMI5tpZhCExXUHuJ1RuNBN4VzR2PgTVgA=" media="screen">
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-16x16.png" sizes="16x16">
+
+    
+
+    <meta name="generator" content="Hugo 0.49" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="http://fokusov.com/">
+      Фокусов Игорь
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/about/">Обо мне</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/projects/">1С</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/android/">Android</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/contacts/">Контакты</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/posts/">Блог</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <h1 class="title">Разработка приложения-галереи под Android на Kotlin</h1>
+        <h2 class="date">March 4, 2018</h2>
+      </header>
+
+      <div>
+        
+
+<p><img src="img/x70d0e8.png.pagespeed.ic.8gLWffyQWF.jpg" alt="Разработка: Разработка приложения-галереи под Android на Kotlin" /></p>
+
+<p>В этом уроке мы разработаем полноценное <a href="https://play.google.com/store/apps/details?id=com.titleapps.canalpic&amp;hl=en">приложение — галерею изображений</a> на Kotlin. Также мы рассмотрим следующие темы:</p>
+
+<ul>
+<li>Реализация паттерна Singleton на Kotlin.</li>
+<li>Передача экземпляра класса из одной activity в другую с помощью Parcelable на Kotlin</li>
+<li>Пример реализации Shared preferences.</li>
+<li>Пример Recyclerview на Kotlin.</li>
+<li>Настройка RecyclerView Adapter на Kotlin.</li>
+<li>NavigationView и настройка DrawerLayout на Kotlin.</li>
+<li>Загрузка и вывод изображений с внутреннего накопителя Android на Kotlin.</li>
+<li>Использование библиотеки для загрузки изображений Glide.</li>
+<li>Работа с разрешениями в режиме выполнения в Android.
+<br /></li>
+</ul>
+
+<p>Если вы ещё новичок и только планируете освоить Kotlin, рекомендую вначале ознакомиться со следующими материалами:</p>
+
+<ol>
+<li><a href="http://developine.com/kotlin-idioms-introductory-tutorial-part-1/">Идиомы Kotlin (англ.)</a></li>
+<li><a href="http://developine.com/classes-objects-modifiers-and-interfaces-in-kotlin-tutorial/">Классы, объекты, модификаторы и интерфейсы в Kotlin (англ.)</a>
+<br />
+<br /></li>
+</ol>
+
+<p>Таким образом, разработав это приложение, вы неплохо освоите Kotlin.</p>
+
+<h3 id="итак-приступим">Итак, приступим.</h3>
+
+<p>Создадим новый проект в Android Studio и включим галочку &ldquo;Add support for Kotlin&rdquo; при его создании.</p>
+
+<h3 id="добавим-необходимые-разрешения-в-манифест">Добавим необходимые разрешения в манифест.</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;uses-permission android:name=&#34;android.permission.READ_EXTERNAL_STORAGE&#34; /&gt;    </pre></div>
+<h3 id="создадим-data-class-albums-и-реализуем-интерфейс-parcelable">Создадим Data Class &ldquo;Albums&rdquo; и реализуем интерфейс Parcelable.</h3>
+
+<p>Вот наш класс модели, хранящий информацию о папках изображений (например, Whatsapp Images, Camera), пути до последних изображений в папке, общем количестве изображений в каждой папке.</p>
+
+<p>И так как мы планируем передать эту информацию с окна запуска приложения в MainActivity с помощью Intent, мы должны реализовать интерфейс Parcelable в классе &ldquo;Albums&rdquo;:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">data class Albums(var folderNames: String, var imagePath: String, var imgCount: Int, var isVideo: Boolean) : Parcelable {
+    constructor(parcel: Parcel) : this(
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readInt(),
+            parcel.readByte() != 0.toByte()) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(folderNames)
+        parcel.writeString(imagePath)
+        parcel.writeInt(imgCount)
+        parcel.writeByte(if (isVideo) 1 else 0)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator {
+        override fun createFromParcel(parcel: Parcel): Albums {
+            return Albums(parcel)
+        }
+
+        override fun newArray(size: Int): Array {
+            return arrayOfNulls(size)
+        }
+    }
+}</pre></div>
+<h3 id="добавим-splash-activity">Добавим Splash Activity</h3>
+
+<p>В методе onCreate нашей Splash Activity нам сперва необходимо получить доступ к внешнему накопителю. Для этого мы должны запросить у пользователя разрешение на доступ к изображениям на устройстве.</p>
+
+<p>После того, как пользователь даст разрешение read_external_storage, мы сможем загрузить изображения и передать имя изображения, его путь и количество изображений в папках в нашу Main Activity для вывода изображений в Recyclerview.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// SplashActivity.kt
+
+internal var SPLASH_TIME_OUT = 800
+
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    setContentView(R.layout.activity_splash)
+
+    Handler().postDelayed(
+            {
+                 // проверка того, что пользователь дал разрешение на доступ к накопителю.
+                 // в противном случае запросим такое разрешение.
+                if (!checkSelfPermission()) {
+                    requestPermission()
+                } else {
+                   // если разрешение получено, загрузим изображения.
+                   // исходный код этого метода будет описан ниже.
+                    loadAllImages()
+                }
+            }, SPLASH_TIME_OUT.toLong())
+}</pre></div>
+<h3 id="добавим-код-перехватывающий-выдачу-разрешения">Добавим код, перехватывающий выдачу разрешения.</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">private fun requestPermission() {
+    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 6036)
+}
+
+private fun checkSelfPermission(): Boolean {
+
+    if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        return false
+    } else
+        return true
+}</pre></div>
+<p>Когда пользователь даст разрешение или откажет в нём, выполнится следующий код:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">override fun onRequestPermissionsResult(requestCode: Int, permissions: Array, grantResults: IntArray) {
+    when (requestCode) {
+        6036 -&gt; {
+            if (grantResults.size &gt; 0) {
+                var permissionGranted = grantResults[0] == PackageManager.PERMISSION_GRANTED
+                if (permissionGranted) {
+
+    // Теперь мы готовы к чтению внешнего хранилища и имеющихся там изображений.
+
+                    loadAllImages()
+                } else {
+                    Toast.makeText(this, &#34;Permission Denied! Cannot load images.&#34;, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+}</pre></div>
+<p>Если разрешение получено, мы передадим загруженные изображения в MainActivity.kt</p>
+
+<h3 id="передаём-экземпляр-класса-данных-класса-модели-в-intent-е-как-parcelable">Передаём экземпляр класса данных (класса модели) в intent-е как Parcelable.</h3>
+
+<p>Эта функция вызовет другой метод getAllShownImagesPath(context), которая вернёт List типа Albums.</p>
+
+<p>Передадим полученный список Albums в MainActivity с помощью Intent.</p>
+
+<p>MainActivity выведет список всех папок с изображениями и видео (типа Camera, Instagram, Whatsapp Images) в RecyclerView.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">fun loadAllImages() {
+    var imagesList = getAllShownImagesPath(this)
+    var intent = Intent(this, MainActivity::class.java)
+    intent.putParcelableArrayListExtra(&#34;image_url_data&#34;, imagesList)
+    startActivity(intent)
+    finish()
+}</pre></div>
+<blockquote>
+<p>В этом куске кода у нас есть экземпляр Data Class и нам необходимо передать эти данные в другую activity, поэтому мы передаём сериализованные данные.</p>
+</blockquote>
+
+<h3 id="загрузка-изображений-из-внутреннего-хранилища">Загрузка изображений из внутреннего хранилища.</h3>
+
+<p>Здесь мы рассмотрим чтение всех папок с изображениями и видео с помощью класса MediaStore. И вернём ArrayList.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">private fun getAllShownImagesPath(activity: Activity): ArrayList {
+
+    val uri: Uri
+    val cursor: Cursor
+    var cursorBucket: Cursor
+    val column_index_data: Int
+    val column_index_folder_name: Int
+    val listOfAllImages = ArrayList()
+    var absolutePathOfImage: String? = null
+    var albumsList = ArrayList()
+    var album: Albums? = null
+
+
+    val BUCKET_GROUP_BY = &#34;1) GROUP BY 1,(2&#34;
+    val BUCKET_ORDER_BY = &#34;MAX(datetaken) DESC&#34;
+
+    uri = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+
+    val projection = arrayOf(MediaStore.Images.ImageColumns.BUCKET_ID,
+            MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
+            MediaStore.Images.ImageColumns.DATE_TAKEN,
+            MediaStore.Images.ImageColumns.DATA)
+
+    cursor = activity.contentResolver.query(uri, projection, BUCKET_GROUP_BY, null, BUCKET_ORDER_BY)
+
+    if (cursor != null) {
+        column_index_data = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
+        column_index_folder_name = cursor
+                .getColumnIndexOrThrow(MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
+        while (cursor.moveToNext()) {
+            absolutePathOfImage = cursor.getString(column_index_data)
+            Log.d(&#34;title_apps&#34;, &#34;bucket name:&#34; + cursor.getString(column_index_data))
+
+            val selectionArgs = arrayOf(&#34;%&#34; + cursor.getString(column_index_folder_name) + &#34;%&#34;)
+            val selection = MediaStore.Images.Media.DATA + &#34; like ? &#34;
+            val projectionOnlyBucket = arrayOf(MediaStore.MediaColumns.DATA, MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
+
+            cursorBucket = activity.contentResolver.query(uri, projectionOnlyBucket, selection, selectionArgs, null)
+            Log.d(&#34;title_apps&#34;, &#34;bucket size:&#34; + cursorBucket.count)
+
+            if (absolutePathOfImage != &#34;&#34; &amp;&amp; absolutePathOfImage != null) {
+                listOfAllImages.add(absolutePathOfImage)
+                albumsList.add(Albums(cursor.getString(column_index_folder_name), absolutePathOfImage, cursorBucket.count, false))
+            }
+        }
+    }
+    return getListOfVideoFolders(albumsList)
+}
+
+// Эта функция отвечает за чтение всех видео из всех папок.
+private fun getListOfVideoFolders(albumsList: ArrayList): ArrayList {
+
+    var cursor: Cursor
+    var cursorBucket: Cursor
+    var uri: Uri
+    val BUCKET_GROUP_BY = &#34;1) GROUP BY 1,(2&#34;
+    val BUCKET_ORDER_BY = &#34;MAX(datetaken) DESC&#34;
+    val column_index_album_name: Int
+    val column_index_album_video: Int
+
+    uri = android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+
+    val projection1 = arrayOf(MediaStore.Video.VideoColumns.BUCKET_ID,
+            MediaStore.Video.VideoColumns.BUCKET_DISPLAY_NAME,
+            MediaStore.Video.VideoColumns.DATE_TAKEN,
+            MediaStore.Video.VideoColumns.DATA)
+
+    cursor = this.contentResolver.query(uri, projection1, BUCKET_GROUP_BY, null, BUCKET_ORDER_BY)
+
+    if (cursor != null) {
+        column_index_album_name = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.BUCKET_DISPLAY_NAME)
+        column_index_album_video = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA)
+        while (cursor.moveToNext()) {
+            Log.d(&#34;title_apps&#34;, &#34;bucket video:&#34; + cursor.getString(column_index_album_name))
+            Log.d(&#34;title_apps&#34;, &#34;bucket video:&#34; + cursor.getString(column_index_album_video))
+            val selectionArgs = arrayOf(&#34;%&#34; + cursor.getString(column_index_album_name) + &#34;%&#34;)
+
+            val selection = MediaStore.Video.Media.DATA + &#34; like ? &#34;
+            val projectionOnlyBucket = arrayOf(MediaStore.MediaColumns.DATA, MediaStore.Video.Media.BUCKET_DISPLAY_NAME)
+
+            cursorBucket = this.contentResolver.query(uri, projectionOnlyBucket, selection, selectionArgs, null)
+            Log.d(&#34;title_apps&#34;, &#34;bucket size:&#34; + cursorBucket.count)
+
+            albumsList.add(Albums(cursor.getString(column_index_album_name), cursor.getString(column_index_album_video), cursorBucket.count, true))
+        }
+    }
+    return albumsList
+}</pre></div>
+<h3 id="итак-что-мы-уже-сделали">Итак, что мы уже сделали</h3>
+
+<ol>
+<li>Запрос разрешения на чтение изображений в режиме выполнения.</li>
+<li>С помощью MediaStore и Cursor реализовали загрузку путей до изображений из внутренней памяти.</li>
+<li>Научились передавать экземпляр сериализованного класса данных (Serialized Data Class) из одной Activity в другую на Kotlin.</li>
+<li>Поняли как использовать Data Class в Kotlin (Albums.kt).
+<br /></li>
+</ol>
+
+<p>Теперь создадим другую activity и назовём её MainActivity.kt. В ней мы сделаем следующее:</p>
+
+<ol>
+<li>Мы получим объект Albums, отправленный из Splash Activity.</li>
+<li>Напишем код слушателя нажатия на элемент RecyclerView.</li>
+<li>Создадим файл макета (разметки) и адаптер RecyclerView для вывода всех папок.
+<br /></li>
+</ol>
+
+<h3 id="разметка-для-mainactivity">Разметка для MainActivity</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">//файл activity_main.xml
+
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;RelativeLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34;
+    xmlns:app=&#34;http://schemas.android.com/apk/res-auto&#34;
+    android:layout_width=&#34;match_parent&#34;
+    android:layout_height=&#34;match_parent&#34;
+    android:fitsSystemWindows=&#34;true&#34;&gt;
+
+    &lt;android.support.v7.widget.Toolbar
+        android:id=&#34;@+id/my_toolbar&#34;
+        android:layout_width=&#34;match_parent&#34;
+        android:layout_height=&#34;?attr/actionBarSize&#34;
+        android:background=&#34;?attr/colorPrimary&#34;
+        android:elevation=&#34;4dp&#34;
+        app:titleTextColor=&#34;@color/colorIcons&#34; /&gt;
+    
+    &lt;android.support.v4.widget.DrawerLayout
+        android:id=&#34;@+id/drawer_layout&#34;
+        android:layout_width=&#34;match_parent&#34;
+        android:layout_height=&#34;match_parent&#34;
+        android:layout_below=&#34;@+id/my_toolbar&#34;
+        android:fitsSystemWindows=&#34;true&#34;&gt;
+
+        &lt;!-- Ваш контент --&gt;
+        &lt;include layout=&#34;@layout/include_main_content&#34;&gt;&lt;/include&gt;
+
+        &lt;android.support.design.widget.NavigationView
+            android:id=&#34;@+id/navigation&#34;
+            android:layout_width=&#34;wrap_content&#34;
+            android:layout_height=&#34;match_parent&#34;
+            android:layout_gravity=&#34;start&#34;
+            android:onClick=&#34;toast&#34;
+            app:menu=&#34;@menu/my_navigation_menu&#34;
+            app:theme=&#34;@style/NavigationDrawerStyle&#34; /&gt;
+    &lt;/android.support.v4.widget.DrawerLayout&gt;
+&lt;/RelativeLayout&gt;</pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">//include_main_content.xml 
+
+&lt;android.support.design.widget.CoordinatorLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34;
+    xmlns:app=&#34;http://schemas.android.com/apk/res-auto&#34;
+    android:id=&#34;@+id/main_content&#34;
+    android:layout_width=&#34;match_parent&#34;
+    android:layout_height=&#34;match_parent&#34;&gt;
+
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id=&#34;@+id/rvAlbums&#34;
+        android:layout_width=&#34;match_parent&#34;
+        android:layout_height=&#34;match_parent&#34;
+        android:clipToPadding=&#34;false&#34; /&gt;
+
+    &lt;android.support.design.widget.FloatingActionButton
+        android:id=&#34;@+id/fab_camera&#34;
+        android:layout_width=&#34;wrap_content&#34;
+        android:layout_height=&#34;wrap_content&#34;
+        android:layout_gravity=&#34;bottom|right&#34;
+        android:layout_margin=&#34;16dp&#34;
+        android:src=&#34;@drawable/ic_photo_camera_white_24dp&#34;
+        app:layout_anchor=&#34;@id/rvAlbums&#34;
+        app:layout_anchorGravity=&#34;bottom|right|end&#34;
+        app:layout_behavior=&#34;com.title_apps.canalpic.util.ScrollAwareFABBehavior&#34; /&gt;
+
+&lt;/android.support.design.widget.CoordinatorLayout&gt;
+
+    </pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    //MainActivity.kt
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    
+        savedState = savedInstanceState
+    
+        if (savedState != null)
+            folder_name = savedInstanceState!!.getString(&#34;folder_name&#34;)
+    
+        setSupportActionBar(my_toolbar)
+        // Включим кнопку &#34;Вверх&#34; (Up button)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(resources.getDrawable(R.drawable.ic_menu_white_24dp))
+    
+        setupNavigationView()
+    
+        var extra = intent.extras;
+        if (extra != null) {
+            var extraData = extra.get(&#34;image_url_data&#34;) as ArrayList
+            select_fragment(extraData)
+        }
+    
+        drawer_layout_listener()
+        supportActionBar!!.setTitle(&#34;Folders&#34;)
+    }
+    </pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    // в этом методе мы посылаем имя папки, по которой кликнул пользователь. К примеру, если пользователь
+    // нажал на папку downloads из общего списка папок нашего приложения, мы передадим это 
+    // имя папки следующей activity, которая загрузит и выведет на экран все изображения из этой папки.
+    
+    override fun onItemClick(position: String, isVideo: Boolean) {
+    
+        var bundle = Bundle()
+        bundle.putString(&#34;folder_name&#34;, position)
+            var intent = Intent(this, AlbumActivity::class.java)
+            intent.putExtra(&#34;folder_name&#34;, position)
+            startActivity(intent)
+    }</pre></div>
+<h3 id="инициализируем-glide-и-настраиваем-recyclerview-для-вывода-изображений">Инициализируем Glide и настраиваем RecyclerView для вывода изображений.</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">private var folder_name: String = &#34;&#34;
+
+public fun select_fragment(imagesList: ArrayList) {
+
+    val options = RequestOptions()
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(160, 160).skipMemoryCache(true).error(R.drawable.ic_image_unavailable)
+    val glide = Glide.with(this)
+
+    val builder = glide.asBitmap()
+    rvAlbums?.layoutManager = GridLayoutManager(this, 2)
+
+    rvAlbums?.setHasFixedSize(true)
+
+    // AlbumFoldersAdapter.kt это класс адаптера RecyclerView.
+    rvAlbums?.adapter = AlbumFoldersAdapter(imagesList, this, options, builder, glide, this)
+
+
+    rvAlbums?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+        }
+
+        override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            when (newState) {
+                RecyclerView.SCROLL_STATE_IDLE -&gt; glide.resumeRequests()
+                AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL, AbsListView.OnScrollListener.SCROLL_STATE_FLING -&gt; glide.pauseRequests()
+            }
+        }
+    }
+    )
+
+    fab_camera?.setOnClickListener(object : View.OnClickListener {
+        override fun onClick(p0: View?) {
+            launchCamera()
+        }
+    }
+    )
+}</pre></div>
+<h3 id="слушатели-для-navigationview-и-drawerlayout">Слушатели для NavigationView и drawerLayout</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// слушатель клика для drawer layout.
+private fun drawer_layout_listener() {
+
+    drawer_layout.addDrawerListener(object : DrawerLayout.DrawerListener {
+        override fun onDrawerStateChanged(newState: Int) {
+        }
+
+        override fun onDrawerSlide(drawerView: View?, slideOffset: Float) {
+        }
+
+        override fun onDrawerClosed(drawerView: View?) {
+            supportActionBar!!.setHomeAsUpIndicator(resources.getDrawable(R.drawable.ic_menu_white_24dp))
+        }
+
+        override fun onDrawerOpened(drawerView: View?) {
+            supportActionBar!!.setHomeAsUpIndicator(resources.getDrawable(R.drawable.ic_keyboard_backspace_white_24dp))
+        }
+    }
+    )
+}
+
+// слушатель клика для элементов Navigation.
+private fun setupNavigationView() {
+
+    navigation.setNavigationItemSelectedListener(object : NavigationView.OnNavigationItemSelectedListener {
+        override fun onNavigationItemSelected(item: MenuItem): Boolean {
+            drawer_layout.closeDrawer(Gravity.START)
+            when (item.itemId) {
+                R.id.nav_all_folders -&gt; {
+                                 }
+                R.id.nav_hidden_folders -&gt; {
+                                 }
+            }
+            return false
+        }
+    })
+}</pre></div>
+<p>Добавим код в AlbumsFolderAdapter.kt для RecyclerView</p>
+
+<h3 id="создаём-файлы-разметки-для-адаптера-recyclerview-из-mainactivity">Создаём файлы разметки для адаптера RecyclerView из MainActivity</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// list_layout.xml
+// layout file for RecyclerView adapter.
+
+&lt;LinearLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34;
+    xmlns:card_view=&#34;http://schemas.android.com/apk/res-auto&#34;
+    android:layout_width=&#34;match_parent&#34;
+    android:layout_height=&#34;wrap_content&#34;&gt;
+
+    &lt;android.support.v7.widget.CardView
+        android:id=&#34;@+id/card_view&#34;
+        android:layout_width=&#34;wrap_content&#34;
+        android:layout_height=&#34;wrap_content&#34;
+        android:layout_gravity=&#34;center&#34;
+        android:layout_margin=&#34;@dimen/five_dp&#34;
+        android:elevation=&#34;3dp&#34;
+        card_view:cardCornerRadius=&#34;@dimen/zero_dp&#34;&gt;
+
+        &lt;RelativeLayout
+            android:layout_width=&#34;wrap_content&#34;
+            android:layout_height=&#34;match_parent&#34;
+            android:background=&#34;?attr/selectableItemBackgroundBorderless&#34;&gt;
+
+            &lt;ImageView
+                android:id=&#34;@+id/thumbnail&#34;
+                android:layout_width=&#34;match_parent&#34;
+                android:layout_height=&#34;@dimen/album_cover_height&#34;
+                android:scaleType=&#34;centerCrop&#34; /&gt;
+
+            &lt;TextView
+                android:id=&#34;@+id/title&#34;
+                android:layout_width=&#34;wrap_content&#34;
+                android:layout_height=&#34;wrap_content&#34;
+                android:layout_below=&#34;@id/thumbnail&#34;
+                android:paddingLeft=&#34;@dimen/ten_dp&#34;
+                android:paddingRight=&#34;@dimen/ten_dp&#34;
+                android:paddingTop=&#34;@dimen/ten_dp&#34;
+                android:text=&#34;Camera&#34;
+                android:textColor=&#34;@color/colorPrimaryText&#34;
+                android:textSize=&#34;@dimen/fifteen_dp&#34; /&gt;
+
+            &lt;RelativeLayout
+                android:layout_width=&#34;wrap_content&#34;
+                android:layout_height=&#34;wrap_content&#34;
+                android:layout_below=&#34;@id/title&#34;&gt;
+
+                &lt;TextView
+                    android:id=&#34;@+id/photoCount&#34;
+                    android:layout_width=&#34;wrap_content&#34;
+                    android:layout_height=&#34;wrap_content&#34;
+                    android:paddingBottom=&#34;@dimen/five_dp&#34;
+                    android:paddingLeft=&#34;@dimen/ten_dp&#34;
+                    android:paddingRight=&#34;@dimen/six_dp&#34;
+                    android:textColor=&#34;@color/colorSecondaryText&#34;
+                    android:textSize=&#34;@dimen/twelve_dp&#34; /&gt;
+            &lt;/RelativeLayout&gt;
+        &lt;/RelativeLayout&gt;
+    &lt;/android.support.v7.widget.CardView&gt;
+&lt;/LinearLayout&gt;</pre></div>
+<p>Создадим ещё класс, назовём файл с ним AlbumFoldersAdapter.kt — это будет адаптер для RecyclerView.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    class AlbumFoldersAdapter(val albumList: ArrayList, val context: Context, val options: RequestOptions, val glide: RequestBuilder, val glideMain: RequestManager, val inOnItemClick: IOnItemClick) : RecyclerView.Adapter() {
+    
+     override fun onViewRecycled(holder: ViewHolder?) {
+     if (holder != null) {
+     //glideMain.clear(holder.itemView.thumbnail)
+     // glide.clear(holder.itemView.thumbnail)
+     //Glide.get(context).clearMemory()
+     // holder?.itemView?.thumbnail?.setImageBitmap(null)
+     }// Glide.clear(holder?.itemView?.thumbnail)
+     super.onViewRecycled(holder)
+    
+    }
+    
+    override fun onViewDetachedFromWindow(holder: ViewHolder) {
+     if (holder != null) {
+     // glideMain.clear(holder.itemView.thumbnail)
+     //Glide.get(context).clearMemory()
+     // holder?.itemView?.thumbnail?.setImageBitmap(null)
+     
+    }
+    
+    super.onViewDetachedFromWindow(holder)
+     }
+    
+    override fun getItemCount(): Int {
+     return albumList.size
+     }
+    
+    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+     holder?.bindItems(albumList.get(position), glide, options, inOnItemClick, albumList.get(position).isVideo)
+    
+    holder?.itemView?.title?.setText(albumList.get(position).folderNames)
+     if (albumList.get(position).isVideo)
+     holder?.itemView?.photoCount?.setText(&#34;&#34; + albumList.get(position).imgCount + &#34; videos&#34;)
+     else
+     holder?.itemView?.photoCount?.setText(&#34;&#34; + albumList.get(position).imgCount + &#34; photos&#34;)
+     }
+    
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+     val v = LayoutInflater.from(parent.context).inflate(R.layout.list_layout, parent, false)
+     return ViewHolder(v)
+     }
+    
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    
+    fun bindItems(albumList: Albums, glide: RequestBuilder, options: RequestOptions, inOnItemClick: IOnItemClick, isVideo: Boolean) {
+     glide.load(albumList.imagePath).apply { options }.thumbnail(0.4f)
+     .into(itemView.thumbnail)
+    
+    itemView.setOnClickListener(object : View.OnClickListener {
+     override fun onClick(p0: View?) {
+     inOnItemClick.onItemClick(albumList.folderNames, isVideo)
+         }
+      })
+    }}}</pre></div>
+<h3 id="добавим-interface-для-обработки-клика-в-recyclerview">Добавим Interface для обработки клика в RecyclerView</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    interface IOnItemClick {
+        fun onItemClick(position: String, isVideo: Boolean)
+    }</pre></div>
+<p>Итак, мы реализовали вывод всех папок с изображениями и самих изображений выбранной папки в recyclerView.</p>
+
+<p>Также мы создали код для RecyclerView Adapter и использовали библиотеку Glide для загрузки изображений в него.</p>
+
+<h3 id="создадим-новую-activity-albumsactivity-kt-ответственную-за-вывод-изображений-выбранной-папки-в-recyclerview">Создадим новую Activity AlbumsActivity.kt, ответственную за вывод изображений выбранной папки в RecyclerView.</h3>
+
+<p>Создадим файл разметки для AlbumsActivity.kt</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// activity_album.xml
+
+&lt;android.support.design.widget.CoordinatorLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34;
+    xmlns:app=&#34;http://schemas.android.com/apk/res-auto&#34;
+    android:id=&#34;@+id/main_content&#34;
+    android:layout_width=&#34;match_parent&#34;
+    android:layout_height=&#34;match_parent&#34;&gt;
+
+    &lt;android.support.v7.widget.Toolbar
+        android:id=&#34;@+id/my_album_toolbar&#34;
+        android:layout_width=&#34;match_parent&#34;
+        android:layout_height=&#34;?attr/actionBarSize&#34;
+        android:background=&#34;?attr/colorPrimary&#34;
+        android:elevation=&#34;4dp&#34;
+        app:titleTextColor=&#34;@color/colorIcons&#34; /&gt;
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id=&#34;@+id/rvAlbumSelected&#34;
+        android:layout_width=&#34;match_parent&#34;
+        android:layout_height=&#34;match_parent&#34;
+        android:layout_marginTop=&#34;?attr/actionBarSize&#34;
+        android:clipToPadding=&#34;false&#34; /&gt;
+
+&lt;/android.support.design.widget.CoordinatorLayout&gt;</pre></div>
+<h3 id="albumsactivity-kt">AlbumsActivity.kt</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_album)
+    
+        setSupportActionBar(my_album_toolbar)
+        // Включим кнопку &#34;Вверх&#34;
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+    
+        val folder_name = intent.getStringExtra(&#34;folder_name&#34;)
+        supportActionBar!!.setTitle(&#34;&#34; + folder_name)
+        val isVideo = intent.getBooleanExtra(&#34;isVideo&#34;, false)
+        init_ui_views(folder_name, isVideo)
+    
+    }
+    </pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    var adapter: SingleAlbumAdapter? = null
+    
+    private fun init_ui_views(folderName: String?, isVideo: Boolean?) {
+    
+        val options = RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE).override(160, 160).skipMemoryCache(true).error(R.drawable.ic_image_unavailable)
+        val glide = Glide.with(this)
+        val builder = glide.asBitmap()
+    
+            rvAlbumSelected.layoutManager = GridLayoutManager(this, 2)
+        rvAlbumSelected?.setHasFixedSize(true)
+        adapter = SingleAlbumAdapter(getAllShownImagesPath(this, folderName, isVideo), this, options, builder, glide, this)
+        rvAlbumSelected?.adapter = adapter
+    
+        rvAlbumSelected?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+            }
+    
+            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                when (newState) {
+                    RecyclerView.SCROLL_STATE_IDLE -&gt; glide.resumeRequests()
+                    AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL, AbsListView.OnScrollListener.SCROLL_STATE_FLING -&gt; glide.pauseRequests()
+                }
+            }
+        }
+        )
+    }
+    
+    // Читаем все пути до изображений в выбранной папке.
+    
+    private fun getAllShownImagesPath(activity: Activity, folderName: String?, isVideo: Boolean?): MutableList {
+    
+        val uri: Uri
+        val cursorBucket: Cursor
+        val column_index_data: Int
+        val listOfAllImages = ArrayList()
+        var absolutePathOfImage: String? = null
+    
+        val selectionArgs = arrayOf(&#34;%&#34; + folderName + &#34;%&#34;)
+    
+        uri = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        val selection = MediaStore.Images.Media.DATA + &#34; like ? &#34;
+    
+        val projectionOnlyBucket = arrayOf(MediaStore.MediaColumns.DATA, MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
+    
+        cursorBucket = activity.contentResolver.query(uri, projectionOnlyBucket, selection, selectionArgs, null)
+    
+        column_index_data = cursorBucket.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
+    
+        while (cursorBucket.moveToNext()) {
+            absolutePathOfImage = cursorBucket.getString(column_index_data)
+            if (absolutePathOfImage != &#34;&#34; &amp;&amp; absolutePathOfImage != null)
+                listOfAllImages.add(absolutePathOfImage)
+        }
+        return listOfAllImages.asReversed()
+    }</pre></div>
+<h3 id="слушатель-клика-для-album-activity">Слушатель клика для Album Activity</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">override fun onItemClick(position: String, isVideo: Boolean) {
+    val intent = Intent(this, PhotoActivity::class.java)
+    intent.putExtra(&#34;folder_name&#34;, position)
+    startActivity(intent)
+}</pre></div>
+<h3 id="recyclerview-adapter-для-albumactivity-kt">RecyclerView adapter для AlbumActivity.kt</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">class SingleAlbumAdapter(val albumList: MutableList, val context: Context, val options: RequestOptions, val glide: RequestBuilder, val glideMain: RequestManager, val inOnItemClick: IOnItemClick) : RecyclerView.Adapter() {
+
+
+    override fun onViewRecycled(holder: ViewHolder?) {
+        if (holder != null) {
+        }
+        super.onViewRecycled(holder)
+    }
+
+    override fun onViewDetachedFromWindow(holder: ViewHolder) {
+        if (holder != null) {
+
+        }
+        super.onViewDetachedFromWindow(holder)
+    }
+
+    override fun getItemCount(): Int {
+        return albumList.size
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+        holder?.bindItems(albumList.get(position), glide, options, inOnItemClick)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.list_single_album_layout, parent, false)
+        return ViewHolder(v)
+    }
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bindItems(albumList: String, glide: RequestBuilder, options: RequestOptions, inOnItemClick: IOnItemClick) {
+
+            glide.load(albumList).apply { options }.thumbnail(0.4f)
+                    .into(itemView.thumbnail)
+
+            itemView.setOnClickListener(object : View.OnClickListener {
+                override fun onClick(p0: View?) {
+                    inOnItemClick.onItemClick(albumList, false)
+                }
+            })
+        }
+    }
+}</pre></div>
+<h3 id="файл-разметки-для-single-album-adapter">Файл разметки для Single Album Adapter</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;LinearLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34;
+    xmlns:card_view=&#34;http://schemas.android.com/apk/res-auto&#34;
+    android:layout_width=&#34;match_parent&#34;
+    android:layout_height=&#34;wrap_content&#34;&gt;
+
+    &lt;android.support.v7.widget.CardView
+        android:id=&#34;@+id/card_view&#34;
+        android:layout_width=&#34;wrap_content&#34;
+        android:layout_height=&#34;wrap_content&#34;
+        android:layout_gravity=&#34;center&#34;
+        android:layout_margin=&#34;@dimen/five_dp&#34;
+        android:elevation=&#34;3dp&#34;
+        card_view:cardCornerRadius=&#34;@dimen/zero_dp&#34;&gt;
+
+        &lt;RelativeLayout
+            android:layout_width=&#34;wrap_content&#34;
+            android:layout_height=&#34;match_parent&#34;
+            android:background=&#34;?attr/selectableItemBackgroundBorderless&#34;&gt;
+
+            &lt;ImageView
+                android:id=&#34;@+id/thumbnail&#34;
+                android:layout_width=&#34;@dimen/album_cover_height&#34;
+                android:layout_height=&#34;@dimen/album_cover_height&#34;
+                android:scaleType=&#34;centerCrop&#34; /&gt;
+        &lt;/RelativeLayout&gt;
+    &lt;/android.support.v7.widget.CardView&gt;
+&lt;/LinearLayout&gt;</pre></div>
+<h3 id="теперь-добавим-detail-activity-выводящую-единственное-изображение">Теперь добавим Detail Activity, выводящую единственное изображение</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    
+    // SingleActivity.kt
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_photo)
+    
+        setSupportActionBar(toolbar)
+        // Enable the Up button
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+    
+        val folder_name = intent.getStringExtra(&#34;folder_name&#34;)
+        Glide.with(this).load(folder_name).into(imageFullScreenView)
+    
+        Handler().postDelayed(Runnable
+        {
+            if (supportActionBar != null)
+                appbar.animate().translationY(-appbar.bottom.toFloat()).setInterpolator(AccelerateInterpolator()).start()
+            isAppBarShown = false
+        }, 1500)
+    
+    }
+    </pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// activity_photo.xml
+
+
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;android.support.design.widget.CoordinatorLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34;
+    xmlns:app=&#34;http://schemas.android.com/apk/res-auto&#34;
+    xmlns:tools=&#34;http://schemas.android.com/tools&#34;
+    android:layout_width=&#34;match_parent&#34;
+    android:layout_height=&#34;match_parent&#34;
+    android:background=&#34;@android:color/black&#34;
+    tools:context=&#34;com.title_apps.canalpic.screens.detail.PhotoActivity&#34;&gt;
+
+    &lt;android.support.design.widget.AppBarLayout
+        android:id=&#34;@+id/appbar&#34;
+        android:layout_width=&#34;match_parent&#34;
+        android:layout_height=&#34;wrap_content&#34;
+        android:background=&#34;#93000000&#34;&gt;
+
+        &lt;android.support.v7.widget.Toolbar
+            android:id=&#34;@+id/toolbar&#34;
+            android:layout_width=&#34;match_parent&#34;
+            android:layout_height=&#34;?attr/actionBarSize&#34;
+            android:elevation=&#34;4dp&#34;
+            app:titleTextColor=&#34;@color/colorIcons&#34; /&gt;
+    &lt;/android.support.design.widget.AppBarLayout&gt;
+
+
+    &lt;ImageView
+        android:id=&#34;@+id/imageFullScreenView&#34;
+        android:layout_width=&#34;wrap_content&#34;
+        android:layout_height=&#34;wrap_content&#34;
+        android:layout_gravity=&#34;center&#34; /&gt;
+
+&lt;/android.support.design.widget.CoordinatorLayout&gt;</pre></div>
+<h3 id="резюмируя">Резюмируя</h3>
+
+<p>Сегодня мы рассмотрели полный пример реализации приложения — галереи изображений под Android, а также освоили синтаксис Kotlin, классы данных, библиотеку Glide, RecyclerView и его адаптер, NavigationView, Drawer Layout и реализацию слушателей для них на Kotlin.</p>
+
+<p>По материалам <a href="http://developine.com/develop-android-image-gallery-app-kotlin-with-source-code/?utm_source=Android+Weekly&amp;utm_campaign=3bfb7e3406-androidweekly-288&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-3bfb7e3406-338185001">«How to Develop Android Image Gallery App in Kotlin Tutorial with Complete Source Code»</a></p>
+
+      </div>
+
+      <footer>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fokusovcom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </footer>
+    </article>
+
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']],
+        processEscapes: true,
+        processEnvironments: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    MathJax.Hub.Queue(function() {
+      
+      
+      
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2018    ·  Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>. 
+  </section>
+</footer>
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-54274841-9', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  </body>
+
+</html>

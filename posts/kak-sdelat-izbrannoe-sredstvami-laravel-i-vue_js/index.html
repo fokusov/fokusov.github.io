@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Игорь Фокусов">
+    <meta name="description" content="Услуги профессионального программиста 1с в Череповце. тел. &#43;7 921 548-69-50">
+    <meta name="keywords" content="1с предприятие, услуги 1с, программист 1с, 1с8, 1с83, сопровождение 1с, поддержка 1с, программист череповец, 1с программист, 1с программист череповец, стоимость услуг 1с, специалист 1с, программист 1с удаленно">
+
+    <base href="http://fokusov.com/">
+    <title>
+  Как сделать &#34;Избранное&#34; средствами Laravel и Vue.js · Фокусов Игорь
+</title>
+
+    <link rel="canonical" href="http://fokusov.com/posts/kak-sdelat-izbrannoe-sredstvami-laravel-i-vue_js/">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:300,700|Source+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="http://fokusov.com/css/coder.min.578f8fce262e4c448c239b69661084c57507b89d51b8d04de15cd1d8f8135600.css" integrity="sha256-V4&#43;PziYuTESMI5tpZhCExXUHuJ1RuNBN4VzR2PgTVgA=" media="screen">
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-16x16.png" sizes="16x16">
+
+    
+
+    <meta name="generator" content="Hugo 0.49" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="http://fokusov.com/">
+      Фокусов Игорь
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/about/">Обо мне</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/projects/">1С</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/android/">Android</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/contacts/">Контакты</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/posts/">Блог</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <h1 class="title">Как сделать &#34;Избранное&#34; средствами Laravel и Vue.js</h1>
+        <h2 class="date">March 8, 2017</h2>
+      </header>
+
+      <div>
+        
+
+<p><img src="img/x8d43c44b6d.jpg.pagespeed.ic.hMEwBRF9Rq.jpg" alt="Разработка: Как сделать Избранное средствами Laravel и Vue.js" /></p>
+
+<p>В наше время большинство сайтов используют функционал избранного/лайков/рекомендаций. В том числе такие крупные ресурсы, как Medium, Facebook, Вконтакте и т.д.</p>
+
+<p>Мы рассмотрим как реализовать такой функционал с Vue.js в приложении Laravel. Это приложение будет типа персонального блога, в нём будут пользователи и статьи. Пользователи смогут создавать статьи и добавлять их в избранное. А также пользователи смогут видеть полный список избранных статей.</p>
+
+<p>В приложении будут модель User (Пользователь) и модель Post (Статья), в нём будет система авторизации, которая позволит добавлять статьи в Избранное (и удалять из него) только авторизованным пользователям. Мы сделаем динамическую пометку в избранное средствами VueJs и Axios, т.е. без перезагрузки страницы.</p>
+
+<p>Перед началом работы посмотрите как это будет выглядеть:</p>
+
+<p><img src="https://cdn.scotch.io/1965/LxHBEWRzSIyhY3j9FP06_ezgif.com-optimize%20(1).gif" alt="Разработка: Как сделать Избранное средствами Laravel и Vue.js" /></p>
+
+<p>Итак, приступим.</p>
+
+<p>Мы начнём с создания нового проекта Laravel:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">laravel new laravel-vue-favorite</pre></div>
+<p>В результате будет создан проект с именем «laravel-vue-favorite»</p>
+
+<p>С Laravel идут дополнительные библиотеки, такие как Bootstrap, VueJs и Axios, однако нужно их установить с помощью npm:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">npm install</pre></div>
+<p>Также эта команда установит Laravel Mix, с помощью которого мы будем компилировать и собирать наши CSS и JavaScript.</p>
+
+<h5 id="модели-миграции">Модели, миграции</h5>
+
+<p>Итак, нам необходима модель User (она идёт с Laravel), модель Post и модель Favorite, а также файлы миграции для них.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">php artisan make:model Post -m
+php artisan make:model Favorite -m</pre></div>
+<p>Эти команды создадут нужные нам модели вместе с миграциями. Откроем файл миграции таблицы posts и обновим метод up():</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/**
+ * Define posts table schema
+ */
+public function up()
+{
+    Schema::create(&#39;posts&#39;, function (Blueprint $table) {
+        $table-&gt;increments(&#39;id&#39;);
+        $table-&gt;integer(&#39;user_id&#39;)-&gt;unsigned();
+        $table-&gt;string(&#39;title&#39;);
+        $table-&gt;text(&#39;body&#39;);
+        $table-&gt;timestamps();
+    });
+}</pre></div>
+<p>Таблица posts будет содержать id, user_id (ID пользователя, создавшего статью), title, body и колонки с отметками времени.</p>
+
+<p>Теперь откроем файл миграций таблицы favorites и обновим up():</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/**
+ * Define favorites table schema
+ */
+public function up()
+{
+    Schema::create(&#39;favorites&#39;, function (Blueprint $table) {
+        $table-&gt;increments(&#39;id&#39;);
+        $table-&gt;integer(&#39;user_id&#39;)-&gt;unsigned();
+        $table-&gt;integer(&#39;post_id&#39;)-&gt;unsigned();
+        $table-&gt;timestamps();
+    });
+}</pre></div>
+<p>Таблица favorites будет сводной. В ней будет две колонки:<br />
+user_id, в которой будет храниться ID пользователя, добавившего статью в избранное и post_id, в которой будет ID отмеченной статьи.</p>
+
+<p>Файл миграции таблицы users оставим без изменений.</p>
+
+<p>Перед запуском миграций настроим базу данных. Для этого добавим соответствующие настройки в файл .env:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">DB_DATABASE=laravue
+DB_USERNAME=root
+DB_PASSWORD=root</pre></div>
+<p>Здесь нужно указать свои параметры базы.</p>
+
+<p>Теперь запустим миграции:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">php artisan migrate</pre></div>
+<p>Для тестирования работы приложения нам необходимо внести в него какие-либо данные. Для их генерации воспользуемся Laravel Model Factories, они же в свою очередь используют Faker PHP library.</p>
+
+<p>Сгенерируем данные по Пользователям и Статьям. Добавим немного кода в конец файла database/factories/ModelFactory.php:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// database/factories/ModelFactory.php
+
+$factory-&gt;define(App\Post::class, function (Faker\Generator $faker) {
+    // Get a random user
+    $user = \App\User::inRandomOrder()-&gt;first();
+
+    // generate fake data for post
+    return [
+        &#39;user_id&#39; =&gt; $user-&gt;id,
+        &#39;title&#39; =&gt; $faker-&gt;sentence,
+        &#39;body&#39; =&gt; $faker-&gt;text,
+    ];
+});</pre></div>
+<p>После этого перейдём к созданию классов заполнения базы:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">php artisan make:seeder UsersTableSeeder
+php artisan make:seeder PostsTableSeeder</pre></div>
+<p>Теперь откроем database/seeds/UsersTableSeeder.php и обновим метод run():</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// database/seeds/UsersTableSeeder.php
+
+/**
+ * Run the database seeds to create users.
+ *
+ * @return void
+ */
+public function run()
+{
+    factory(App\User::class, 5)-&gt;create();
+}</pre></div>
+<p>В результате будут созданы 5 различных пользователей. Сделаем то же самое со статьями. Откроем database/seeds/PostsTableSeeder.php и обновим run():</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// database/seeds/PostsTableSeeder.php
+
+/**
+ * Run the database seeds to create posts.
+ *
+ * @return void
+ */
+public function run()
+{
+    factory(App\Post::class, 10)-&gt;create();
+}</pre></div>
+<p>В результате будут созданы 10 различных статей по окончании работы скрипта.</p>
+
+<p>Перед запуском генераторов данных обновим файл database/seeds/DatabaseSeeder.php:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// database/seeds/DatabaseSeeder.php
+
+/**
+ * Run the database seeds.
+ *
+ * @return void
+ */
+public function run()
+{
+    $this-&gt;call(UsersTableSeeder::class);
+    $this-&gt;call(PostsTableSeeder::class);
+}</pre></div>
+<p>И запустим генерацию данных:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">php artisan db:seed</pre></div>
+<p>Готово.</p>
+
+<h5 id="авторизация">Авторизация</h5>
+
+<p>К счастью, в Laravel уже есть встроенная система авторизации. Нужно только запустить соответствующего мастера:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">php artisan make:auth</pre></div>
+<p>Будут созданы необходимые роуты и представления для авторизации и нам остаётся только зарегистрироваться в системе.</p>
+
+<h5 id="роуты">Роуты</h5>
+
+<p>Откроем файл routes/web.php и изменим маршруты:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// routes/web.php
+
+Auth::routes();
+
+Route::get(&#39;/&#39;, &#39;PostsController@index&#39;);
+
+Route::post(&#39;favorite/{post}&#39;, &#39;PostsController@favoritePost&#39;);
+Route::post(&#39;unfavorite/{post}&#39;, &#39;PostsController@unFavoritePost&#39;);
+
+Route::get(&#39;my_favorites&#39;, &#39;UsersController@myFavorites&#39;)-&gt;middleware(&#39;auth&#39;);</pre></div>
+<p>После регистрации или авторизации пользователя Laravel перенаправит его на роут /home по-умолчанию. Мы удалили роут /home, созданный при запуске make:auth и поэтому нужно обновить свойство redirectTo в обоих файлах app/Http/Controllers/Auth/LoginController.php и app/Http/Controllers/Auth/RegisterController.php на:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">protected $redirectTo = &#39;/&#39;;</pre></div>
+<h5 id="отношения-пользователь-избранное">Отношения Пользователь-Избранное</h5>
+
+<p>Пользователь может добавить много статей в избранное, а статья может быть добавлена в избранное многими пользователями, поэтому отношения между этими таблицами будут многие-ко-многим. Для этого откроем модель User и добавим favorites():</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// app/User.php
+
+/**
+ * Get all of favorite posts for the user.
+ */
+public function favorites()
+{
+    return $this-&gt;belongsToMany(Post::class, &#39;favorites&#39;, &#39;user_id&#39;, &#39;post_id&#39;)-&gt;withTimeStamps();
+}</pre></div>
+<p>Laravel считает сводной таблицей post_user, но так как мы её переименовали (в favorites), нам нужно передать дополнительные параметры. Вторым параметром идёт имя сводной таблицы. Третьим &mdash; внешний ключ (user_id) модели, с которой создаётся связь (User), а четвёртым &mdash; внешний ключ (post_id) модели, к которой мы присоединяем (Post).</p>
+
+<p>Обратите внимание, мы связали withTimeStamps() с belongsToMany(). Это позволит колонкам сводной таблицы с отметками времени (create_at и updated_at) автоматически сработать при добавлении или обновлении строки.</p>
+
+<h5 id="контроллер-статей">Контроллер статей</h5>
+
+<p>Создадим новый контроллер, в котором будут функции вывода статей, пометки в избранное и удаление такой отметки.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">php artisan make:controller PostsController</pre></div>
+<p>Откроем app/Http/Controllers/PostsController.php и добавим в конец такой код:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// app/Http/Controllers/PostsController.php
+
+// remember to use the Post model
+use App\Post;
+
+/**
+ * Display a paginated list of posts.
+ *
+ * @return Response
+ */
+public function index()
+{
+    $posts = Post::paginate(5);
+
+    return view(&#39;posts.index&#39;, compact(&#39;posts&#39;));
+}</pre></div>
+<p>Метод index() вернёт все статьи и разделит их по 5 на странице, а затем обработает файл представления (который мы создадим) со всеми статьями.</p>
+
+<p>Добавим в файл resources/views/layouts/app.blade.php (пониже ) такой код:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// resources/views/layouts/app.blade.php
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css&#34; /&gt;</pre></div>
+<p>А затем это перед элементом списка Logout:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// resources/views/layouts/app.blade.php
+
+&lt;li&gt;
+    &lt;a href=&#34;{{ url(&#39;my_favorites&#39;) }}&#34;&gt;My Favorites&lt;/a&gt;
+&lt;/li&gt;</pre></div>
+<p>Теперь создадим представление index. Создайте папку posts внутри views и в ней файл index.blade.php. Получится resources/views/posts/index.blade.php:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// resources/views/posts/index.blade.php
+
+@extends(&#39;layouts.app&#39;)
+
+@section(&#39;content&#39;)
+&lt;div class=&#34;container&#34;&gt;
+    &lt;div class=&#34;row&#34;&gt;
+        &lt;div class=&#34;col-md-8 col-md-offset-2&#34;&gt;
+            &lt;div class=&#34;page-header&#34;&gt;
+                &lt;h3&gt;All Posts&lt;/h3&gt;
+            &lt;/div&gt;
+            @forelse ($posts as $post)
+                &lt;div class=&#34;panel panel-default&#34;&gt;
+                    &lt;div class=&#34;panel-heading&#34;&gt;
+                        {{ $post-&gt;title }}
+                    &lt;/div&gt;
+
+                    &lt;div class=&#34;panel-body&#34;&gt;
+                        {{ $post-&gt;body }}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            @empty
+                &lt;p&gt;No post created.&lt;/p&gt;
+            @endforelse
+
+            {{ $posts-&gt;links() }}
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+@endsection</pre></div>
+<p>Откройте браузер и увидите такую страничку:</p>
+
+<p><img src="img/xf7e0763e8d.png.pagespeed.ic.f8yPAv6EjV.png" alt="Разработка: Как сделать Избранное средствами Laravel и Vue.js" /></p>
+
+<p>Вернёмся к PostsController и добавим недостающие методы:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// app/Http/Controllers/PostsController.php
+
+// remember to use
+use Illuminate\Support\Facades\Auth;
+
+/**
+ * Favorite a particular post
+ *
+ * @param  Post $post
+ * @return Response
+ */
+public function favoritePost(Post $post)
+{
+    Auth::user()-&gt;favorites()-&gt;attach($post-&gt;id);
+
+    return back();
+}
+
+/**
+ * Unfavorite a particular post
+ *
+ * @param  Post $post
+ * @return Response
+ */
+public function unFavoritePost(Post $post)
+{
+    Auth::user()-&gt;favorites()-&gt;detach($post-&gt;id);
+
+    return back();
+}</pre></div>
+<h5 id="добавляем-vuejs">Добавляем VueJs</h5>
+
+<p>С помощью Vue мы сделаем кнопку Избранного. По нажатию на неё, статья добавиться в избранное (или удалится из избранного) без перезагрузки страницы, используя AJAX. Здесь нам пригодится Axios &mdash; основанный на Promise HTTP-клиент для браузера и node.js.</p>
+
+<p>Создадим компонент Vue, для этого создайте файл Favorite.vue в папке resources/assets/js/components с таким содержимым:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// resources/assets/js/components/Favorite.vue
+
+&lt;template&gt;
+    &lt;span&gt;
+        &lt;a href=&#34;#&#34; v-if=&#34;isFavorited&#34; @click.prevent=&#34;unFavorite(post)&#34;&gt;
+            &lt;i  class=&#34;fa fa-heart&#34;&gt;&lt;/i&gt;
+        &lt;/a&gt;
+        &lt;a href=&#34;#&#34; v-else @click.prevent=&#34;favorite(post)&#34;&gt;
+            &lt;i  class=&#34;fa fa-heart-o&#34;&gt;&lt;/i&gt;
+        &lt;/a&gt;
+    &lt;/span&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        props: [&#39;post&#39;, &#39;favorited&#39;],
+
+        data: function() {
+            return {
+                isFavorited: &#39;&#39;,
+            }
+        },
+
+        mounted() {
+            this.isFavorited = this.isFavorite ? true : false;
+        },
+
+        computed: {
+            isFavorite() {
+                return this.favorited;
+            },
+        },
+
+        methods: {
+            favorite(post) {
+                axios.post(&#39;/favorite/&#39;+post)
+                    .then(response =&gt; this.isFavorited = true)
+                    .catch(response =&gt; console.log(response.data));
+            },
+
+            unFavorite(post) {
+                axios.post(&#39;/unfavorite/&#39;+post)
+                    .then(response =&gt; this.isFavorited = false)
+                    .catch(response =&gt; console.log(response.data));
+            }
+        }
+    }
+&lt;/script&gt;</pre></div>
+<p>В компоненте Favorite есть два раздела: template и script. В template мы задали разметку, которая будет обработана при вызове компонента. Мы используем обработку с условием, она нам должна вывести нужную кнопку. То есть если isFavorited равно true, кнопка должна быть отмечена как избранная и при нажатии вызвать unFavorite(). В противном случае она выглядит как не помеченная и вызывает при клике метод favorite().</p>
+
+<p>В разделе script мы задали свойства компонента &mdash; post (тут будет ID статьи) и favorited (true или false в зависимости от того, в каком он состоянии для текущего авторизованного пользователя). Также мы задали переменную isFavorited для условной обработки шаблона.</p>
+
+<p>При подключении компонента мы задаём значение isFavorited равным рассчитанному свойству isFavorite. То есть свойство isFavorite вернёт значение свойства favorited, которое может быть true или false.</p>
+
+<p>Также мы создали два метода: favorite() и unFavorite(), оба принимающие post как аргумент. С помощью Axios мы делаем POST-запрос к заданным ранее роутам. В favorite(), при успешном POST-запросе, мы задаём isFavorited в true, иначе выводим ошибку в консоль. То же самое и для unFavorite() &mdash; только меняем isFavorited на false.</p>
+
+<h5 id="регистрация-компонента">Регистрация компонента</h5>
+
+<p>Перед использованием компонента необходимо зарегистрировать его в экземпляре Vue. Открыв resources/assets/js/app.js вы увидите, что Laravel зарегистрировал компонент Example. Заменим его на наш Favorite:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// resources/assets/js/app.js
+
+Vue.component(&#39;favorite&#39;, require(&#39;./components/Favorite.vue&#39;));</pre></div>
+<p>Теперь скомпилируем и соберём наши стили и скрипты:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">npm run dev</pre></div>
+<p>Теперь можно использовать наш компонент. Откроем resources/views/posts/index.blade.php и добавим в конец (после закрывающего div в panel-body) такой код:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// resources/views/posts/index.blade.php
+
+@if (Auth::check())
+    &lt;div class=&#34;panel-footer&#34;&gt;
+        &lt;favorite
+            :post={{ $post-&gt;id }}
+            :favorited={{ $post-&gt;favorited() ? &#39;true&#39; : &#39;false&#39; }}
+        &gt;&lt;/favorite&gt;
+    &lt;/div&gt;
+@endif</pre></div>
+<p>Теперь кнопка добавления в избранное будет показана только авторизованным пользователям. А чтобы узнать, добавлена ли статья в избранное, нужен метод favorited(), который мы и создадим. Откройте app/Post.php и добавьте код:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// app/Post.php
+
+// remember to use
+use App\Favorite;
+use Illuminate\Support\Facades\Auth;
+
+/**
+ * Determine whether a post has been marked as favorite by a user.
+ *
+ * @return boolean
+ */
+public function favorited()
+{
+    return (bool) Favorite::where(&#39;user_id&#39;, Auth::id())
+                        -&gt;where(&#39;post_id&#39;, $this-&gt;id)
+                        -&gt;first();
+}</pre></div>
+<p>Здесь мы получаем и приводим к булеву первую строку запроса, где user_id это идентификатор текущего пользователя, а post_id это идентификатор статьи, с которой мы работаем сейчас.</p>
+
+<p>Теперь наше приложение будет выглядеть так:</p>
+
+<p><img src="img/x4889091451.png.pagespeed.ic.d-ERjzP7Y3.png" alt="Разработка: Как сделать Избранное средствами Laravel и Vue.js" /></p>
+
+<h5 id="вывод-избранного">Вывод избранного</h5>
+
+<p>Для вывода избранных статей мы создали ранее роут my_favorites, доступный только авторизованным пользователям.</p>
+
+<p>Создадим UsersController, обрабатывающий этот роут:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">php artisan make:controller UsersController</pre></div>
+<p>Теперь откроем app/Http/Controllers/UsersController.php и добавим код:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// app/Http/Controllers/UsersController.php
+
+// remember to use
+use Illuminate\Support\Facades\Auth;
+
+/**
+ * Get all favorite posts by user
+ *
+ * @return Response
+ */
+public function myFavorites()
+{
+    $myFavorites = Auth::user()-&gt;favorites;
+
+    return view(&#39;users.my_favorites&#39;, compact(&#39;myFavorites&#39;));
+}</pre></div>
+<p>Теперь создадим представление. Создайте папку users в resources/views, а в ней файл my_favorites.blade.php:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// resources/views/users/my_favorites.blade.php
+
+@extends(&#39;layouts.app&#39;)
+
+@section(&#39;content&#39;)
+&lt;div class=&#34;container&#34;&gt;
+    &lt;div class=&#34;row&#34;&gt;
+        &lt;div class=&#34;col-md-8 col-md-offset-2&#34;&gt;
+            &lt;div class=&#34;page-header&#34;&gt;
+                &lt;h3&gt;My Favorites&lt;/h3&gt;
+            &lt;/div&gt;
+            @forelse ($myFavorites as $myFavorite)
+                &lt;div class=&#34;panel panel-default&#34;&gt;
+                    &lt;div class=&#34;panel-heading&#34;&gt;
+                        {{ $myFavorite-&gt;title }}
+                    &lt;/div&gt;
+
+                    &lt;div class=&#34;panel-body&#34;&gt;
+                        {{ $myFavorite-&gt;body }}
+                    &lt;/div&gt;
+                    @if (Auth::check())
+                        &lt;div class=&#34;panel-footer&#34;&gt;
+                            &lt;favorite
+                                :post={{ $myFavorite-&gt;id }}
+                                :favorited={{ $myFavorite-&gt;favorited() ? &#39;true&#39; : &#39;false&#39; }}
+                            &gt;&lt;/favorite&gt;
+                        &lt;/div&gt;
+                    @endif
+                &lt;/div&gt;
+            @empty
+                &lt;p&gt;You have no favorite posts.&lt;/p&gt;
+            @endforelse
+         &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+@endsection</pre></div>
+<p><img src="https://tehnojam.pro/uploads/images/00/00/24/2017/03/08/x6ee53a54ea.png.pagespeed.ic._5WfxkUJo0.png" alt="Разработка: Как сделать Избранное средствами Laravel и Vue.js" /></p>
+
+<p>Готово!</p>
+
+<p><a href="https://github.com/ammezie/laravel-vue-favorite">Полный код примера.</a></p>
+
+<p>По материалам «Implement a Favoriting Feature Using Laravel and Vue.js» by Chimezie Enyinnaya</p>
+
+      </div>
+
+      <footer>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fokusovcom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </footer>
+    </article>
+
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']],
+        processEscapes: true,
+        processEnvironments: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    MathJax.Hub.Queue(function() {
+      
+      
+      
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2018    ·  Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>. 
+  </section>
+</footer>
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-54274841-9', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  </body>
+
+</html>

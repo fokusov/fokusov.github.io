@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Игорь Фокусов">
+    <meta name="description" content="Услуги профессионального программиста 1с в Череповце. тел. &#43;7 921 548-69-50">
+    <meta name="keywords" content="1с предприятие, услуги 1с, программист 1с, 1с8, 1с83, сопровождение 1с, поддержка 1с, программист череповец, 1с программист, 1с программист череповец, стоимость услуг 1с, специалист 1с, программист 1с удаленно">
+
+    <base href="http://fokusov.com/">
+    <title>
+  Создание hacker news с angular 2 cli, rxjs и webpack · Фокусов Игорь
+</title>
+
+    <link rel="canonical" href="http://fokusov.com/posts/sozdanie-hacker-news-s-angular-2-cli-rxjs-i-webpack/">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:300,700|Source+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="http://fokusov.com/css/coder.min.578f8fce262e4c448c239b69661084c57507b89d51b8d04de15cd1d8f8135600.css" integrity="sha256-V4&#43;PziYuTESMI5tpZhCExXUHuJ1RuNBN4VzR2PgTVgA=" media="screen">
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://fokusov.com/images/favicon-16x16.png" sizes="16x16">
+
+    
+
+    <meta name="generator" content="Hugo 0.49" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="http://fokusov.com/">
+      Фокусов Игорь
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/about/">Обо мне</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/projects/">1С</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/android/">Android</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/contacts/">Контакты</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="http://fokusov.com/posts/">Блог</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <h1 class="title">Создание hacker news с angular 2 cli, rxjs и webpack</h1>
+        <h2 class="date">March 13, 2017</h2>
+      </header>
+
+      <div>
+        
+
+<p><img src="img/x65e3afe142.jpg.pagespeed.ic.M1vevGVti6.jpg" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack" /><br />
+Ес­ли вы ко­гда-ли­бо со­зда­ва­ли при­ло­же­ния с Angular 2, то зна­е­те, что пер­во­на­чаль­ная на­строй­ка про­ек­та от­ни­ма­ет нема­ло вре­ме­ни. К сча­стью, ко­ман­да Angular со­зда­ла <a href="https://cli.angular.io/">Angular CLI</a> &mdash; ути­ли­ту ко­манд­ной стро­ки, об­лег­ча­ю­щую эту за­да­чу.</p>
+
+<p>В этой ста­тье мы по­стро­им кли­ен­та Hacker News, ис­поль­зуя Angular CLI, RxJS Observables и Webpack как за­груз­чик мо­ду­лей.</p>
+
+<p><a href="https://angular2-hn.firebaseapp.com/">Го­то­вое при­ло­же­ние.</a><br />
+<a href="https://github.com/housseindjirdeh/angular2-hn/tree/version-1">Ис­ход­ный код.</a></p>
+
+<p><img src="https://i.imgur.com/3gIhXqC.gif" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack" /><br />
+Мы по­сте­пен­но, шаг за ша­гом, прой­дём весь про­цесс по­стро­е­ния при­ло­же­ния и я по­ста­ра­юсь по­дроб­но объ­яс­нять важ­ные мо­мен­ты по хо­ду де­ла, а та­к­же сде­лан­ные мной ошиб­ки и спо­со­бы их ре­ше­ния.</p>
+
+<p>Вот крат­кий спи­сок то­го, что нам пред­сто­ит сде­лать:</p>
+
+<ol>
+<li>Мы нач­нём с по­стро­е­ния кар­ка­са при­ло­же­ния, глав­ной стра­ни­цы Hacker News</li>
+<li>За­тем под­клю­чим Observable Data Service для асин­хрон­ной за­груз­ки дан­ных</li>
+<li>До­ба­вим ро­утинг с <a href="https://angular.io/docs/ts/latest/guide/router.html">Angular Component Router</a> для по­стро­е­ния на­ви­га­ции меж­ду стра­ни­ца­ми и ви­да­ми то­пи­ков</li>
+<li>И, на­ко­нец, до­ба­вим ро­уты что­бы поль­зо­ва­тель мог пе­рей­ти к ком­мен­та­ри­ям к то­пи­ку и в про­фи­ли поль­зо­ва­те­лей.</li>
+</ol>
+
+<h5 id="при-сту-пим">При­сту­пим</h5>
+
+<p>Убе­ди­тесь, что у вас уста­нов­лен Node и npm, за­тем уста­но­ви­те CLI в тер­ми­на­ле:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">npm install -g @angular/cli</pre></div>
+<p>Со­зда­дим и за­пу­стим при­ло­же­ние:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ng new angular2-hn
+cd angular2-hn
+ng serve</pre></div>
+<p>От­крой­те бра­у­зер по ад­ре­су <a href="https://localhost:4200/">localhost:4200/</a></p>
+
+<p><img src="img/x31c3b1585c.png.pagespeed.ic.7RVek_scrv.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 1" /><br />
+Кру­то, да?</p>
+
+<p>На­стро­им <a href="http://sass-lang.com/">Sass</a> как пре­про­цес­сор CSS:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ng set defaults.styleExt scss</pre></div>
+<p>Со­зда­дим пер­вый ком­по­нент <strong>HeaderComponent</strong></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ng generate component Header</pre></div>
+<p>Бу­дет со­зда­на пап­ка header, со­дер­жа­щая та­кие фай­лы:</p>
+
+<ul>
+<li>header.​com​pone​nt.​scss</li>
+<li>header.​com​pone​nt.​html</li>
+<li>header.​com​pone​nt.​ts</li>
+<li>header.​com​pone​nt.​spec.​ts</li>
+</ul>
+
+<p>По­смот­рим на файл app.​module.​ts и уви­дим, что наш ком­по­нент уже за­де­кла­ри­ро­ван:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// app.module.ts
+
+// ...
+import { AppComponent } from &#39;./app.component&#39;;
+import { HeaderComponent } from &#39;./header/header.component&#39;;
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent
+  ],
+//...</pre></div>
+<p>А взгля­нув в файл header.​com​pone​nt.​ts, вы уви­ди­те, что се­лек­тор ком­по­нен­тов &mdash; app-header. До­ба­вим его в наш кор­не­вой ком­по­нент, app.​com​pone​nt.​ts.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- app.component.html --&gt;
+
+&lt;app-header&gt;&lt;/app-header&gt;</pre></div>
+<p>За­пу­стим при­ло­же­ние. Ком­по­нент header за­гру­зил­ся нор­маль­но:</p>
+
+<p><img src="img/x282de552aa.png.pagespeed.ic.xpD_nFEGpi.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 1" /><br />
+Су­пер. Те­перь до­ба­вим кое-ка­кую раз­мет­ку и сти­ли.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- app.component.html --&gt;
+
+&lt;div id=&#34;wrapper&#34;&gt;
+  &lt;app-header&gt;&lt;/app-header&gt;
+&lt;/div&gt;</pre></div>
+<p>Сти­ли из фай­ла app.​com​pone​nt.​scss мо­же­те ска­чать <a href="https://github.com/housseindjirdeh/angular2-hn/blob/initial-setup/src/app/app.component.scss">здесь</a>. Пе­рей­дём к header.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- header.component.html --&gt;
+
+&lt;header id=&#34;header&#34;&gt;
+  &lt;a class=&#34;home-link&#34; href=&#34;/&#34;&gt;
+    &lt;img class=&#34;logo&#34; src=&#34;https://i.imgur.com/J303pQ4.png&#34; alt=&#34;Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 1&#34; /&gt;
+  &lt;/a&gt;
+  &lt;div class=&#34;header-text&#34;&gt;
+    &lt;div class=&#34;left&#34;&gt;
+      &lt;h1 class=&#34;name&#34;&gt;
+        &lt;a href=&#34;/&#34;&gt;Angular 2 HN&lt;/a&gt;
+      &lt;/h1&gt;
+      &lt;span class=&#34;header-nav&#34;&gt;
+        &lt;a href=&#34;&#34;&gt;new&lt;/a&gt;
+        &lt;span class=&#34;divider&#34;&gt;
+          |
+        &lt;/span&gt;
+        &lt;a href=&#34;&#34;&gt;show&lt;/a&gt;
+        &lt;span class=&#34;divider&#34;&gt;
+          |
+        &lt;/span&gt;
+        &lt;a href=&#34;&#34;&gt;ask&lt;/a&gt;
+        &lt;span class=&#34;divider&#34;&gt;
+          |
+        &lt;/span&gt;
+        &lt;a href=&#34;&#34;&gt;jobs&lt;/a&gt;
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;info&#34;&gt;
+      Built with &lt;a href=&#34;https://cli.angular.io/&#34; target=&#34;_blank&#34;&gt;Angular CLI&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</pre></div>
+<p>Сти­ли это­го ком­по­нен­та мож­но ска­чать <a href="https://github.com/housseindjirdeh/angular2-hn/blob/initial-setup/src/app/header/header.component.scss">здесь</a>. За­пу­стим при­ло­же­ние:</p>
+
+<p><img src="img/x7c2f995f0c.png.pagespeed.ic.EyV2l7qFOd.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 1" /></p>
+
+<p>На­ше при­ло­же­ние долж­но быть от­зыв­чи­вым. По­смот­рим, как оно вы­гля­дит сей­час на умень­шен­ном экране:</p>
+
+<p><img src="img/xcb0f2ba0ee.png.pagespeed.ic.s3IGwPYMnR.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 1" /><br />
+Но у нас с края по­явил­ся непред­ви­ден­ный от­ступ. Это из-за то­го, что эле­мент body име­ет от­ступ по-умол­ча­нию (че­рез margin):</p>
+
+<p><img src="img/xa10a8b3ba8.png.pagespeed.ic.XA-I-KxIqv.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 1" /><br />
+Но ес­ли от­крыть app.​com​pone​nt.​scss, там ука­за­но пра­ви­ло margin: 0 для экра­нов мень­ше 768px:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$mobile-only: &#34;only screen and (max-width : 768px)&#34;;
+
+body {
+  margin-bottom: 0;
+
+  @media #{$mobile-only} {
+    margin: 0;
+  }
+}</pre></div>
+<p>Так по­че­му же оно так ра­бо­та­ет? Это из-за спо­со­ба, ко­то­рым Angular ин­кап­су­ли­ру­ет CSS-сти­ли ком­по­нен­та. Не бу­дем вда­вать­ся в де­та­ли, но есть три спо­со­ба, ко­то­рые мо­жет ис­поль­зо­вать Angular для это­го:</p>
+
+<ul>
+<li>None: Angular ни­че­го не пред­при­ни­ма­ет &mdash; ни ин­кап­су­ля­ции, ни Shadow DOM, про­сто обыч­ная за­груз­ка сти­лей.</li>
+<li>Emulated: Angular эму­ли­ру­ет по­ве­де­ние Shadow DOM. Это спо­соб по-умол­ча­нию.</li>
+<li>Native: Angular ис­поль­зу­ет на­тив­ный Shadow DOM бра­у­зе­ра (толь­ко в бра­у­зе­рах, име­ю­щих со­от­вет­ству­ю­щую <a href="http://caniuse.com/#feat=shadowdom">под­держ­ку</a>).<br />
+В кор­не­вом ком­по­нен­те мы до­бав­ля­ем сти­ли эле­мен­ту body, но оно не ра­бо­та­ет, по­то­му что мы не ука­за­ли Angular не при­ме­нять ни­ка­ких дей­ствий к пред­став­ле­нию ком­по­нен­та:</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// app.component.ts
+
+import { Component, ViewEncapsulation } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;app-root&#39;,
+  encapsulation: ViewEncapsulation.None,
+  templateUrl: &#39;./app.component.html&#39;,
+  styleUrls: [&#39;./app.component.scss&#39;]
+})
+
+export class AppComponent {
+}</pre></div>
+<p>Пе­ре­за­пу­стим при­ло­же­ние и по­смот­рим на него. Те­перь сти­ли при­ме­ни­лись как и долж­но.</p>
+
+<p><img src="img/x5701c78004.png.pagespeed.ic.nLSgXqKyxj.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 1" /></p>
+
+<h6 id="несколь-ко-ком-по-нен-тов">Несколь­ко ком­по­нен­тов</h6>
+
+<p>До­ба­вим ещё па­ру ком­по­нен­тов, Stories и Footer. Stories пред­став­ля­ют то­пи­ки в Hacker News, и мы нач­нём с кар­ка­са, до­ба­вив в него упо­ря­до­чен­ный спи­сок.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ng g component Stories</pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// stories.component.ts
+
+import { Component, OnInit } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;app-stories&#39;,
+  templateUrl: &#39;./stories.component.html&#39;,
+  styleUrls: [&#39;./stories.component.scss&#39;]
+})
+
+export class StoriesComponent implements OnInit {
+  items: number[];
+
+  constructor() {
+    this.items = Array(30);
+  }
+
+  ngOnInit() {
+  }
+}</pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- stories.component.html --&gt;
+
+&lt;div class=&#34;main-content&#34;&gt;
+  &lt;ol&gt;
+    &lt;li *ngFor=&#34;let item of items; let i = index&#34; class=&#34;post&#34;&gt;
+      Story #{{i}}
+    &lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;div class=&#34;nav&#34;&gt;
+    &lt;a href=&#34;&#34; class=&#34;prev&#34;&gt;
+      ‹ Prev
+    &lt;/a&gt;
+    &lt;a href=&#34;&#34; class=&#34;more&#34;&gt;
+      More ›
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+<p>Сти­ли для Stories мож­но взять <a href="https://github.com/housseindjirdeh/angular2-hn/blob/initial-setup/src/app/stories/stories.component.scss">здесь</a>. Под­вал стра­ни­цы очень про­стой (сти­ли для него ска­чай­те <a href="https://github.com/housseindjirdeh/angular2-hn/blob/initial-setup/src/app/footer/footer.component.scss">тут</a>).</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ng g component Footer</pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- footer.component.html --&gt;
+
+&lt;div id=&#34;footer&#34;&gt;
+    &lt;p&gt;Show this project some ❤ on
+      &lt;a href=&#34;https://github.com/housseindjirdeh/angular2-hn&#34; target=&#34;_blank&#34;&gt;
+        GitHub
+      &lt;/a&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</pre></div>
+<p>Об­но­вим кор­не­вой ком­по­нент, что­бы уви­деть до­бав­лен­ные ком­по­нен­ты:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- app.component.html --&gt;
+
+&lt;div id=&#34;wrapper&#34;&gt;
+  &lt;app-header&gt;&lt;/app-header&gt;
+  &lt;app-stories&gt;&lt;/app-stories&gt;
+  &lt;app-footer&gt;&lt;/app-footer&gt;
+&lt;/div&gt;</pre></div>
+<p>Вот так те­перь вы­гля­дит при­ло­же­ние:</p>
+
+<p><img src="img/x316b368554.png.pagespeed.ic.yEdR5XM2D2.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 1" /><br />
+Так как каж­дый то­пик, или эле­мент, бу­дет иметь соб­ствен­ные ат­ри­бу­ты, име­ет смысл со­здать от­дель­ный ком­по­нент для это­го.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ng g component Item</pre></div>
+<p>Ко­гда у нас бу­дут ре­аль­ные дан­ные, нуж­но бу­дет пе­ре­да­вать иден­ти­фи­ка­тор эле­мен­та из ком­по­нен­та то­пи­ков его до­чер­не­му эле­мен­ту. Тем вре­ме­нем, сде­ла­ем пе­ре­да­чу по­зи­ции спис­ка как itemID:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- stories.component.html --&gt;
+
+&lt;div class=&#34;main-content&#34;&gt;
+  &lt;ol&gt;
+    &lt;li *ngFor=&#34;let item of items; let i = index&#34; class=&#34;post&#34;&gt;
+      &lt;item class=&#34;item-block&#34; itemID=&#34;{{ i + 1 }}&#34;&gt;&lt;/item&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;div class=&#34;nav&#34;&gt;
+    &lt;a href=&#34;&#34; class=&#34;prev&#34;&gt;
+      ‹ Prev
+    &lt;/a&gt;
+    &lt;a href=&#34;&#34; class=&#34;more&#34;&gt;
+      More ›
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// item.component.ts
+
+import { Component, Input, OnInit } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;item&#39;,
+  templateUrl: &#39;./item.component.html&#39;,
+  styleUrls: [&#39;./item.component.scss&#39;]
+})
+export class ItemComponent implements OnInit {
+  @Input() itemID: number;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}</pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- item.component.html --&gt;
+
+&lt;p&gt;Story #{{itemID}}&lt;p&gt;</pre></div>
+<p>Пе­ре­за­пу­сти­те при­ло­же­ние, всё долж­но ра­бо­тать так же, а это зна­чит, что па­ра­метр по­зи­ции пе­ре­да­ёт­ся успеш­но с <strong>@Input</strong>.</p>
+
+<p>Итак, у нас по­лу­чил­ся от­лич­ный кар­кас глав­ной стра­ни­цы. <a href="https://github.com/housseindjirdeh/angular2-hn/tree/initial-setup">Здесь</a> ис­ход­ный код при­ме­ра на те­ку­щем эта­пе.</p>
+
+<h6 id="rxjs-и-observables">RxJS и Observables</h6>
+
+<p>В Angular 2 для общения с сервером мы используем библиотеку <a href="https://github.com/Reactive-Extensions/RxJS">RxJS</a>, которая возвращает <em>Observable</em> с данными, или <em>асинхронный поток данных</em>. Вероятно, вы уже знакомы с концепцией Promise-ов и как с их помощью можно асинхронно получать данные. Observable получают данные подобно promise-ам, но при этом позволяют следить за потоком данных и реагировать на различные события с ним.</p>
+
+<p><img src="img/x9fc5ddfe63.png.pagespeed.ic.EfMiP5FqLn.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 2" /><br />
+<a href="https://habrahabr.ru/post/279715/">Источник: Вступление в Реактивное Программирование, которое вы пропустили</a></p>
+
+<p>На диаграмме изображены события, которые происходят при клике на кнопку. Обратите внимание, как этот поток испускает значения (представляющие события клика по кнопке), ошибку, а также событие завершения.</p>
+
+<p>Концепция использования Observable в приложениях известна как Реактивное Программирование.</p>
+
+<h6 id="observable-data-service">Observable Data Service</h6>
+
+<p>Пришло время для получения реальных данных. Для этого нам нужно создать Observable Data Service и включить его в наши компоненты.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ng g service hackernews-api</pre></div>
+<p>Будет создан и настроен файл службы. А ещё нам следует разобраться с тем, как работает Hacker News API. Из <a href="https://github.com/HackerNews/API">документации</a> понятно, что всё (опросы, комментарии, топики, вакансии) это элементы с различающимися id. И информация по конкретному элементу может быть получена по специальному адресу</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// https://hacker-news.firebaseio.com/v0/item/2.json?print=pretty
+
+{
+  &#34;by&#34; : &#34;phyllis&#34;,
+  &#34;descendants&#34; : 0,
+  &#34;id&#34; : 2,
+  &#34;kids&#34; : [ 454411 ],
+  &#34;score&#34; : 16,
+  &#34;time&#34; : 1160418628,
+  &#34;title&#34; : &#34;A Student&#39;s Guide to Startups&#34;,
+  &#34;type&#34; : &#34;story&#34;,
+  &#34;url&#34; : &#34;https://www.paulgraham.com/mit.html&#34;
+}</pre></div>
+<p>К примеру, если нам нужно получить такие данные, как рейтинги на главной страницы, необходимо использовать специальную конечную точку, близкую к топикам. И лучшие топики можно получить так:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty
+
+[ 12426766, 12426315, 12424656, 12425725, 12426064, 12427341, 12425692, 12425776, 12425324, 12425750, 12425135, 12427073, 12425632, 12423733, 12425720, 12427135, 12425683, 12423794, 12424987, 12423809, 12424738, 12425119, 12426759, 12425711, 12422891, 12424731, 12423742, 12424131, 12424184, 12422833, 12424421, 12426729, 12423373, 12421687, 12427437 ...]</pre></div>
+<p>Таким образом, мы получаем список топиков в топе, а затем необходимо пройтись по каждому из них. Приступим.</p>
+
+<p>Включим службу в метаданные provider нашего NgModule:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// app.module.ts
+
+//...
+import { HackerNewsAPIService } from &#39;./hackernews-api.service&#39;;
+
+@NgModule({
+  declarations: [
+    ...
+   ],
+  imports: [
+    ...
+  ],
+  providers: [HackerNewsAPIService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }</pre></div>
+<p>Теперь добавим метод для запроса в неё:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// hackernews-api.service.ts
+
+import { Injectable } from &#39;@angular/core&#39;;
+import { Http } from &#39;@angular/http&#39;;
+import { Observable } from &#39;rxjs/Observable&#39;;
+import &#39;rxjs/add/operator/map&#39;;
+
+@Injectable()
+export class HackerNewsAPIService {
+  baseUrl: string;
+
+  constructor(private http: Http) {
+    this.baseUrl = &#39;https://hacker-news.firebaseio.com/v0&#39;;
+  }
+
+  fetchStories(): Observable&lt;any&gt; {
+    return this.http.get(`${this.baseUrl}/topstories.json`)
+                    .map(response =&gt; response.json());
+  }
+}</pre></div>
+<p>Как мы говорили ранее, вызов http.get возвращает Observable с данными. В fetchStories мы принимаем Observable, а затем map-им его в формат JSON.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// stories.component.ts
+
+import { Component, OnInit } from &#39;@angular/core&#39;;
+import { Observable } from &#39;rxjs/Observable&#39;;
+
+import { HackerNewsAPIService } from &#39;../hackernews-api.service&#39;;
+
+@Component({
+  selector: &#39;app-stories&#39;,
+  templateUrl: &#39;./stories.component.html&#39;,
+  styleUrls: [&#39;./stories.component.scss&#39;]
+})
+
+export class StoriesComponent implements OnInit {
+  items;
+
+  constructor(private _hackerNewsAPIService: HackerNewsAPIService) {}
+
+  ngOnInit() {
+    this._hackerNewsAPIService.fetchStories()
+                    .subscribe(
+                      items =&gt; this.items = items,
+                      error =&gt; console.log(&#39;Error fetching stories&#39;));
+  }
+}</pre></div>
+<p>В хуке ngOnInit, который срабатывает при инициализации компонента, мы подписываемся (subscribe) на поток данных и присваиваем атрибуту items то, что нам будет возвращено. А в наше представление мы добавим SlicePipe для вывода только 30 элементов списка из 500, которые нам возвращает запрос.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- stories.component.html --&gt;
+
+&lt;div class=&#34;main-content&#34;&gt;
+  &lt;ol&gt;
+    &lt;li *ngFor=&#34;let item of items | slice:0:30&#34; class=&#34;post&#34;&gt;
+      &lt;item class=&#34;item-block&#34; itemID=&#34;{{ item }}&#34;&gt;&lt;/item&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;</pre></div>
+<p>Запустив приложение, увидим список элементов с их id:</p>
+
+<p><img src="img/xd8829798b1.png.pagespeed.ic.EY0U_aaLWZ.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 2" /><br />
+Итак, мы получаем идентификатор каждого item, теперь добавим подписку на детали каждого элемента и для этого напишем новый метод:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// hackernews-api.service.ts
+
+//...
+
+fetchItem(id: number): Observable&lt;any&gt; {
+  return this.http.get(`${this.baseUrl}/item/${id}.json`)
+                  .map(response =&gt; response.json());
+}</pre></div>
+<p>Немного доработаем компонент item:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// item.component.ts
+
+import { Component, Input, OnInit } from &#39;@angular/core&#39;;
+
+import { HackerNewsAPIService } from &#39;../hackernews-api.service&#39;;
+
+@Component({
+  selector: &#39;item&#39;,
+  templateUrl: &#39;./item.component.html&#39;,
+  styleUrls: [&#39;./item.component.scss&#39;]
+})
+export class ItemComponent implements OnInit {
+  @Input() itemID: number;
+  item;
+
+  constructor(private _hackerNewsAPIService: HackerNewsAPIService) {}
+
+  ngOnInit() {
+    this._hackerNewsAPIService.fetchItem(this.itemID).subscribe(data =&gt; {
+      this.item = data;
+    }, error =&gt; console.log(&#39;Could not load item&#39; + this.itemID));
+  }
+}</pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- item.component.html --&gt;
+
+&lt;div *ngIf=&#34;!item&#34; class=&#34;loading-section&#34;&gt;
+  &lt;!-- Сюда можно добавить индикатор загрузки, если очень надо :) &lt;/i&gt; --&gt;
+&lt;/div&gt;
+&lt;div *ngIf=&#34;item&#34;&gt;
+  &lt;div class=&#34;item-laptop&#34;&gt;
+    &lt;p&gt;
+      &lt;a class=&#34;title&#34; href=&#34;{{item.url}}&#34;&gt;
+        {{item.title}}
+      &lt;/a&gt;
+      &lt;span class=&#34;domain&#34;&gt;{{item.url | domain}}&lt;/span&gt;
+    &lt;/p&gt;
+    &lt;div class=&#34;subtext-laptop&#34;&gt;
+      {{item.score}} points by
+      &lt;a href=&#34;&#34;&gt;{{item.by}}&lt;/a&gt;
+      {{ (item.time | amFromUnix) | amTimeAgo }}
+      &lt;a href=&#34;&#34;&gt;
+        &lt;span *ngIf=&#34;item.descendants !== 0&#34;&gt;
+          {{item.descendants}}
+          &lt;span *ngIf=&#34;item.descendants === 1&#34;&gt;comment&lt;/span&gt;
+          &lt;span *ngIf=&#34;item.descendants &gt; 1&#34;&gt;comments&lt;/span&gt;
+        &lt;/span&gt;
+        &lt;span *ngIf=&#34;item.descendants === 0&#34;&gt;discuss&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;item-mobile&#34;&gt;
+    &lt;!-- Разметка только для мобильных устройств --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+<p>Здесь всё просто: мы подписываемся на соответствующий поток для каждого элемента. В разметке у нас есть индикатор загрузки, который виден до получения данных с сервера. При загрузке элемента из Observable будут показаны его детали. <a href="https://github.com/housseindjirdeh/angular2-hn/tree/first-page/src/app/item">Здесь</a> можно скачать файлы стилей компонента.</p>
+
+<p>Код приложения на текущем этапе можно скачать <a href="https://github.com/housseindjirdeh/angular2-hn/tree/first-page">здесь</a>. Перезапустите приложение и увидим такую картину:</p>
+
+<p><img src="img/xabc2f5e35b.png.pagespeed.ic.gKiVQYiXYG.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 2" /></p>
+
+<h6 id="скорость-работы">Скорость работы</h6>
+
+<p>А теперь взглянем на страничку запросов, которые приходят при загрузке главной страницы приложения.</p>
+
+<p><img src="https://tehnojam.pro/uploads/images/00/00/24/2017/03/16/xa43251c42c.png.pagespeed.ic.YnIc8w4g2q.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 3" /></p>
+
+<p>Ух ты, 31 запрос и 20.8КБ передано за 546 мс. Это почти в пять раз медленне загрузки главной страницы Hacker News и вдвое больший объём данных при загрузке топиков. Это очень медленно. Даже приняв во внимание, что мы грузим главную страницу один раз и можем смириться с полусекундной задержкой, то загрузка комментариев к популярной новости займёт очень много времени!<br />
+Вы можете увидеть как я загружаю новость с 2000 комментариев <a href="https://media.giphy.com/media/3o6Zt9ZBEDjwiPDjz2/giphy.gif">тут</a>. Если вам лень смотреть гифку, то вот статистика: там 741 запрос, 1,5 МБ и 90 сек для загрузки примерно 700 комментариев (я не стал ждать пока все комментарии загрузятся).</p>
+
+<h6 id="вносим-коррективы">Вносим коррективы</h6>
+
+<p>Теперь мы видим, что выбрали не лучшее решение, используя множественные сетевые запросы для загрузки элементов и их содержимого. После недолгого поиска, я нашёл <a href="https://github.com/cheeaun/node-hnapi">неофициальный API</a>, возвращающий элемент и его детали одним запросом.</p>
+
+<p>Вот пример ответа по запросу списка популярных историй:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// https://node-hnapi.herokuapp.com/news?page=1
+
+[
+  {
+    &#34;id&#34;: 12469856,
+    &#34;title&#34;: &#34;Owl Lisp -- A purely functional Scheme that compiles to C&#34;,
+    &#34;points&#34;: 57,
+    &#34;user&#34;: &#34;rcarmo&#34;,
+    &#34;time&#34;: 1473524669,
+    &#34;time_ago&#34;: &#34;2 hours ago&#34;,
+    &#34;comments_count&#34;: 9,
+    &#34;type&#34;: &#34;link&#34;,
+    &#34;url&#34;: &#34;https://github.com/aoh/owl-lisp&#34;,
+    &#34;domain&#34;: &#34;github.com&#34;
+  },
+  {
+    &#34;id&#34;: 12469823,
+    &#34;title&#34;: &#34;How to Write Articles and Essays Quickly and Expertly&#34;,
+    &#34;points&#34;: 52,
+    &#34;user&#34;: &#34;bemmu&#34;,
+    &#34;time&#34;: 1473524142,
+    &#34;time_ago&#34;: &#34;2 hours ago&#34;,
+    &#34;comments_count&#34;: 6,
+    &#34;type&#34;: &#34;link&#34;,
+    &#34;url&#34;: &#34;https://www.downes.ca/post/38526&#34;,
+    &#34;domain&#34;: &#34;downes.ca&#34;
+  },
+  ...
+]</pre></div>
+<p>Мы видим, что здесь есть и такие атрибуты, как domain и time_ago, это очень круто. И это значит, что мы можем выкинуть файл domain.pipe.ts, созданный ранее, а также удалить библиотеку angular2-moment. И доработаем нашу службу:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// hackernews-api.service.ts
+
+export class HackerNewsAPIService {
+  baseUrl: string;
+
+  constructor(private http: Http) {
+    this.baseUrl = &#39;https://node-hnapi.herokuapp.com&#39;;
+  }
+
+  fetchStories(storyType: string, page: number): Observable&lt;any&gt; {
+    return this.http.get(`${this.baseUrl}/${storyType}?page=${page}`)
+                    .map(response =&gt; response.json());
+  }
+}</pre></div>
+<p>Так как API не загружает все 500 топиков, нам необходимо будет добавить номер страницы как аргумент. Обратите внимание также на то, как мы передаём storyType &mdash; это позволит нам показывать разные типы топиков, в зависимости от запроса пользователя.</p>
+
+<p>Доработаем компонент stories. Можно начать лишь передав <strong>&lsquo;news&rsquo;</strong> и номер страницы <strong>1</strong> в вызов службы для получения топа:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// stories.component.ts
+
+export class StoriesComponent implements OnInit {
+  items;
+
+  constructor(private _hackerNewsAPIService: HackerNewsAPIService) {}
+
+  ngOnInit() {
+    this._hackerNewsAPIService.fetchStories(&#39;news&#39;, 1)
+                              .subscribe(
+                                items =&gt; this.items = items,
+                                error =&gt; console.log(&#39;Error fetching stories&#39;));
+  }
+}</pre></div>
+<p>Соответствующая разметка:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- stories.component.html --&gt;
+
+&lt;div class=&#34;loading-section&#34; *ngIf=&#34;!items&#34;&gt;
+  &lt;!-- You can add a loading indicator here if you want to :) --&gt;
+&lt;/div&gt;
+&lt;div *ngIf=&#34;items&#34;&gt;
+  &lt;ol&gt;
+    &lt;li *ngFor=&#34;let item of items&#34; class=&#34;post&#34;&gt;
+      &lt;item class=&#34;item-block&#34; [item]=&#34;item&#34;&gt;&lt;/item&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;div class=&#34;nav&#34;&gt;
+    &lt;a class=&#34;prev&#34;&gt;
+      ‹ Prev
+    &lt;/a&gt;
+    &lt;a class=&#34;more&#34;&gt;
+      More ›
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+<p>И нам нужно ещё добавить индикатор загрузки.</p>
+
+<p>Доработаем ItemComponent &mdash; в файле item.component.ts уже не нужен HackerNewsService:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// item.component.ts
+
+export class ItemComponent implements OnInit {
+  @Input() item;
+
+  constructor() {}
+
+  ngOnInit() {
+
+  }
+}</pre></div>
+<p>Разметка:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- item.component.html --&gt;
+
+&lt;div class=&#34;item-laptop&#34;&gt;
+  &lt;p&gt;
+    &lt;a class=&#34;title&#34; href=&#34;&#34;&gt;
+      {{item.title}}
+    &lt;/a&gt;
+    &lt;span *ngIf=&#34;item.domain&#34; class=&#34;domain&#34;&gt;({{item.domain}})&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;div class=&#34;subtext-laptop&#34;&gt;
+    &lt;span&gt;
+      {{item.points}} points by
+      &lt;a href=&#34;&#34;&gt;{{item.user}}&lt;/a&gt;
+    &lt;/span&gt;
+    &lt;span&gt;
+      {{item.time_ago}}
+      &lt;span&gt; |
+        &lt;a href=&#34;&#34;&gt;
+          &lt;span *ngIf=&#34;item.comments_count !== 0&#34;&gt;
+            {{item.comments_count}}
+            &lt;span *ngIf=&#34;item.comments_count === 1&#34;&gt;comment&lt;/span&gt;
+            &lt;span *ngIf=&#34;item.comments_count &gt; 1&#34;&gt;comments&lt;/span&gt;
+          &lt;/span&gt;
+          &lt;span *ngIf=&#34;item.comments_count === 0&#34;&gt;discuss&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;item-mobile&#34;&gt;
+  &lt;!-- Markup that shows only on mobile (to give the app a
+    responsive mobile feel). Same attributes as above
+    nothing really new here (but refer to the source
+    file if you&#39;re interested) --&gt;
+&lt;/div&gt;</pre></div>
+<p>И посмотрим что у нас получилось:</p>
+
+<p><img src="https://tehnojam.pro/uploads/images/00/00/24/2017/03/16/x28021eeb0c.png.pagespeed.ic.gKiVQYiXYG.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 3" /><br />
+Всё работает намного быстрее! Исходный код этого этапа можно скачать <a href="https://github.com/housseindjirdeh/angular2-hn/tree/first-page-final">здесь</a>.</p>
+
+<h6 id="роутинг">Роутинг</h6>
+
+<p>Мы уже много сделали, но сделаем паузу и нарисуем структуру компонентов нашего приложения. Простите за моё неумение работать в Powerpoint.</p>
+
+<p>Начнём с того, что мы уже сделали:</p>
+
+<p><img src="https://tehnojam.pro/uploads/images/00/00/24/2017/03/16/x18ad833084.png.pagespeed.ic.AFW-zJO3Pt.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 3" /><br />
+Также обрисуем компоненты, показывающие переход к странице комментариев:</p>
+
+<p><img src="https://tehnojam.pro/uploads/images/00/00/24/2017/03/16/x7ab850a47b.png.pagespeed.ic.YAVBzTUVhY.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 3" /><br />
+Чтобы пользователь мог переходить между этими страницами, нам нужен небольшой роутинг. Создадим компонент:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ng g component ItemComments</pre></div>
+<p>А теперь создадим файл app.routes.ts в папке app.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// app.routes.ts
+
+import { Routes, RouterModule } from &#39;@angular/router&#39;;
+
+import { StoriesComponent } from &#39;./stories/stories.component&#39;;
+import { ItemCommentsComponent } from &#39;./item-comments/item-comments.component&#39;;
+
+const routes: Routes = [
+  {path: &#39;&#39;, redirectTo: &#39;news/1&#39;, pathMatch : &#39;full&#39;},
+  {path: &#39;news/:page&#39;, component: StoriesComponent, data: {storiesType: &#39;news&#39;}},
+  {path: &#39;newest/:page&#39;, component: StoriesComponent, data: {storiesType: &#39;newest&#39;}},
+  {path: &#39;show/:page&#39;, component: StoriesComponent, data: {storiesType: &#39;show&#39;}},
+  {path: &#39;ask/:page&#39;, component: StoriesComponent, data: {storiesType: &#39;ask&#39;}},
+  {path: &#39;jobs/:page&#39;, component: StoriesComponent, data: {storiesType: &#39;jobs&#39;}},
+  {path: &#39;item/:id&#39;, component: ItemCommentsComponent}
+];
+
+export const routing = RouterModule.forRoot(routes);</pre></div>
+<p>Вот что мы сделали:</p>
+
+<ol>
+<li>Мы создали массив роутов, с указанием относительного пути и привязкой к конкретному компоненту</li>
+<li>Ссылки в шапке страницы будут указывать на разные пути: news, newest, show, ask и jobs. Все эти пути привязаны к StoriesComponent</li>
+<li>С корневого пути мы сделаем редирект на news, возвращающий топ историй</li>
+<li>При привязке StoriesComponent мы передаём storiesType как параметр свойства data.</li>
+<li>:page используем как токен, поэтому StoriesComponent может получать список топиков определённой страницы</li>
+<li>:id используется также, поэтому ItemCommentsComponent получает все комментарии к нужному топику</li>
+</ol>
+
+<p>С роутингом можно сделать ещё много интересного, но этой основы нам пока достаточно. Откроем app.module.ts и зарегистрируем наш роутинг:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// app.module.ts
+
+// ...
+import { routing } from &#39;./app.routes&#39;;
+
+@NgModule({
+  declarations: [
+    //...
+  ],
+  imports: [
+    //...
+    routing
+  ],
+  providers: [HackerNewsAPIService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }</pre></div>
+<p>Чтобы Angular знал, куда загружать нужный компонент, нам нужен RouterOutlet.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- app.component.html --&gt;
+
+&lt;div id=&#34;wrapper&#34;&gt;
+  &lt;app-header&gt;&lt;/app-header&gt;
+  &lt;router-outlet&gt;&lt;/router-outlet&gt;
+  &lt;app-footer&gt;&lt;/app-footer&gt;
+&lt;/div&gt;</pre></div>
+<h6 id="навигация-по-топикам">Навигация по топикам</h6>
+
+<p>Привяжем навигационные ссылки в HeaderComponent к соответствующим роутам:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- header.component.html --&gt;
+
+&lt;header&gt;
+  &lt;div id=&#34;header&#34;&gt;
+    &lt;a class=&#34;home-link&#34; routerLink=&#34;/news/1&#34;&gt;
+      &lt;img class=&#34;logo&#34; src=&#34;https://i.imgur.com/J303pQ4.png&#34; alt=&#34;Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 3&#34; /&gt;
+    &lt;/a&gt;
+    &lt;div class=&#34;header-text&#34;&gt;
+      &lt;div class=&#34;left&#34;&gt;
+        &lt;h1 class=&#34;name&#34;&gt;
+          &lt;a routerLink=&#34;/news/1&#34; class=&#34;app-title&#34;&gt;Angular 2 HN&lt;/a&gt;
+        &lt;/h1&gt;
+        &lt;span class=&#34;header-nav&#34;&gt;
+          &lt;a routerLink=&#34;/newest/1&#34;&gt;new&lt;/a&gt;
+          &lt;span class=&#34;divider&#34;&gt;
+            |
+          &lt;/span&gt;
+          &lt;a routerLink=&#34;/show/1&#34;&gt;show&lt;/a&gt;
+          &lt;span class=&#34;divider&#34;&gt;
+            |
+          &lt;/span&gt;
+          &lt;a routerLink=&#34;/ask/1&#34;&gt;ask&lt;/a&gt;
+          &lt;span class=&#34;divider&#34;&gt;
+            |
+          &lt;/span&gt;
+          &lt;a routerLink=&#34;/jobs/1&#34;&gt;jobs&lt;/a&gt;
+        &lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;info&#34;&gt;
+        Built with &lt;a href=&#34;https://cli.angular.io/&#34; target=&#34;_blank&#34;&gt;Angular CLI&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</pre></div>
+<p>Директива RouterLink ответственна за привязку определённого элемента к роуту. Теперь обновим StoriesComponent:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// stories.component.ts
+
+import { Component, OnInit } from &#39;@angular/core&#39;;
+import { Observable } from &#39;rxjs/Observable&#39;;
+import { ActivatedRoute } from &#39;@angular/router&#39;;
+
+import { HackerNewsAPIService } from &#39;../hackernews-api.service&#39;;
+
+@Component({
+  selector: &#39;app-stories&#39;,
+  templateUrl: &#39;./stories.component.html&#39;,
+  styleUrls: [&#39;./stories.component.scss&#39;]
+})
+
+export class StoriesComponent implements OnInit {
+  typeSub: any;
+  pageSub: any;
+  items;
+  storiesType;
+  pageNum: number;
+  listStart: number;
+
+  constructor(
+    private _hackerNewsAPIService: HackerNewsAPIService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.typeSub = this.route
+      .data
+      .subscribe(data =&gt; this.storiesType = (data as any).storiesType);
+
+    this.pageSub = this.route.params.subscribe(params =&gt; {
+      this.pageNum = +params[&#39;page&#39;] ? +params[&#39;page&#39;] : 1;
+      this._hackerNewsAPIService.fetchStories(this.storiesType, this.pageNum)
+                              .subscribe(
+                                items =&gt; this.items = items,
+                                error =&gt; console.log(&#39;Error fetching&#39; + this.storiesType + &#39;stories&#39;),
+                                () =&gt; this.listStart = ((this.pageNum - 1) * 30) + 1);
+    });
+  }
+}</pre></div>
+<p>Опишем вкратце, что мы сделали. Вначале мы импортировали ActivatedRoute &mdash; это служба, обеспечивающая доступ к информации в роуте.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">import { ActivatedRoute } from &#39;@angular/router&#39;;
+
+@Component({
+  //...
+})
+
+export class StoriesComponent implements OnInit {
+//..
+
+constructor(
+  private route: ActivatedRoute
+) {}
+//...
+}</pre></div>
+<p>Затем мы подписываемся на свойства данных роута и сохраняем storiesType в переменной компонента в хуке ngOnInit.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ngOnInit() {
+  this.typeSub = this.route
+    .data
+    .subscribe(data =&gt; this.storiesType = (data as any).storiesType);
+
+// ...
+}</pre></div>
+<p>И, наконец, мы подписываемся на параметры роута и получаем номер страницы. Затем получаем список топиков:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ngOnInit() {
+// ...
+
+this.pageSub = this.route.params.subscribe(params =&gt; {
+    this.pageNum = +params[&#39;page&#39;] ? +params[&#39;page&#39;] : 1;
+    this._hackerNewsAPIService.fetchStories(this.storiesType, this.pageNum)
+                            .subscribe(
+                              items =&gt; this.items = items,
+                              error =&gt; console.log(&#39;Error fetching&#39; + this.storiesType + &#39;stories&#39;),
+                              () =&gt; {
+                                this.listStart = ((this.pageNum - 1) * 30) + 1;
+                                window.scrollTo(0, 0);
+                              });
+  });
+}</pre></div>
+<p>Для подтверждения завершения, мы используем onCompleted() для обновления переменной listStart, которую используем как начальное значение для нашего упорядоченного списка (его вы увидите в разметке ниже). Также мы прокручиваем страницу вверх, чтобы пользователь не застрял внизу страницы при переходе на другую страницу.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- stories.component.html --&gt;
+
+&lt;div class=&#34;main-content&#34;&gt;
+  &lt;div class=&#34;loading-section&#34; *ngIf=&#34;!items&#34;&gt;
+    &lt;!-- You can add a loading indicator here if you want to :) --&gt;
+  &lt;/div&gt;
+  &lt;div *ngIf=&#34;items&#34;&gt;
+    &lt;ol start=&#34;{{ listStart }}&#34;&gt;
+      &lt;li *ngFor=&#34;let item of items&#34; class=&#34;post&#34;&gt;
+        &lt;item class=&#34;item-block&#34; [item]=&#34;item&#34;&gt;&lt;/item&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;div class=&#34;nav&#34;&gt;
+      &lt;a *ngIf=&#34;listStart !== 1&#34; [routerLink]=&#34;[&#39;/&#39; + storiesType, pageNum - 1]&#34; class=&#34;prev&#34;&gt;
+        ‹ Prev
+      &lt;/a&gt;
+      &lt;a *ngIf=&#34;items.length === 30&#34; [routerLink]=&#34;[&#39;/&#39; + storiesType, pageNum + 1]&#34; class=&#34;more&#34;&gt;
+        More ›
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+<p>Главная страница готова, у нас есть <a href="https://media.giphy.com/media/l3vR4zR3rCMX76Pm0/giphy.gif">навигация и пагинация</a>. А лучше сами проверьте как работает приложение.</p>
+
+<h6 id="комментарии">Комментарии</h6>
+
+<p>Мы почти закончили! Перед тем, как начать добавлять компоненты комментариев, обновим ссылки в ItemComponent для работы роутинга:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- item.component.html --&gt;
+
+&lt;div class=&#34;item-laptop&#34;&gt;
+  &lt;p&gt;
+    &lt;a class=&#34;title&#34; href=&#34;{{item.url}}&#34;&gt;
+      {{item.title}}
+    &lt;/a&gt;
+    &lt;span *ngIf=&#34;item.domain&#34; class=&#34;domain&#34;&gt;({{item.domain}})&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;div class=&#34;subtext-laptop&#34;&gt;
+    &lt;span&gt;
+      {{item.points}} points by
+      &lt;a href=&#34;&#34;&gt;{{item.user}}&lt;/a&gt;
+    &lt;/span&gt;
+    &lt;span&gt;
+      {{item.time_ago}}
+      &lt;span&gt; |
+         &lt;a [routerLink]=&#34;[&#39;/item&#39;, item.id]&#34;&gt;
+          &lt;span *ngIf=&#34;item.comments_count !== 0&#34;&gt;
+            {{item.comments_count}}
+            &lt;span *ngIf=&#34;item.comments_count === 1&#34;&gt;comment&lt;/span&gt;
+            &lt;span *ngIf=&#34;item.comments_count &gt; 1&#34;&gt;comments&lt;/span&gt;
+          &lt;/span&gt;
+          &lt;span *ngIf=&#34;item.comments_count === 0&#34;&gt;discuss&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;item-mobile&#34;&gt;
+  &lt;!-- Markup that shows only on mobile (to give the app a
+    responsive mobile feel). Same attributes as above,
+    nothing really new here (but refer to the source
+    file if you&#39;re interested) --&gt;
+&lt;/div&gt;</pre></div>
+<p>Запустите приложение и кликните на комментарии топика:</p>
+
+<p><img src="img/x4860a550bb.png.pagespeed.ic.xG_4QmvnQF.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 3" /><br />
+Красота. Роутинг к ItemCommentsComponent работает. Теперь создадим остальные компоненты.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ng g component CommentTree
+ng g component Comment</pre></div>
+<p>Добавим новый GET-запрос в нашу службу для получения комментариев.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// hackernews.api.service.ts
+
+//...
+
+fetchComments(id: number): Observable&lt;any&gt; {
+  return this.http.get(`${this.baseUrl}/item/${id}`)
+                  .map(response =&gt; response.json());
+}</pre></div>
+<p>И заполним наши компоненты</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// item-comments.component.ts
+
+import { Component, OnInit } from &#39;@angular/core&#39;;
+import { ActivatedRoute } from &#39;@angular/router&#39;;
+
+import { HackerNewsAPIService } from &#39;../hackernews-api.service&#39;;
+
+@Component({
+  selector: &#39;app-item-comments&#39;,
+  templateUrl: &#39;./item-comments.component.html&#39;,
+  styleUrls: [&#39;./item-comments.component.scss&#39;]
+})
+export class ItemCommentsComponent implements OnInit {
+  sub: any;
+  item;
+
+  constructor(
+    private _hackerNewsAPIService: HackerNewsAPIService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params =&gt; {
+      let itemID = +params[&#39;id&#39;];
+      this._hackerNewsAPIService.fetchComments(itemID).subscribe(data =&gt; {
+        this.item = data;
+      }, error =&gt; console.log(&#39;Could not load item&#39; + itemID));
+    });
+  }
+}</pre></div>
+<p>Также как в StoriesComponent, мы сделаем подписку к параметрам роута, получим id элемента и по нему получим нужные комментарии.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- item-comments.component.html --&gt;
+
+&lt;div class=&#34;main-content&#34;&gt;
+  &lt;div class=&#34;loading-section&#34; *ngIf=&#34;!item&#34;&gt;
+    &lt;!-- You can add a loading indicator here if you want to :) --&gt;
+  &lt;/div&gt;
+  &lt;div *ngIf=&#34;item&#34; class=&#34;item&#34;&gt;
+    &lt;div class=&#34;mobile item-header&#34;&gt;
+     &lt;!-- Markup that shows only on mobile (to give the app a
+    responsive mobile feel). Same attributes as below,
+    nothing really new here (but refer to the source
+    file if you&#39;re interested) --&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;laptop&#34; [class.item-header]=&#34;item.comments_count &gt; 0 || item.type === &#39;job&#39;&#34; [class.head-margin]=&#34;item.text&#34;&gt;
+      &lt;p&gt;
+        &lt;a class=&#34;title&#34; href=&#34;{{item.url}}&#34;&gt;
+        {{item.title}}
+        &lt;/a&gt;
+        &lt;span *ngIf=&#34;item.domain&#34; class=&#34;domain&#34;&gt;({{item.domain}})&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;div class=&#34;subtext&#34;&gt;
+        &lt;span&gt;
+        {{item.points}} points by
+          &lt;a href=&#34;&#34;&gt;{{item.user}}&lt;/a&gt;
+        &lt;/span&gt;
+        &lt;span&gt;
+          {{item.time_ago}}
+          &lt;span&gt; |
+            &lt;a [routerLink]=&#34;[&#39;/item&#39;, item.id]&#34;&gt;
+              &lt;span *ngIf=&#34;item.comments_count !== 0&#34;&gt;
+                {{item.comments_count}}
+                &lt;span *ngIf=&#34;item.comments_count === 1&#34;&gt;comment&lt;/span&gt;
+                &lt;span *ngIf=&#34;item.comments_count &gt; 1&#34;&gt;comments&lt;/span&gt;
+              &lt;/span&gt;
+              &lt;span *ngIf=&#34;item.comments_count === 0&#34;&gt;discuss&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/span&gt;
+        &lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;subject&#34; [innerHTML]=&#34;item.content&#34;&gt;&lt;/p&gt;
+    &lt;app-comment-tree [commentTree]=&#34;item.comments&#34;&gt;&lt;/app-comment-tree&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+<p>В начале компонента мы выводим детали элемента, идущие за его описанием (item.content). Затем вводим объект комментариев (item.comments) в app-comment-tree, селектор для CommentTreeComponent. Стили для этого компонента можно скачать <a href="https://github.com/housseindjirdeh/angular2-hn/blob/item-comments/src/app/item-comments/item-comments.component.scss">здесь</a>.</p>
+
+<p>Теперь доработаем CommentTreeComponent.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// comment-tree.component.ts
+
+import { Component, Input, OnInit } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;app-comment-tree&#39;,
+  templateUrl: &#39;./comment-tree.component.html&#39;,
+  styleUrls: [&#39;./comment-tree.component.scss&#39;]
+})
+export class CommentTreeComponent implements OnInit {
+  @Input() commentTree;
+
+  constructor() {}
+
+  ngOnInit() {
+
+  }
+}</pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- comment-tree.component.html --&gt;
+
+&lt;ul class=&#34;comment-list&#34;&gt;
+   &lt;li *ngFor=&#34;let comment of commentTree&#34; &gt;
+      &lt;app-comment [comment]=&#34;comment&#34;&gt;&lt;/app-comment&gt;
+   &lt;/li&gt;
+&lt;/ul&gt;</pre></div>
+<p>Мы выводим список комментариев директивой ngFor. <a href="https://github.com/housseindjirdeh/angular2-hn/blob/item-comments/src/app/comment-tree/comment-tree.component.scss">Здесь</a> можно скачать стили.</p>
+
+<p>Доработаем CommentComponent, отвечающий за конкретный комментарий:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// comment.component.ts
+
+import { Component, Input, OnInit } from &#39;@angular/core&#39;;
+
+@Component({
+  selector: &#39;app-comment&#39;,
+  templateUrl: &#39;./comment.component.html&#39;,
+  styleUrls: [&#39;./comment.component.scss&#39;]
+})
+export class CommentComponent implements OnInit {
+  @Input() comment;
+  collapse: boolean;
+
+  constructor() {}
+
+  ngOnInit() {
+    this.collapse = false;
+  }
+}</pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;!-- comment.component.html --&gt;
+
+&lt;div *ngIf=&#34;!comment.deleted&#34;&gt;
+  &lt;div class=&#34;meta&#34; [class.meta-collapse]=&#34;collapse&#34;&gt;
+    &lt;span class=&#34;collapse&#34; (click)=&#34;collapse = !collapse&#34;&gt;[{{collapse ? &#39;+&#39; : &#39;-&#39;}}]&lt;/span&gt;
+    &lt;a [routerLink]=&#34;[&#39;/user&#39;, comment.user]&#34; routerLinkActive=&#34;active&#34;&gt;{{comment.user}}&lt;/a&gt;
+    &lt;span class=&#34;time&#34;&gt;{{comment.time_ago}}&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;comment-tree&#34;&gt;
+    &lt;div [hidden]=&#34;collapse&#34;&gt;
+      &lt;p class=&#34;comment-text&#34; [innerHTML]=&#34;comment.content&#34;&gt;&lt;/p&gt;
+      &lt;ul class=&#34;subtree&#34;&gt;
+        &lt;li *ngFor=&#34;let subComment of comment.comments&#34;&gt;
+          &lt;app-comment [comment]=&#34;subComment&#34;&gt;&lt;/app-comment&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div *ngIf=&#34;comment.deleted&#34;&gt;
+  &lt;div class=&#34;deleted-meta&#34;&gt;
+    &lt;span class=&#34;collapse&#34;&gt;[deleted]&lt;/span&gt; | Comment Deleted
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div>
+<p>Запустим приложение и сможем увидеть комментарии где и положено:</p>
+
+<p><img src="img/x97bd8cf2b4.png.pagespeed.ic.FfUbSHtupq.png" alt="Разработка: Создание hacker news с angular 2 cli, rxjs и webpack, часть 3" /><br />
+Исходный код этого этапа можно взять <a href="https://github.com/housseindjirdeh/angular2-hn/tree/item-comments">здесь</a>.</p>
+
+<h6 id="профили-пользователей">Профили пользователей</h6>
+
+<p>Остались только профили пользователей. Их мы сделаем абсолютно так же, как и предыдущие элементы, поэтому описание этого этапа мы пропустим. Вот что нужно сделать:</p>
+
+<ol>
+<li>Добавить ещё один запрос в службу данных, работающий конечную точку по пользователям.</li>
+<li>Создать компонент для этого.</li>
+<li>Добавить поле в файл с роутами.</li>
+<li>Обновить во всех компонентах ссылки, указывающие на пользователя.</li>
+</ol>
+
+<p>Вот <a href="https://github.com/housseindjirdeh/angular2-hn/tree/version-1/src/app/user">готовый код</a> этой части.</p>
+
+<h6 id="заключение">Заключение</h6>
+
+<p>Мы закончили. Для сборки приложения можно запустить</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ng build --prod</pre></div>
+<p>или</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ng serve --prod</pre></div>
+<p>Источник: <a href="https://houssein.me/angular2-hacker-news">«building hacker news with angular 2 cli, rxjs and webpack»</a></p>
+
+      </div>
+
+      <footer>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fokusovcom" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </footer>
+    </article>
+
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']],
+        processEscapes: true,
+        processEnvironments: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+    MathJax.Hub.Queue(function() {
+      
+      
+      
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2018    ·  Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>. 
+  </section>
+</footer>
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-54274841-9', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  </body>
+
+</html>
