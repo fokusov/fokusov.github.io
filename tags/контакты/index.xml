@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Контакты on Фокусов Игорь</title>
-    <link>http://fokusov.com/tags/%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B/</link>
+    <link>https://fokusov.com/tags/%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B/</link>
     <description>Recent content in Контакты on Фокусов Игорь</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
     <lastBuildDate>Thu, 20 Oct 2016 22:55:05 -0400</lastBuildDate>
     
-	<atom:link href="http://fokusov.com/tags/%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fokusov.com/tags/%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Контакты</title>
-      <link>http://fokusov.com/contacts/</link>
+      <link>https://fokusov.com/contacts/</link>
       <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
       
-      <guid>http://fokusov.com/contacts/</guid>
+      <guid>https://fokusov.com/contacts/</guid>
       <description>Почта: igor@fokusov.com
 Телефон: +7 (921) 548-69-50
 Skype: fokusov

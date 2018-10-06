@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on Фокусов Игорь</title>
-    <link>http://fokusov.com/categories/android/</link>
+    <link>https://fokusov.com/categories/android/</link>
     <description>Recent content in Android on Фокусов Игорь</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
     <lastBuildDate>Thu, 20 Oct 2016 22:55:05 -0400</lastBuildDate>
     
-	<atom:link href="http://fokusov.com/categories/android/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fokusov.com/categories/android/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Проекты Андроид</title>
-      <link>http://fokusov.com/android/</link>
+      <link>https://fokusov.com/android/</link>
       <pubDate>Thu, 20 Oct 2016 22:55:05 -0400</pubDate>
       
-      <guid>http://fokusov.com/android/</guid>
+      <guid>https://fokusov.com/android/</guid>
       <description>Некоторые мои приложения для Android, опубликованные в Google Play:
 Календарь бухгалтера Minimal Weather (погода) Обновления 1С Money Timer Курсы валют Я создаю приложения под андроид с помощью кроссплатформенного фреймворка NativeScript и иногда пишу о разработке в своем блоге. Обращайтесь, если вам понадобится недорогое качественное мобильное приложение :)</description>
     </item>

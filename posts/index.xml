@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Фокусов Игорь</title>
-    <link>http://fokusov.com/posts/</link>
+    <link>https://fokusov.com/posts/</link>
     <description>Recent content in Posts on Фокусов Игорь</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
     <lastBuildDate>Sun, 04 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://fokusov.com/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fokusov.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Разработка приложения-галереи под Android на Kotlin</title>
-      <link>http://fokusov.com/posts/razrabotka-prilozhenija-galerei-pod-android-na-kotlin/</link>
+      <link>https://fokusov.com/posts/razrabotka-prilozhenija-galerei-pod-android-na-kotlin/</link>
       <pubDate>Sun, 04 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/razrabotka-prilozhenija-galerei-pod-android-na-kotlin/</guid>
+      <guid>https://fokusov.com/posts/razrabotka-prilozhenija-galerei-pod-android-na-kotlin/</guid>
       <description>В этом уроке мы разработаем полноценное приложение — галерею изображений на Kotlin. Также мы рассмотрим следующие темы:
  Реализация паттерна Singleton на Kotlin. Передача экземпляра класса из одной activity в другую с помощью Parcelable на Kotlin Пример реализации Shared preferences. Пример Recyclerview на Kotlin. Настройка RecyclerView Adapter на Kotlin. NavigationView и настройка DrawerLayout на Kotlin. Загрузка и вывод изображений с внутреннего накопителя Android на Kotlin. Использование библиотеки для загрузки изображений Glide.</description>
     </item>
     
     <item>
       <title>Hugo &#43; Firebase: как быстро и бесплатно создать статический сайт </title>
-      <link>http://fokusov.com/posts/hugo--firebase-kak-bystro-i-besplatno-sozdat-staticheskij-sajt/</link>
+      <link>https://fokusov.com/posts/hugo--firebase-kak-bystro-i-besplatno-sozdat-staticheskij-sajt/</link>
       <pubDate>Mon, 26 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/hugo--firebase-kak-bystro-i-besplatno-sozdat-staticheskij-sajt/</guid>
+      <guid>https://fokusov.com/posts/hugo--firebase-kak-bystro-i-besplatno-sozdat-staticheskij-sajt/</guid>
       <description>На­вер­ня­ка каж­дый из вас за­ду­мы­вал­ся о том, что­бы со­здать сайт, на ко­то­ром мож­но бы­ло бы раз­ме­стить своё порт­фо­лио, ре­зю­ме или да­же свой блог. Про­чи­тав эту ста­тью, вы смо­же­те сде­лать се­бе та­кой сайт.
 Во­об­ще для раз­ра­бот­ки сай­та необ­хо­ди­мо знать HTML, CSS и немно­го JavaScript. В на­шем слу­чае вы мо­же­те не знать ни­че­го из это­го. До­ста­точ­но про­сто уве­рен­но поль­зо­вать­ся ком­пью­те­ром.
 Для раз­ме­ще­ния веб-сай­та, необ­хо­ди­мо «про­стран­ство» (веб-хо­стинг), ку­да бу­дут за­гру­же­ны фай­лы ва­ше­го сай­та.</description>
@@ -34,10 +34,10 @@
     
     <item>
       <title>Как отправлять СМС и звонить с Angular NativeScript</title>
-      <link>http://fokusov.com/posts/kak-otpravljat-sms-i-zvonit-s-angular-nativescript/</link>
+      <link>https://fokusov.com/posts/kak-otpravljat-sms-i-zvonit-s-angular-nativescript/</link>
       <pubDate>Sat, 25 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/kak-otpravljat-sms-i-zvonit-s-angular-nativescript/</guid>
+      <guid>https://fokusov.com/posts/kak-otpravljat-sms-i-zvonit-s-angular-nativescript/</guid>
       <description>От­прав­лять СМС из при­ло­же­ния NativeScript очень про­сто! И се­год­ня я по­ка­жу вам как это сде­лать.
 Ис­ход­ный код мож­но ска­чать здесь.
 Убе­ди­тесь, что у вас уста­нов­лен NodeJS и NativeScript CLI.
@@ -49,10 +49,10 @@ import * as phone from &amp;#39;nativescript-phone&amp;#39;; Для ис­пол
     
     <item>
       <title>Создаём укорачивалку URL на Golang с Couchbase NoSQL</title>
-      <link>http://fokusov.com/posts/sozdaem-ukorachivalku-url-na-golang-s-couchbase-nosql/</link>
+      <link>https://fokusov.com/posts/sozdaem-ukorachivalku-url-na-golang-s-couchbase-nosql/</link>
       <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/sozdaem-ukorachivalku-url-na-golang-s-couchbase-nosql/</guid>
+      <guid>https://fokusov.com/posts/sozdaem-ukorachivalku-url-na-golang-s-couchbase-nosql/</guid>
       <description>Раз­ра­бот­ка сер­ви­са по уко­ра­чи­ва­нию ссы­лок (та­ко­го как TinyURL или Bitly) на Go, ду­маю, бу­дет очень кру­тым при­ме­ром для на­чи­на­ю­щих. Итак, при­сту­пим!
 Под­го­тов­ка Для на­ча­ла про­верь­те, что у вас уста­нов­лен Go вер­сии не ни­же 1.7 и уста­но­ви­те Couchbase Server 4.1+
 На­ше при­ло­же­ние бу­дет ис­поль­зо­вать за­про­сы N1QL &amp;mdash; SQL за­про­сы к ба­зе дан­ных Couchbase NoSQL.
@@ -61,10 +61,10 @@ import * as phone from &amp;#39;nativescript-phone&amp;#39;; Для ис­пол
     
     <item>
       <title>Создание hacker news с angular 2 cli, rxjs и webpack</title>
-      <link>http://fokusov.com/posts/sozdanie-hacker-news-s-angular-2-cli-rxjs-i-webpack/</link>
+      <link>https://fokusov.com/posts/sozdanie-hacker-news-s-angular-2-cli-rxjs-i-webpack/</link>
       <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/sozdanie-hacker-news-s-angular-2-cli-rxjs-i-webpack/</guid>
+      <guid>https://fokusov.com/posts/sozdanie-hacker-news-s-angular-2-cli-rxjs-i-webpack/</guid>
       <description>Ес­ли вы ко­гда-ли­бо со­зда­ва­ли при­ло­же­ния с Angular 2, то зна­е­те, что пер­во­на­чаль­ная на­строй­ка про­ек­та от­ни­ма­ет нема­ло вре­ме­ни. К сча­стью, ко­ман­да Angular со­зда­ла Angular CLI &amp;mdash; ути­ли­ту ко­манд­ной стро­ки, об­лег­ча­ю­щую эту за­да­чу.
 В этой ста­тье мы по­стро­им кли­ен­та Hacker News, ис­поль­зуя Angular CLI, RxJS Observables и Webpack как за­груз­чик мо­ду­лей.
 Го­то­вое при­ло­же­ние.
@@ -74,20 +74,20 @@ import * as phone from &amp;#39;nativescript-phone&amp;#39;; Для ис­пол
     
     <item>
       <title>Генерируем Identicon в Go</title>
-      <link>http://fokusov.com/posts/generiruem-identicon-v-go/</link>
+      <link>https://fokusov.com/posts/generiruem-identicon-v-go/</link>
       <pubDate>Fri, 10 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/generiruem-identicon-v-go/</guid>
+      <guid>https://fokusov.com/posts/generiruem-identicon-v-go/</guid>
       <description>В этой статье мы разработаем простой генератор идентиконов на языке Go. Исходный код вы можете взять здесь.
 Но что такое идентикон? Думаю, все видели стандартную аватарку при регистрации на Github. Вот пример: Вы видите визуальное представление значения хэш-функции. То есть с помощью специального алгоритма (md5 или sha256 и т.п.) захэшировано какое-то слово, при этом вывод этого алгоритма используется для генерации картинки. Поэтому идентикон будет всегда один и тот же при одинаковых входных данных.</description>
     </item>
     
     <item>
       <title>Создание списка задач с Vue.js</title>
-      <link>http://fokusov.com/posts/sozdanie-spiska-zadach-s-vue_js/</link>
+      <link>https://fokusov.com/posts/sozdanie-spiska-zadach-s-vue_js/</link>
       <pubDate>Thu, 09 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/sozdanie-spiska-zadach-s-vue_js/</guid>
+      <guid>https://fokusov.com/posts/sozdanie-spiska-zadach-s-vue_js/</guid>
       <description>Се­год­ня мы со­зда­дим при­ло­же­ние &amp;mdash; спи­сок за­дач с Vue.​js, а та­к­же рас­смот­рим и дру­гие удоб­ные ин­стру­мен­ты для со­зда­ния со­вре­мен­ных веб-при­ло­же­ний.
 Убе­ди­тесь, что у вас уста­нов­ле­на Vue CLI! Ес­ли нет, то уста­но­ви­те её ко­ман­дой
 $ npm install --global vue-cli С Vue CLI идут несколь­ко шаб­ло­нов го­то­вых при­ло­же­ний:
@@ -96,10 +96,10 @@ webpack - Полнофункциональная установка Webpack + Vu
     
     <item>
       <title>Как сделать &#34;Избранное&#34; средствами Laravel и Vue.js</title>
-      <link>http://fokusov.com/posts/kak-sdelat-izbrannoe-sredstvami-laravel-i-vue_js/</link>
+      <link>https://fokusov.com/posts/kak-sdelat-izbrannoe-sredstvami-laravel-i-vue_js/</link>
       <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/kak-sdelat-izbrannoe-sredstvami-laravel-i-vue_js/</guid>
+      <guid>https://fokusov.com/posts/kak-sdelat-izbrannoe-sredstvami-laravel-i-vue_js/</guid>
       <description>В наше время большинство сайтов используют функционал избранного/лайков/рекомендаций. В том числе такие крупные ресурсы, как Medium, Facebook, Вконтакте и т.д.
 Мы рассмотрим как реализовать такой функционал с Vue.js в приложении Laravel. Это приложение будет типа персонального блога, в нём будут пользователи и статьи. Пользователи смогут создавать статьи и добавлять их в избранное. А также пользователи смогут видеть полный список избранных статей.
 В приложении будут модель User (Пользователь) и модель Post (Статья), в нём будет система авторизации, которая позволит добавлять статьи в Избранное (и удалять из него) только авторизованным пользователям.</description>
@@ -107,10 +107,10 @@ webpack - Полнофункциональная установка Webpack + Vu
     
     <item>
       <title>Создание одностраничного веб-приложения на Go, Echo и Vue</title>
-      <link>http://fokusov.com/posts/sozdanie-odnostranichnogo-veb-prilozhenija-na-go-echo-i-vue/</link>
+      <link>https://fokusov.com/posts/sozdanie-odnostranichnogo-veb-prilozhenija-na-go-echo-i-vue/</link>
       <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/sozdanie-odnostranichnogo-veb-prilozhenija-na-go-echo-i-vue/</guid>
+      <guid>https://fokusov.com/posts/sozdanie-odnostranichnogo-veb-prilozhenija-na-go-echo-i-vue/</guid>
       <description>Се­год­ня мы со­зда­дим неслож­ное при­ло­же­ние для ве­де­ния спис­ка за­дач. В нём мож­но бу­дет ука­зы­вать на­име­но­ва­ние за­да­чи, вы­во­дить со­здан­ные за­да­чи на экран и уда­лять за­да­чи.
 Бэ­кенд при­ло­же­ния бу­дет на­пи­сан на язы­ке Go. Для луч­ше­го по­ни­ма­ния ма­те­ри­а­ла необ­хо­ди­мы хо­тя бы ми­ни­маль­ные зна­ния син­так­си­са и уста­нов­лен­ный Go.
 Что­бы уско­рить со­зда­ние при­ло­же­ния, мы возь­мём мик­ро-фрейм­ворк Echo. А за­да­чи мы бу­дем хра­нить в ба­зе SQLite.
@@ -119,10 +119,10 @@ webpack - Полнофункциональная установка Webpack + Vu
     
     <item>
       <title>Todolist - быстрый консольный менеджер задач в концепции GTD на Golang</title>
-      <link>http://fokusov.com/posts/todolist-bystryj-konsolnyj-menedzher-zadach-v-koncepcii-gtd-na-golang/</link>
+      <link>https://fokusov.com/posts/todolist-bystryj-konsolnyj-menedzher-zadach-v-koncepcii-gtd-na-golang/</link>
       <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/todolist-bystryj-konsolnyj-menedzher-zadach-v-koncepcii-gtd-na-golang/</guid>
+      <guid>https://fokusov.com/posts/todolist-bystryj-konsolnyj-menedzher-zadach-v-koncepcii-gtd-na-golang/</guid>
       <description>Todolist помогает работать с вашими задачами в терминале. Todolist основан на методе Getting Things Done и умеет работать с проектами, контекстами и сроками задач.
 Списки задач зависят от директории, в которой вы работаете с ними &amp;mdash; просто держите разные списки дел в разных папках.
 
@@ -132,10 +132,10 @@ webpack - Полнофункциональная установка Webpack + Vu
     
     <item>
       <title>Разработка Web-приложений и микросервисов на Go с Gin</title>
-      <link>http://fokusov.com/posts/razrabotka-web-prilozhenij-i-mikroservisov-na-golang-s-gin/</link>
+      <link>https://fokusov.com/posts/razrabotka-web-prilozhenij-i-mikroservisov-na-golang-s-gin/</link>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/razrabotka-web-prilozhenij-i-mikroservisov-na-golang-s-gin/</guid>
+      <guid>https://fokusov.com/posts/razrabotka-web-prilozhenij-i-mikroservisov-na-golang-s-gin/</guid>
       <description>Вве­де­ние Се­год­ня мы по­ка­жем, как со­зда­вать веб-при­ло­же­ния и мик­ро­сер­ви­сы в Go с по­мо­щью фрейм­вор­ка Gin. Gin это фрейм­ворк, поз­во­ля­ю­щий умень­шить объ­ём ко­да, необ­хо­ди­мо­го для по­стро­е­ния та­ких при­ло­же­ний. Он по­ощ­ря­ет со­зда­ние мно­го­крат­но-ис­поль­зу­е­мо­го и рас­ши­ря­е­мо­го ко­да.
 Мы рас­смот­рим со­зда­ние про­ек­та и сбор­ку неслож­но­го при­ло­же­ния с Gin, ко­то­рое бу­дет вы­во­дить спи­сок то­пи­ков и от­дель­ный то­пик.
 Под­го­тов­ка Пе­ред на­ча­лом ра­бо­ты убе­ди­тесь, что у вас уста­нов­ле­ны Go и ути­ли­та curl. Ес­ли curl не уста­нов­ле­на и вы не хо­ти­те ра­бо­тать с ней, ис­поль­зуй­те лю­бую дру­гую ути­ли­ту те­сти­ро­ва­ния API.</description>
@@ -143,10 +143,10 @@ webpack - Полнофункциональная установка Webpack + Vu
     
     <item>
       <title>10 лучших редакторов с поддержкой Markdown для Linux</title>
-      <link>http://fokusov.com/posts/10-luchshih-redaktorov-s-podderzhkoj-markdown-dlja-linux/</link>
+      <link>https://fokusov.com/posts/10-luchshih-redaktorov-s-podderzhkoj-markdown-dlja-linux/</link>
       <pubDate>Sat, 04 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/10-luchshih-redaktorov-s-podderzhkoj-markdown-dlja-linux/</guid>
+      <guid>https://fokusov.com/posts/10-luchshih-redaktorov-s-podderzhkoj-markdown-dlja-linux/</guid>
       <description>В этой ста­тье мы рас­смот­рим несколь­ко луч­ших ре­дак­то­ров с под­держ­кой Markdown, ко­то­рые мож­но уста­но­вить и ис­поль­зо­вать в Linux. На са­мом де­ле их на­мно­го боль­ше, но мы рас­смот­рим толь­ко са­мые удоб­ные из них.
 Markdown (марк­даун) &amp;mdash; это об­лег­чён­ный язык раз­мет­ки, со­здан­ный с це­лью на­пи­са­ния мак­си­маль­но чи­та­е­мо­го и удоб­но­го для прав­ки тек­ста, но при­год­но­го для пре­об­ра­зо­ва­ния в язы­ки для про­дви­ну­тых пуб­ли­ка­ций (HTML, Rich Text и др.).
 Atom Atom это со­вре­мен­ный, крос­сплат­фор­мен­ный, мощ­ный тек­сто­вый ре­дак­тор с от­кры­тым ис­ход­ным ко­дом, ра­бо­та­ю­щий в Linux, Windows и Mac OS X.</description>
@@ -154,10 +154,10 @@ Atom Atom это со­вре­мен­ный, крос­сплат­фор­м�
     
     <item>
       <title>Минификация JavaScript кода в приложении NativeScript Angular 2</title>
-      <link>http://fokusov.com/posts/minifikacija-javascript-koda-v-prilozhenii-nativescript-angular-2/</link>
+      <link>https://fokusov.com/posts/minifikacija-javascript-koda-v-prilozhenii-nativescript-angular-2/</link>
       <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/minifikacija-javascript-koda-v-prilozhenii-nativescript-angular-2/</guid>
+      <guid>https://fokusov.com/posts/minifikacija-javascript-koda-v-prilozhenii-nativescript-angular-2/</guid>
       <description>Сегодня я покажу вам как использовать WebPack, Babel и UglifyJS для минификации, искажения и склеивания JavaScript в приложениях NativeScript Angular 2.
 Устанавливаем NativeScript:
 npm install nativescript -g Создаём приложение Angular 2:
@@ -167,10 +167,10 @@ cd MyApp npm install nativescript-dev-webpack --save-dev npm install babel-core 
     
     <item>
       <title>Создание кроссплатформенного плеера для SoundCloud® с Fuse</title>
-      <link>http://fokusov.com/posts/krossplatformennyj-pleer-dlja-soundcloud-s-fuse/</link>
+      <link>https://fokusov.com/posts/krossplatformennyj-pleer-dlja-soundcloud-s-fuse/</link>
       <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/krossplatformennyj-pleer-dlja-soundcloud-s-fuse/</guid>
+      <guid>https://fokusov.com/posts/krossplatformennyj-pleer-dlja-soundcloud-s-fuse/</guid>
       <description>Мы по­сто­ян­но по­лу­ча­ем за­про­сы от на­ших поль­зо­ва­те­лей, ко­то­рые хо­тят уви­деть, как вы­гля­дят &amp;ldquo;ре­аль­ные про­грам­мы&amp;rdquo;, сде­лан­ные с Fuse. Наш учеб­ник спе­ци­аль­но пред­на­зна­чен для быст­ро­го на­ча­ла ра­бо­ты с Fuse, но при этом он по­ка не со­дер­жит опи­са­ний слож­ных за­дач.
 По­это­му я ре­шил сде­лать пол­ную про­грам­му, с пуб­ли­ка­ци­ей в ма­га­зи­ны при­ло­же­ний. Она бу­дет слу­жить при­ме­ром по-на­сто­я­ще­му слож­ных за­дач и бу­дет ве­ли­ко­леп­ным ма­стер-клас­сом.
 При­ло­же­ние бу­дет ра­бо­тать с ре­аль­ным бе­кен­дом, оно бу­дет крос­сплат­фор­мен­ным (ра­бо­тать в Android и iOS) и бу­дет ис­поль­зо­вать несколь­ко ин­те­рес­ных на­тив­ных ин­те­гра­ций на обе­их плат­фор­мах.</description>
@@ -178,20 +178,20 @@ cd MyApp npm install nativescript-dev-webpack --save-dev npm install babel-core 
     
     <item>
       <title>Выбор технологии мобильной разработки в 2017 году</title>
-      <link>http://fokusov.com/posts/tehnologii-mobilnoj-razrabotki-v-2017-godu/</link>
+      <link>https://fokusov.com/posts/tehnologii-mobilnoj-razrabotki-v-2017-godu/</link>
       <pubDate>Sat, 28 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/tehnologii-mobilnoj-razrabotki-v-2017-godu/</guid>
+      <guid>https://fokusov.com/posts/tehnologii-mobilnoj-razrabotki-v-2017-godu/</guid>
       <description>Од­на­ж­ды в по­не­дель­ник утром к нам при­шёл кли­ент, ко­то­ро­му необ­хо­ди­мо бы­ло раз­ра­бо­тать муль­ти­плат­фор­мен­ное мо­биль­ное при­ло­же­ние для бан­кин­га. У него был про­то­тип со все­ми экра­на­ми, это и ста­ло на­шим тех­за­да­ни­ем. «Окей, кру­то». Те­перь мы долж­ны во­пло­тить в жизнь эту идею, ко­то­рая бы­ла раз­ме­ром при­мер­но в 50 экра­нов. И у нас есть все­го три ме­ся­ца. Вау.
 С че­го на­чать? Ка­кую тех­но­ло­гию ис­поль­зо­вать? Ту, ко­то­рая уже усто­я­лась на рын­ке или луч­ше сде­лать став­ку на со­вре­мен­ный стек?</description>
     </item>
     
     <item>
       <title>Создание анимированной кнопки &#34;Поделиться&#34; в NativeScript &#43; Angular</title>
-      <link>http://fokusov.com/posts/sozdanie-animirovannoj-knopki-podelitsja-v-nativescript/</link>
+      <link>https://fokusov.com/posts/sozdanie-animirovannoj-knopki-podelitsja-v-nativescript/</link>
       <pubDate>Thu, 26 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/sozdanie-animirovannoj-knopki-podelitsja-v-nativescript/</guid>
+      <guid>https://fokusov.com/posts/sozdanie-animirovannoj-knopki-podelitsja-v-nativescript/</guid>
       <description>Се­год­ня я по­ка­жу вам как со­зда­вать ани­ми­ро­ван­ную кноп­ку «По­де­лить­ся» в NativeScript и Angular. При на­жа­тии этой кноп­ки бу­дут по­ка­за­ны ма­лень­кие кноп­ки соц­се­тей по кру­гу от глав­ной.
 Ис­ход­ный код при­ме­ра вы мо­же­те уви­деть на Github.
 Итак, при­сту­пим!
@@ -201,10 +201,10 @@ tns create --ng tns-animated-social-button В на­шем при­ло­же­�
     
     <item>
       <title>Создание мультиязычного приложения NativeScript</title>
-      <link>http://fokusov.com/posts/sozdanie-multijazychnogo-prilozhenija-nativescript/</link>
+      <link>https://fokusov.com/posts/sozdanie-multijazychnogo-prilozhenija-nativescript/</link>
       <pubDate>Thu, 19 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fokusov.com/posts/sozdanie-multijazychnogo-prilozhenija-nativescript/</guid>
+      <guid>https://fokusov.com/posts/sozdanie-multijazychnogo-prilozhenija-nativescript/</guid>
       <description>Для недавнего проекта мне понадобилось решение для мгновенного переключения языка с Нидерландского на Английский.
 В одном концепте на NativeScript я разработал собственное решение на чистом JavaScript с Jed. Оно работало, но было далеко не идеальным.
 После этого я решил создать приложение на NativeScript с Angular (2+) и начал поиск существующих библиотек локализации для Angular. Лучшим решением оказалась библиотека ng-translate от Olivier Combe.
