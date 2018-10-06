@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golanggo on Фокусов Игорь</title>
+    <link>https://fokusov.com/tags/golanggo/</link>
+    <description>Recent content in Golanggo on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <lastBuildDate>Thu, 23 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fokusov.com/tags/golanggo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Создаём укорачивалку URL на Golang с Couchbase NoSQL</title>
+      <link>https://fokusov.com/posts/sozdaem-ukorachivalku-url-na-golang-s-couchbase-nosql/</link>
+      <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/sozdaem-ukorachivalku-url-na-golang-s-couchbase-nosql/</guid>
+      <description>Раз­ра­бот­ка сер­ви­са по уко­ра­чи­ва­нию ссы­лок (та­ко­го как TinyURL или Bitly) на Go, ду­маю, бу­дет очень кру­тым при­ме­ром для на­чи­на­ю­щих. Итак, при­сту­пим!
+Под­го­тов­ка Для на­ча­ла про­верь­те, что у вас уста­нов­лен Go вер­сии не ни­же 1.7 и уста­но­ви­те Couchbase Server 4.1+
+На­ше при­ло­же­ние бу­дет ис­поль­зо­вать за­про­сы N1QL &amp;mdash; SQL за­про­сы к ба­зе дан­ных Couchbase NoSQL.
+Под­го­тов­ка ба­зы дан­ных, со­зда­ние мо­де­ли дан­ных Для хра­не­ния ин­фор­ма­ции о длин­ных и ко­рот­ких URL нам нуж­на ба­за дан­ных.</description>
+    </item>
+    
+    <item>
+      <title>Разработка Web-приложений и микросервисов на Go с Gin</title>
+      <link>https://fokusov.com/posts/razrabotka-web-prilozhenij-i-mikroservisov-na-golang-s-gin/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/razrabotka-web-prilozhenij-i-mikroservisov-na-golang-s-gin/</guid>
+      <description>Вве­де­ние Се­год­ня мы по­ка­жем, как со­зда­вать веб-при­ло­же­ния и мик­ро­сер­ви­сы в Go с по­мо­щью фрейм­вор­ка Gin. Gin это фрейм­ворк, поз­во­ля­ю­щий умень­шить объ­ём ко­да, необ­хо­ди­мо­го для по­стро­е­ния та­ких при­ло­же­ний. Он по­ощ­ря­ет со­зда­ние мно­го­крат­но-ис­поль­зу­е­мо­го и рас­ши­ря­е­мо­го ко­да.
+Мы рас­смот­рим со­зда­ние про­ек­та и сбор­ку неслож­но­го при­ло­же­ния с Gin, ко­то­рое бу­дет вы­во­дить спи­сок то­пи­ков и от­дель­ный то­пик.
+Под­го­тов­ка Пе­ред на­ча­лом ра­бо­ты убе­ди­тесь, что у вас уста­нов­ле­ны Go и ути­ли­та curl. Ес­ли curl не уста­нов­ле­на и вы не хо­ти­те ра­бо­тать с ней, ис­поль­зуй­те лю­бую дру­гую ути­ли­ту те­сти­ро­ва­ния API.</description>
+    </item>
+    
+  </channel>
+</rss>

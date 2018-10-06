@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Софт on Фокусов Игорь</title>
+    <link>https://fokusov.com/categories/%D1%81%D0%BE%D1%84%D1%82/</link>
+    <description>Recent content in Софт on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <lastBuildDate>Mon, 26 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fokusov.com/categories/%D1%81%D0%BE%D1%84%D1%82/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo &#43; Firebase: как быстро и бесплатно создать статический сайт </title>
+      <link>https://fokusov.com/posts/hugo--firebase-kak-bystro-i-besplatno-sozdat-staticheskij-sajt/</link>
+      <pubDate>Mon, 26 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/hugo--firebase-kak-bystro-i-besplatno-sozdat-staticheskij-sajt/</guid>
+      <description>На­вер­ня­ка каж­дый из вас за­ду­мы­вал­ся о том, что­бы со­здать сайт, на ко­то­ром мож­но бы­ло бы раз­ме­стить своё порт­фо­лио, ре­зю­ме или да­же свой блог. Про­чи­тав эту ста­тью, вы смо­же­те сде­лать се­бе та­кой сайт.
+Во­об­ще для раз­ра­бот­ки сай­та необ­хо­ди­мо знать HTML, CSS и немно­го JavaScript. В на­шем слу­чае вы мо­же­те не знать ни­че­го из это­го. До­ста­точ­но про­сто уве­рен­но поль­зо­вать­ся ком­пью­те­ром.
+Для раз­ме­ще­ния веб-сай­та, необ­хо­ди­мо «про­стран­ство» (веб-хо­стинг), ку­да бу­дут за­гру­же­ны фай­лы ва­ше­го сай­та.</description>
+    </item>
+    
+    <item>
+      <title>Todolist - быстрый консольный менеджер задач в концепции GTD на Golang</title>
+      <link>https://fokusov.com/posts/todolist-bystryj-konsolnyj-menedzher-zadach-v-koncepcii-gtd-na-golang/</link>
+      <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/todolist-bystryj-konsolnyj-menedzher-zadach-v-koncepcii-gtd-na-golang/</guid>
+      <description>Todolist помогает работать с вашими задачами в терминале. Todolist основан на методе Getting Things Done и умеет работать с проектами, контекстами и сроками задач.
+Списки задач зависят от директории, в которой вы работаете с ними &amp;mdash; просто держите разные списки дел в разных папках.
+
+Установка Выберите любой удобный способ:
+ brew install todolist &amp;mdash; если у вас есть OSX с установленным homebrew. Скачайте последний релиз для вашей платформы и скопируйте исполняемый файл todolist в любое место в $PATH.</description>
+    </item>
+    
+    <item>
+      <title>10 лучших редакторов с поддержкой Markdown для Linux</title>
+      <link>https://fokusov.com/posts/10-luchshih-redaktorov-s-podderzhkoj-markdown-dlja-linux/</link>
+      <pubDate>Sat, 04 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/10-luchshih-redaktorov-s-podderzhkoj-markdown-dlja-linux/</guid>
+      <description>В этой ста­тье мы рас­смот­рим несколь­ко луч­ших ре­дак­то­ров с под­держ­кой Markdown, ко­то­рые мож­но уста­но­вить и ис­поль­зо­вать в Linux. На са­мом де­ле их на­мно­го боль­ше, но мы рас­смот­рим толь­ко са­мые удоб­ные из них.
+Markdown (марк­даун) &amp;mdash; это об­лег­чён­ный язык раз­мет­ки, со­здан­ный с це­лью на­пи­са­ния мак­си­маль­но чи­та­е­мо­го и удоб­но­го для прав­ки тек­ста, но при­год­но­го для пре­об­ра­зо­ва­ния в язы­ки для про­дви­ну­тых пуб­ли­ка­ций (HTML, Rich Text и др.).
+Atom Atom это со­вре­мен­ный, крос­сплат­фор­мен­ный, мощ­ный тек­сто­вый ре­дак­тор с от­кры­тым ис­ход­ным ко­дом, ра­бо­та­ю­щий в Linux, Windows и Mac OS X.</description>
+    </item>
+    
+  </channel>
+</rss>

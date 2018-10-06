@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golanggohugo on Фокусов Игорь</title>
+    <link>https://fokusov.com/tags/golanggohugo/</link>
+    <description>Recent content in Golanggohugo on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <lastBuildDate>Mon, 26 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fokusov.com/tags/golanggohugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo &#43; Firebase: как быстро и бесплатно создать статический сайт </title>
+      <link>https://fokusov.com/posts/hugo--firebase-kak-bystro-i-besplatno-sozdat-staticheskij-sajt/</link>
+      <pubDate>Mon, 26 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/hugo--firebase-kak-bystro-i-besplatno-sozdat-staticheskij-sajt/</guid>
+      <description>На­вер­ня­ка каж­дый из вас за­ду­мы­вал­ся о том, что­бы со­здать сайт, на ко­то­ром мож­но бы­ло бы раз­ме­стить своё порт­фо­лио, ре­зю­ме или да­же свой блог. Про­чи­тав эту ста­тью, вы смо­же­те сде­лать се­бе та­кой сайт.
+Во­об­ще для раз­ра­бот­ки сай­та необ­хо­ди­мо знать HTML, CSS и немно­го JavaScript. В на­шем слу­чае вы мо­же­те не знать ни­че­го из это­го. До­ста­точ­но про­сто уве­рен­но поль­зо­вать­ся ком­пью­те­ром.
+Для раз­ме­ще­ния веб-сай­та, необ­хо­ди­мо «про­стран­ство» (веб-хо­стинг), ку­да бу­дут за­гру­же­ны фай­лы ва­ше­го сай­та.</description>
+    </item>
+    
+  </channel>
+</rss>

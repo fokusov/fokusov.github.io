@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android Андроид Kotlin on Фокусов Игорь</title>
+    <link>https://fokusov.com/tags/android-%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B8%D0%B4-kotlin/</link>
+    <description>Recent content in Android Андроид Kotlin on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <lastBuildDate>Sun, 04 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fokusov.com/tags/android-%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B8%D0%B4-kotlin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Разработка приложения-галереи под Android на Kotlin</title>
+      <link>https://fokusov.com/posts/razrabotka-prilozhenija-galerei-pod-android-na-kotlin/</link>
+      <pubDate>Sun, 04 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/razrabotka-prilozhenija-galerei-pod-android-na-kotlin/</guid>
+      <description>В этом уроке мы разработаем полноценное приложение — галерею изображений на Kotlin. Также мы рассмотрим следующие темы:
+ Реализация паттерна Singleton на Kotlin. Передача экземпляра класса из одной activity в другую с помощью Parcelable на Kotlin Пример реализации Shared preferences. Пример Recyclerview на Kotlin. Настройка RecyclerView Adapter на Kotlin. NavigationView и настройка DrawerLayout на Kotlin. Загрузка и вывод изображений с внутреннего накопителя Android на Kotlin. Использование библиотеки для загрузки изображений Glide.</description>
+    </item>
+    
+  </channel>
+</rss>

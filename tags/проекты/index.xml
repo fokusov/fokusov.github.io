@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Проекты on Фокусов Игорь</title>
+    <link>https://fokusov.com/tags/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/</link>
+    <description>Recent content in Проекты on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    
+	<atom:link href="https://fokusov.com/tags/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Выполненные проекты</title>
+      <link>https://fokusov.com/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/projects/</guid>
+      <description>Здесь перечислены некоторые проекты на базе 1С, завершённые мной за предыдущие годы:
+Автоматизация расчета зарплаты в 1С 7.7 Отрасль: Исправительное учреждение
+Проблема: Стандартные зарплатные конфигурации 1С не были приспособлены для расчета зарплат некоторых категорий работников учреждения, из-за этого большая часть расчета проводилась вручную.
+Решение: Доработка стандартных алгоритмов расчета в 1С ЗИК и помощников расчета в 1С Зарплата Камин 2 полностью решили проблему.
+Результат: Снижена трудоемкость ведения учета в несколько раз, отсутствие ошибок в расчете, в т.</description>
+    </item>
+    
+  </channel>
+</rss>

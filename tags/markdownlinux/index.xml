@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markdownlinux on Фокусов Игорь</title>
+    <link>https://fokusov.com/tags/markdownlinux/</link>
+    <description>Recent content in Markdownlinux on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <lastBuildDate>Sat, 04 Feb 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fokusov.com/tags/markdownlinux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>10 лучших редакторов с поддержкой Markdown для Linux</title>
+      <link>https://fokusov.com/posts/10-luchshih-redaktorov-s-podderzhkoj-markdown-dlja-linux/</link>
+      <pubDate>Sat, 04 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/10-luchshih-redaktorov-s-podderzhkoj-markdown-dlja-linux/</guid>
+      <description>В этой ста­тье мы рас­смот­рим несколь­ко луч­ших ре­дак­то­ров с под­держ­кой Markdown, ко­то­рые мож­но уста­но­вить и ис­поль­зо­вать в Linux. На са­мом де­ле их на­мно­го боль­ше, но мы рас­смот­рим толь­ко са­мые удоб­ные из них.
+Markdown (марк­даун) &amp;mdash; это об­лег­чён­ный язык раз­мет­ки, со­здан­ный с це­лью на­пи­са­ния мак­си­маль­но чи­та­е­мо­го и удоб­но­го для прав­ки тек­ста, но при­год­но­го для пре­об­ра­зо­ва­ния в язы­ки для про­дви­ну­тых пуб­ли­ка­ций (HTML, Rich Text и др.).
+Atom Atom это со­вре­мен­ный, крос­сплат­фор­мен­ный, мощ­ный тек­сто­вый ре­дак­тор с от­кры­тым ис­ход­ным ко­дом, ра­бо­та­ю­щий в Linux, Windows и Mac OS X.</description>
+    </item>
+    
+  </channel>
+</rss>

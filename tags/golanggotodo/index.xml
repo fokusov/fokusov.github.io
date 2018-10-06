@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golanggotodo on Фокусов Игорь</title>
+    <link>https://fokusov.com/tags/golanggotodo/</link>
+    <description>Recent content in Golanggotodo on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <lastBuildDate>Fri, 10 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fokusov.com/tags/golanggotodo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Генерируем Identicon в Go</title>
+      <link>https://fokusov.com/posts/generiruem-identicon-v-go/</link>
+      <pubDate>Fri, 10 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/generiruem-identicon-v-go/</guid>
+      <description>В этой статье мы разработаем простой генератор идентиконов на языке Go. Исходный код вы можете взять здесь.
+Но что такое идентикон? Думаю, все видели стандартную аватарку при регистрации на Github. Вот пример: Вы видите визуальное представление значения хэш-функции. То есть с помощью специального алгоритма (md5 или sha256 и т.п.) захэшировано какое-то слово, при этом вывод этого алгоритма используется для генерации картинки. Поэтому идентикон будет всегда один и тот же при одинаковых входных данных.</description>
+    </item>
+    
+    <item>
+      <title>Todolist - быстрый консольный менеджер задач в концепции GTD на Golang</title>
+      <link>https://fokusov.com/posts/todolist-bystryj-konsolnyj-menedzher-zadach-v-koncepcii-gtd-na-golang/</link>
+      <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/todolist-bystryj-konsolnyj-menedzher-zadach-v-koncepcii-gtd-na-golang/</guid>
+      <description>Todolist помогает работать с вашими задачами в терминале. Todolist основан на методе Getting Things Done и умеет работать с проектами, контекстами и сроками задач.
+Списки задач зависят от директории, в которой вы работаете с ними &amp;mdash; просто держите разные списки дел в разных папках.
+
+Установка Выберите любой удобный способ:
+ brew install todolist &amp;mdash; если у вас есть OSX с установленным homebrew. Скачайте последний релиз для вашей платформы и скопируйте исполняемый файл todolist в любое место в $PATH.</description>
+    </item>
+    
+  </channel>
+</rss>

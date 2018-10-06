@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golangvuejs on Фокусов Игорь</title>
+    <link>https://fokusov.com/tags/golangvuejs/</link>
+    <description>Recent content in Golangvuejs on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <lastBuildDate>Tue, 28 Feb 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fokusov.com/tags/golangvuejs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Создание одностраничного веб-приложения на Go, Echo и Vue</title>
+      <link>https://fokusov.com/posts/sozdanie-odnostranichnogo-veb-prilozhenija-na-go-echo-i-vue/</link>
+      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/sozdanie-odnostranichnogo-veb-prilozhenija-na-go-echo-i-vue/</guid>
+      <description>Се­год­ня мы со­зда­дим неслож­ное при­ло­же­ние для ве­де­ния спис­ка за­дач. В нём мож­но бу­дет ука­зы­вать на­име­но­ва­ние за­да­чи, вы­во­дить со­здан­ные за­да­чи на экран и уда­лять за­да­чи.
+Бэ­кенд при­ло­же­ния бу­дет на­пи­сан на язы­ке Go. Для луч­ше­го по­ни­ма­ния ма­те­ри­а­ла необ­хо­ди­мы хо­тя бы ми­ни­маль­ные зна­ния син­так­си­са и уста­нов­лен­ный Go.
+Что­бы уско­рить со­зда­ние при­ло­же­ния, мы возь­мём мик­ро-фрейм­ворк Echo. А за­да­чи мы бу­дем хра­нить в ба­зе SQLite.
+Фрон­тенд мы со­зда­дим на HTML5 с по­пу­ляр­ным Javascript фрейм­вор­ком VueJS.</description>
+    </item>
+    
+  </channel>
+</rss>

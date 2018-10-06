@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android Андроид Nativescript on Фокусов Игорь</title>
+    <link>https://fokusov.com/tags/android-%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B8%D0%B4-nativescript/</link>
+    <description>Recent content in Android Андроид Nativescript on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <lastBuildDate>Sat, 25 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fokusov.com/tags/android-%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B8%D0%B4-nativescript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Как отправлять СМС и звонить с Angular NativeScript</title>
+      <link>https://fokusov.com/posts/kak-otpravljat-sms-i-zvonit-s-angular-nativescript/</link>
+      <pubDate>Sat, 25 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/kak-otpravljat-sms-i-zvonit-s-angular-nativescript/</guid>
+      <description>От­прав­лять СМС из при­ло­же­ния NativeScript очень про­сто! И се­год­ня я по­ка­жу вам как это сде­лать.
+Ис­ход­ный код мож­но ска­чать здесь.
+Убе­ди­тесь, что у вас уста­нов­лен NodeJS и NativeScript CLI.
+Вна­ча­ле со­зда­дим пу­стой про­ект Angular NativeScript:
+tns create HelloWorld --template nativescript-template-ng-tutorial Эта ко­ман­да со­здаст про­ект smsApp. Пе­рей­ди­те в со­здан­ную ди­рек­то­рию про­ек­та и уста­но­ви­те пла­гин nativescript-phone:
+tns plugin add nativescript-phone Им­пор­ти­ру­ем этот мо­дуль в фай­ле app.​com​pone​nt.​ts:
+import * as phone from &amp;#39;nativescript-phone&amp;#39;; Для ис­поль­зо­ва­ния ngModel в на­шем про­ек­те, нуж­но до­ба­вить NativeScriptFormsModule в файл app.</description>
+    </item>
+    
+    <item>
+      <title>Минификация JavaScript кода в приложении NativeScript Angular 2</title>
+      <link>https://fokusov.com/posts/minifikacija-javascript-koda-v-prilozhenii-nativescript-angular-2/</link>
+      <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/minifikacija-javascript-koda-v-prilozhenii-nativescript-angular-2/</guid>
+      <description>Сегодня я покажу вам как использовать WebPack, Babel и UglifyJS для минификации, искажения и склеивания JavaScript в приложениях NativeScript Angular 2.
+Устанавливаем NativeScript:
+npm install nativescript -g Создаём приложение Angular 2:
+tns create MyApp --ng Устанавливаем nativescript-dev-webpack, babel-core, babel-preset-es2015 и babel-loader в наше приложение:
+cd MyApp npm install nativescript-dev-webpack --save-dev npm install babel-core --save-dev npm install babel-preset-es2015 --save-dev npm install babel-loader --save-dev Открываем приложение в любимом редакторе и добавляем babel-loader в конец секции загрузчиков и плагин UglifyJS в конец секции плагинов в webpack.</description>
+    </item>
+    
+    <item>
+      <title>Создание анимированной кнопки &#34;Поделиться&#34; в NativeScript &#43; Angular</title>
+      <link>https://fokusov.com/posts/sozdanie-animirovannoj-knopki-podelitsja-v-nativescript/</link>
+      <pubDate>Thu, 26 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/sozdanie-animirovannoj-knopki-podelitsja-v-nativescript/</guid>
+      <description>Се­год­ня я по­ка­жу вам как со­зда­вать ани­ми­ро­ван­ную кноп­ку «По­де­лить­ся» в NativeScript и Angular. При на­жа­тии этой кноп­ки бу­дут по­ка­за­ны ма­лень­кие кноп­ки соц­се­тей по кру­гу от глав­ной.
+Ис­ход­ный код при­ме­ра вы мо­же­те уви­деть на Github.
+Итак, при­сту­пим!
+Уста­нов­ка Со­зда­дим про­ект, ис­поль­зуя па­ра­метр &amp;ndash;ng для со­зда­ния при­ло­же­ния angular:
+tns create --ng tns-animated-social-button В на­шем при­ло­же­нии бу­дет ис­поль­зо­вать­ся пла­гин ng2-fonticon от Nathan Walker для вы­во­да ико­нок на кноп­ках. Уста­но­ви­те его по ин­струк­ции на этой стра­ни­це.</description>
+    </item>
+    
+    <item>
+      <title>Создание мультиязычного приложения NativeScript</title>
+      <link>https://fokusov.com/posts/sozdanie-multijazychnogo-prilozhenija-nativescript/</link>
+      <pubDate>Thu, 19 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/sozdanie-multijazychnogo-prilozhenija-nativescript/</guid>
+      <description>Для недавнего проекта мне понадобилось решение для мгновенного переключения языка с Нидерландского на Английский.
+В одном концепте на NativeScript я разработал собственное решение на чистом JavaScript с Jed. Оно работало, но было далеко не идеальным.
+После этого я решил создать приложение на NativeScript с Angular (2+) и начал поиск существующих библиотек локализации для Angular. Лучшим решением оказалась библиотека ng-translate от Olivier Combe.
+В Angular она завелась с полпинка, а вот заставить её работать в NativeScript стоило мне много крови и пота.</description>
+    </item>
+    
+  </channel>
+</rss>

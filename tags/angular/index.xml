@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Angular on Фокусов Игорь</title>
+    <link>https://fokusov.com/tags/angular/</link>
+    <description>Recent content in Angular on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <lastBuildDate>Mon, 13 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fokusov.com/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Создание hacker news с angular 2 cli, rxjs и webpack</title>
+      <link>https://fokusov.com/posts/sozdanie-hacker-news-s-angular-2-cli-rxjs-i-webpack/</link>
+      <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/sozdanie-hacker-news-s-angular-2-cli-rxjs-i-webpack/</guid>
+      <description>Ес­ли вы ко­гда-ли­бо со­зда­ва­ли при­ло­же­ния с Angular 2, то зна­е­те, что пер­во­на­чаль­ная на­строй­ка про­ек­та от­ни­ма­ет нема­ло вре­ме­ни. К сча­стью, ко­ман­да Angular со­зда­ла Angular CLI &amp;mdash; ути­ли­ту ко­манд­ной стро­ки, об­лег­ча­ю­щую эту за­да­чу.
+В этой ста­тье мы по­стро­им кли­ен­та Hacker News, ис­поль­зуя Angular CLI, RxJS Observables и Webpack как за­груз­чик мо­ду­лей.
+Го­то­вое при­ло­же­ние.
+Ис­ход­ный код.
+Мы по­сте­пен­но, шаг за ша­гом, прой­дём весь про­цесс по­стро­е­ния при­ло­же­ния и я по­ста­ра­юсь по­дроб­но объ­яс­нять важ­ные мо­мен­ты по хо­ду де­ла, а та­к­же сде­лан­ные мной ошиб­ки и спо­со­бы их ре­ше­ния.</description>
+    </item>
+    
+  </channel>
+</rss>

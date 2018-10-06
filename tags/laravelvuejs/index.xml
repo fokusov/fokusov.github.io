@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Laravelvuejs on Фокусов Игорь</title>
+    <link>https://fokusov.com/tags/laravelvuejs/</link>
+    <description>Recent content in Laravelvuejs on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <lastBuildDate>Wed, 08 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fokusov.com/tags/laravelvuejs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Как сделать &#34;Избранное&#34; средствами Laravel и Vue.js</title>
+      <link>https://fokusov.com/posts/kak-sdelat-izbrannoe-sredstvami-laravel-i-vue_js/</link>
+      <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/kak-sdelat-izbrannoe-sredstvami-laravel-i-vue_js/</guid>
+      <description>В наше время большинство сайтов используют функционал избранного/лайков/рекомендаций. В том числе такие крупные ресурсы, как Medium, Facebook, Вконтакте и т.д.
+Мы рассмотрим как реализовать такой функционал с Vue.js в приложении Laravel. Это приложение будет типа персонального блога, в нём будут пользователи и статьи. Пользователи смогут создавать статьи и добавлять их в избранное. А также пользователи смогут видеть полный список избранных статей.
+В приложении будут модель User (Пользователь) и модель Post (Статья), в нём будет система авторизации, которая позволит добавлять статьи в Избранное (и удалять из него) только авторизованным пользователям.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vuejs on Фокусов Игорь</title>
+    <link>https://fokusov.com/tags/vuejs/</link>
+    <description>Recent content in Vuejs on Фокусов Игорь</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <lastBuildDate>Thu, 09 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fokusov.com/tags/vuejs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Создание списка задач с Vue.js</title>
+      <link>https://fokusov.com/posts/sozdanie-spiska-zadach-s-vue_js/</link>
+      <pubDate>Thu, 09 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fokusov.com/posts/sozdanie-spiska-zadach-s-vue_js/</guid>
+      <description>Се­год­ня мы со­зда­дим при­ло­же­ние &amp;mdash; спи­сок за­дач с Vue.​js, а та­к­же рас­смот­рим и дру­гие удоб­ные ин­стру­мен­ты для со­зда­ния со­вре­мен­ных веб-при­ло­же­ний.
+Убе­ди­тесь, что у вас уста­нов­ле­на Vue CLI! Ес­ли нет, то уста­но­ви­те её ко­ман­дой
+$ npm install --global vue-cli С Vue CLI идут несколь­ко шаб­ло­нов го­то­вых при­ло­же­ний:
+webpack - Полнофункциональная установка Webpack + Vue-loader с hot reload, linting, testing &amp;amp; CSS extraction. webpack-simple - Упрощённая установка Webpack + Vue-loader. browserify - Полнофункциональная установка Browserify + vueify с hot-reload, linting &amp;amp; unit testing.</description>
+    </item>
+    
+  </channel>
+</rss>
